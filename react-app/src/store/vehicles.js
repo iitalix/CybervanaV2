@@ -7,20 +7,20 @@ const GET_NINE_VEHICLES = "/get_nine_vehicles";
 
 //action creator
 
-const actionGetVehicles = (vehicles) => ({ type: GET_ALL_VEHICLES, vehicles });
+const actionGetAllVehicles = (vehicles) => ({ type: GET_ALL_VEHICLES, vehicles });
 const actionGetVehicleDetails = (vehicle) => ({ type: GET_VEHICLE_DETAILS, vehicle });
 const actionDeleteVehicle = (id) => ({ type: DELETE_VEHICLE, id });
 const actionGetNineVehicles = (vehicles) => ({ type: GET_NINE_VEHICLES, vehicles });
 
 //Thunks
 
-//getAllvehiclesThunk
-export const getTenRandomVehiclesThunk = () => async (dispatch) => {
-   const res = await fetch("/api/vehicles");
+//getAllVehiclesThunk
+export const getAllVehicles = () => async (dispatch) => {
+   const res = await fetch("/api/vehicles/all");
 
    if (res.ok) {
       const data = await res.json();
-      dispatch(actionGetNineVehicles(data));
+      dispatch(actionGetAllVehicles(data));
       return data;
    } else {
       const errors = await res.json();
@@ -34,18 +34,6 @@ export const getNineRandomNonOwnerVehicles = () => async (dispatch) => {
    if (res.ok) {
       const data = await res.json();
       dispatch(actionGetNineVehicles(data));
-      return data;
-   } else {
-      const errors = await res.json();
-      return errors;
-   }
-};
-
-export const getEveryVehicleThunk = () => async (dispatch) => {
-   const res = await fetch("/api/vehicles/all");
-   if (res.ok) {
-      const data = await res.json();
-      dispatch(actionGetVehicles(data));
       return data;
    } else {
       const errors = await res.json();
