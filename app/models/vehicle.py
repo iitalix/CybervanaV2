@@ -12,8 +12,8 @@ class Vehicle(db.Model):
         add_prefix_for_prod("users.id")))
     make = db.Column(db.String(50), nullable=False)
     model = db.Column(db.String(50), nullable=False)
-    price = db.Column(db.Integer, nullable=False)
     photo_url = db.Column(db.String, nullable=False)
+    price = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String(1000), nullable=False)
     created_at = db.Column(db.Date, nullable=False)
     my_vehicle_user_id = db.relationship("User", back_populates="my_vehicle_id")
@@ -26,8 +26,8 @@ class Vehicle(db.Model):
             "ownerId": self.owner_id,
             "make": self.make,
             "model": self.model,
-            "price": self.price,
             "photoUrl": self.photo_url,
+            "price": self.price,
             "description": self.description,
             "createdAt": self.created_at,
             'users': self.my_vehicle_user_id.to_dict(),
