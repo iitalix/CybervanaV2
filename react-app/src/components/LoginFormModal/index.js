@@ -20,7 +20,7 @@ function LoginFormModal() {
       setErrors(data);
     } else {
       closeModal()
-      // push("/posts/current")
+      push("/vehicles/all")
     }
   };
 
@@ -31,7 +31,7 @@ function LoginFormModal() {
       setErrors(data);
     } else {
       closeModal()
-      // push("/posts/current")
+      push("/vehicles/all")
     }
   };
 

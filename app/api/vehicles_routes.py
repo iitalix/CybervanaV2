@@ -10,20 +10,11 @@ from .auth_routes import validation_errors_to_error_messages
 vehicles_routes = Blueprint('vehicles', __name__)
 
 
-@vehicles_routes.route('/')
-def index():
-    """Getting 10 random images from our db for the rotating background on our logged OUT homepage"""
-    all_vehicles = Vehicle.query.all()
-    vehicle_list = sample(all_vehicles, 9)
-
-    # list of 10 random vehicle dictionaries are going to be sent to redux.
-    return [vehicle.to_dict() for vehicle in vehicle_list]
-
-
 @vehicles_routes.route('/all')
 @login_required
 def all():
     all_vehicles = Vehicle.query.all()
+
     return [vehicle.to_dict() for vehicle in all_vehicles]
 
 
