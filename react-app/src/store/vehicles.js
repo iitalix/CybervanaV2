@@ -71,23 +71,6 @@ export const createVehicleThunk = (form) => async (dispatch) => {
    }
 };
 
-//createvehicleNoAlbums Thunk
-export const createVehicleThunkNoAlbums = (form) => async (dispatch) => {
-   const res = await fetch("/api/vehicles/no_album", {
-      method: "vehicle",
-      body: form,
-   });
-
-   if (res.ok) {
-      const { resPost } = await res.json();
-      dispatch(actionGetVehicleDetails(resPost));
-      return resPost;
-   } else {
-      const data = await res.json();
-      return data;
-   }
-};
-
 //updatevehicle Thunk
 export const updateVehicleThunk = (form, vehicleId) => async (dispatch) => {
    try {
