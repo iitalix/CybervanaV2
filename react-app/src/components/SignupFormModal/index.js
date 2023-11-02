@@ -44,7 +44,7 @@ function SignupFormModal() {
         setErrors(data);
       } else {
         closeModal();
-        // push("/posts/current");
+        push("/vehicles/all");
       }
     } else {
       setErrors(newErrors);

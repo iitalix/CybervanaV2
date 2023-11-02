@@ -4,7 +4,7 @@ import { getOwnerVehicles } from "../../../store/vehicles";
 import VehicleCard from "../VehicleCard";
 
 export default function YourVehiclesPage() {
-
+    const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
     const ownerVehicles = useSelector((state) => state.vehicles.ownerVehicles)
     const arrOwnerVehicles = Object.values(ownerVehicles);
@@ -21,7 +21,7 @@ export default function YourVehiclesPage() {
                 {vehicles.map((vehicle) => (
 
                     <div key={vehicle.id} className="vehicle-card">
-                        <VehicleCard vehicle={vehicle} />
+                        <VehicleCard vehicle={vehicle} user={user} />
                     </div>
                 ))}
             </div>

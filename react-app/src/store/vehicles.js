@@ -41,7 +41,7 @@ export const getOwnerVehicles = () => async (dispatch) => {
    }
 };
 
-//getvehicleDetails Thunk
+//getVehicleDetails Thunk
 export const getVehicleDetailsThunk = (id) => async (dispatch) => {
    const res = await fetch(`/api/vehicles/${id}`);
    if (res.ok) {
@@ -71,7 +71,7 @@ export const createVehicleThunk = (form) => async (dispatch) => {
    }
 };
 
-//updatevehicle Thunk
+//updateVehicle Thunk
 export const updateVehicleThunk = (form, vehicleId) => async (dispatch) => {
    try {
       const res = await fetch(`/api/vehicles/update/${vehicleId}`, {
