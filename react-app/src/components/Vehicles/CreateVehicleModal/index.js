@@ -1,26 +1,38 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { useModal } from "../../../context/Modal";
-import { createVehicleThunk, getOwnerVehicles } from "../../../store/vehicles";
-import "../CreateVehicleModal/CreateVehicle.css"
+import {useState, useEffect} from "react";
+import {useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
+import {useModal} from "../../../context/Modal";
+import {createVehicleThunk, getOwnerVehicles} from "../../../store/vehicles";
+import "../CreateVehicleModal/CreateVehicle.css";
 
 export default function CreateVehicleModal() {
-  const { push } = useHistory();
+  const {push} = useHistory();
   const dispatch = useDispatch();
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const [errors, setErrors] = useState([]);
-  const { closeModal } = useModal();
+  const {closeModal} = useModal();
   const [validationObject, setValidationObject] = useState({});
-  const [key, setKey] = useState(Date.now())
+  const [key, setKey] = useState(Date.now());
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const errorsObject = {};
+
+    if (description?.length < 10) {
+      errorsObject.description = "Description must be more than 10 characters.";
+    }
+
+    if (price < 1 || price.includes('.')) {
+      errorsObject.price = "Price must be an integer greater than 0.";
+    }
+
+    setValidationObject(errorsObject);
     const formData = new FormData();
     formData.append("image", image);
     formData.append("make", make);
@@ -38,31 +50,29 @@ export default function CreateVehicleModal() {
     // setDescription("");
 
     if (postData.errors === undefined || !postData.errors) {
-
       dispatch(getOwnerVehicles());
       push("/vehicles/current");
       return closeModal();
     } else {
-      setImageLoading(false)
+      setImageLoading(false);
       setErrors(postData.errors);
-      setKey(Date.now())
+      setKey(Date.now());
     }
-
   };
 
-  useEffect(() => {
-    const errorsObject = {};
+  // useEffect(() => {
+  //   const errorsObject = {};
 
-    if (description?.length < 10) {
-      errorsObject.description = "Description must be more than 10 characters.";
-    }
+  //   if (description?.length < 10) {
+  //     errorsObject.description = "Description must be more than 10 characters.";
+  //   }
 
-    if (price < 1) {
-        errorsObject.price = "Price must be an integer greater than 0."
-    }
+  //   if (price < 1) {
+  //     errorsObject.price = "Price must be an integer greater than 0.";
+  //   }
 
-    setValidationObject(errorsObject);
-  }, [description, price]);
+  //   setValidationObject(errorsObject);
+  // }, [description, price]);
 
   return (
     <div className="create-vehicle-parent-container">
@@ -81,8 +91,7 @@ export default function CreateVehicleModal() {
           ))}
 
         <div className="div-file-section">
-          <label
-            className="style-file-upload">
+          <label className="style-file-upload">
             <input
               type="file"
               accept="image/*"
@@ -147,9 +156,14 @@ export default function CreateVehicleModal() {
         >
           Submit
         </button>
-        {imageLoading && (<div aria-busy="true" aria-describedby="progress-bar">
-          <progress id="progress-bar" aria-label="Content loading…"></progress>
-        </div>)}
+        {imageLoading && (
+          <div aria-busy="true" aria-describedby="progress-bar">
+            <progress
+              id="progress-bar"
+              aria-label="Content loading…"
+            ></progress>
+          </div>
+        )}
       </form>
     </div>
   );
