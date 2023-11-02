@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import AllVehiclesPage from "./components/Vehicles/AllVehiclesPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import YourVehiclesPage from "./components/Vehicles/YourVehiclesPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/vehicles/current" >
+            <YourVehiclesPage />
           </Route>
           <Route path="/vehicles/all" >
             <AllVehiclesPage />

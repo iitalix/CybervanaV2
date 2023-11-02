@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from ..models import Vehicle, User, db
+from ..models import Vehicle, Review, User, db
 from random import choice, sample
 from datetime import date
 from flask_login import login_required, current_user
@@ -21,21 +21,18 @@ def all():
 @vehicles_routes.route('/current')
 @login_required
 def current():
-    """Getting 10 random images from our db to show on a logged IN users homepage. None of the photos can be from the logged In user."""
-    # all_none_user_vehicles = vehicle.query.filter(vehicle.owner_id.is_not(current_user.id))
-    all_user_vehicles = Vehicle.query.all()
+    """GET all vehicles owned by current user"""
+
+    all_vehicles = Vehicle.query.all()
 
     def filter_user_id(vehicle):
 
-        return vehicle.owner_id != current_user.id
-    all_non_user_vehicles = filter(filter_user_id, all_user_vehicles)
+        return vehicle.owner_id == current_user.id
+    all_user_vehicles = filter(filter_user_id, all_vehicles)
 
-    ten_vehicles = sample(list(all_non_user_vehicles), 9)
+    # ten_vehicles = sample(list(all_user_vehicles), 9)
 
-    return [vehicle.to_dict() for vehicle in ten_vehicles]
-
-    # list of 10 random vehicle dictionaries are going to sent, that are not the current users.
-    # this is not tested bc it needs to be done on the front end to ensure there are no current user vehicles included.
+    return [vehicle.to_dict() for vehicle in all_user_vehicles]
 
 
 @vehicles_routes.route('/new', methods=['GET', 'vehicle'])
@@ -142,8 +139,6 @@ def create_comment(id):
         return create_comment.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
-
-# Not sure about how to update comment--by comment ID?
 
 
 @vehicles_routes.route('/<int:id>/reviews', methods=["PUT"])
