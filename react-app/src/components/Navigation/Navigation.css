@@ -1,7 +1,128 @@
-.profile-dropdown {
-  position: absolute;
-}
-
 .hidden {
   display: none;
+}
+
+.nav-container {
+  padding: 20px;
+  background-color: black;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+}
+
+/* Header */
+#logo {
+  width: 195px;
+}
+
+
+/* Profile Button */
+.profile-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.fa-bars {
+  margin-right: 8px;
+}
+
+.profile-dropdown {
+  border-radius: 8px;
+  min-height: 90px;
+  position: absolute;
+  top: 80px;
+  right: 60px;
+  z-index: 3;
+  background-color: ghostwhite;
+  box-shadow: 2px 2px 2px lightgrey;
+}
+
+.profile-menu-container {
+  padding: 0px;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.profile-container button {
+
+  background-color: ghostwhite;
+  border: none;
+  margin-bottom: 12px;
+  margin-top: 5px;
+  cursor: pointer;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+}
+
+.profile-container button:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ccc;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#user-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+#email {
+  margin-bottom: 8px;
+}
+
+#user-menu div {
+  padding: 10px;
+}
+
+#user-links {
+  border-top: 1px solid black;
+}
+
+#user-links div:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.profile-corner-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#post-vehicle-button > button {
+  color: yellow;
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+#post-vehicle-button > button:hover {
+  color: #d525bb;
+}
+
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid lightgray;
+}
+
+.nav-links  {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.nav-links > div{
+  cursor: pointer;
 }

@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-// import "../CSS/john.css"
+import "../LoginFormModal/LoginForm.css"
 
 function LoginFormModal() {
   const { push } = useHistory();
@@ -20,7 +20,7 @@ function LoginFormModal() {
       setErrors(data);
     } else {
       closeModal()
-      // push("/posts/current")
+      push("/vehicles/all")
     }
   };
 
@@ -31,7 +31,7 @@ function LoginFormModal() {
       setErrors(data);
     } else {
       closeModal()
-      // push("/posts/current")
+      push("/vehicles/all")
     }
   };
 
@@ -39,11 +39,11 @@ function LoginFormModal() {
     <div className="login-modal-container">
       <h1>Log In</h1>
       <form onSubmit={handleSubmit} className="login-form-modal">
-        <ul className="list-errors">
+        <div className="list-errors">
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <div key={idx}>{error}</div>
           ))}
-        </ul>
+        </div>
         <label>
           <input
             type="text"
@@ -65,7 +65,7 @@ function LoginFormModal() {
           />
         </label>
         <button type="submit" className="login-button">Log In</button>
-        <button onClick={handleDemo} id="demo-button">Demo User</button>
+        <button onClick={handleDemo} className="login-button"id="demo-button">Demo User</button>
       </form>
     </div>
   );

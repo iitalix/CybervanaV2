@@ -3,24 +3,24 @@
 const GET_ALL_VEHICLES = "/get_all_vehicles";
 const GET_VEHICLE_DETAILS = "/vehicle_details";
 const DELETE_VEHICLE = "/delete_vehicle";
-const GET_NINE_VEHICLES = "/get_nine_vehicles";
+const GET_OWNER_VEHICLES = "/get_owner_vehicles";
 
 //action creator
 
-const actionGetVehicles = (vehicles) => ({ type: GET_ALL_VEHICLES, vehicles });
+const actionGetAllVehicles = (vehicles) => ({ type: GET_ALL_VEHICLES, vehicles });
 const actionGetVehicleDetails = (vehicle) => ({ type: GET_VEHICLE_DETAILS, vehicle });
 const actionDeleteVehicle = (id) => ({ type: DELETE_VEHICLE, id });
-const actionGetNineVehicles = (vehicles) => ({ type: GET_NINE_VEHICLES, vehicles });
+const actionGetOwnerVehicles = (vehicles) => ({ type: GET_OWNER_VEHICLES, vehicles });
 
 //Thunks
 
-//getAllvehiclesThunk
-export const getTenRandomVehiclesThunk = () => async (dispatch) => {
-   const res = await fetch("/api/vehicles");
+//getAllVehiclesThunk
+export const getAllVehicles = () => async (dispatch) => {
+   const res = await fetch("/api/vehicles/all");
 
    if (res.ok) {
       const data = await res.json();
-      dispatch(actionGetNineVehicles(data));
+      dispatch(actionGetAllVehicles(data));
       return data;
    } else {
       const errors = await res.json();
@@ -28,24 +28,12 @@ export const getTenRandomVehiclesThunk = () => async (dispatch) => {
    }
 };
 
-//getAllOwnervehicles Thunk
-export const getNineRandomNonOwnerVehicles = () => async (dispatch) => {
+//getAllOwnerVehicles Thunk
+export const getOwnerVehicles = () => async (dispatch) => {
    const res = await fetch("/api/vehicles/current");
    if (res.ok) {
       const data = await res.json();
-      dispatch(actionGetNineVehicles(data));
-      return data;
-   } else {
-      const errors = await res.json();
-      return errors;
-   }
-};
-
-export const getEveryVehicleThunk = () => async (dispatch) => {
-   const res = await fetch("/api/vehicles/all");
-   if (res.ok) {
-      const data = await res.json();
-      dispatch(actionGetVehicles(data));
+      dispatch(actionGetOwnerVehicles(data));
       return data;
    } else {
       const errors = await res.json();
@@ -69,24 +57,7 @@ export const getVehicleDetailsThunk = (id) => async (dispatch) => {
 //createVehicle Thunk
 export const createVehicleThunk = (form) => async (dispatch) => {
    const res = await fetch("/api/vehicles/new", {
-      method: "vehicle",
-      body: form,
-   });
-
-   if (res.ok) {
-      const { resPost } = await res.json();
-      dispatch(actionGetVehicleDetails(resPost));
-      return resPost;
-   } else {
-      const data = await res.json();
-      return data;
-   }
-};
-
-//createvehicleNoAlbums Thunk
-export const createVehicleThunkNoAlbums = (form) => async (dispatch) => {
-   const res = await fetch("/api/vehicles/no_album", {
-      method: "vehicle",
+      method: "POST",
       body: form,
    });
 
@@ -136,7 +107,7 @@ export const deleteVehicleThunk = (id) => async (dispatch) => {
 
 //Reducer
 
-const initialState = { allVehicles: {}, nineVehicles: {} };
+const initialState = { allVehicles: {}, ownerVehicles: {} };
 
 export default function vehicleReducer(state = initialState, action) {
    let newState;
@@ -156,9 +127,9 @@ export default function vehicleReducer(state = initialState, action) {
          delete newState.allVehicles[action.id];
          return newState;
 
-      case GET_NINE_VEHICLES:
-         newState = { ...state, nineVehicles: {} };
-         action.vehicles.forEach((vehicle) => (newState.nineVehicles[vehicle.id] = vehicle));
+      case GET_OWNER_VEHICLES:
+         newState = { ...state, ownerVehicles: {} };
+         action.vehicles.forEach((vehicle) => (newState.ownerVehicles[vehicle.id] = vehicle));
          return newState;
 
       default:
