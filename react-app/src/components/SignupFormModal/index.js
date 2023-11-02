@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
 import { login } from "../../store/session";
-// import "../CSS/john.css";
+import "../SignupFormModal/SignupForm.css"
 
 function SignupFormModal() {
   const dispatch = useDispatch();
@@ -68,11 +68,11 @@ function SignupFormModal() {
       <form onSubmit={handleSubmit}>
         <div>
           {errors && errors.length >= 1 && errors.map((error, idx) => (
-            <div className="error" key={idx}>{error}</div>
+            <div className="list-errors" key={idx}>{error}</div>
           ))}
         </div>
         <label>
-          {errors.firstName && <p className="error">{errors.firstName}</p>}
+          {errors.firstName && <p className="list-errors">{errors.firstName}</p>}
           <input
             type="text"
             placeholder="First Name"
@@ -82,7 +82,7 @@ function SignupFormModal() {
           />
         </label>
         <label>
-          {errors.lastName && <p className="error">{errors.lastName}</p>}
+          {errors.lastName && <p className="list-errors">{errors.lastName}</p>}
           <input
             type="text"
             placeholder="Last Name"
@@ -92,7 +92,7 @@ function SignupFormModal() {
           />
         </label>
         <label>
-          {errors.age && <p className="error">{errors.age}</p>}
+          {errors.age && <p className="list-errors">{errors.age}</p>}
           <input
             type="text"
             placeholder="Age"
@@ -102,7 +102,7 @@ function SignupFormModal() {
           />
         </label>
         <label>
-          {errors.email && <p className="error">{errors.email}</p>}
+          {errors.email && <p className="list-errors">{errors.email}</p>}
           <input
             type="text"
             placeholder="Email"
@@ -112,7 +112,7 @@ function SignupFormModal() {
           />
         </label>
         <label>
-          {errors.username && <p className="error">{errors.username}</p>}
+          {errors.username && <p className="list-errors">{errors.username}</p>}
           <input
             type="text"
             placeholder="Username"
@@ -122,7 +122,7 @@ function SignupFormModal() {
           />
         </label>
         <label>
-          {errors.password && <p className="error">{errors.password}</p>}
+          {errors.password && <p className="list-errors">{errors.password}</p>}
           <input
             type="password"
             placeholder="Password"
@@ -133,7 +133,7 @@ function SignupFormModal() {
         </label>
         <label>
           {errors.confirmPassword && (
-            <p className="error">{errors.confirmPassword}</p>
+            <p className="list-errors">{errors.confirmPassword}</p>
           )}
           <input
             type="password"
@@ -143,8 +143,8 @@ function SignupFormModal() {
             required
           />
         </label>
-        <button type="submit">Sign Up</button>
-        <button onClick={handleDemo} id="demo-button">Demo User</button>
+        <button type="submit" className="login-button">Sign Up</button>
+        <button onClick={handleDemo} className="login-button" id="demo-button">Demo User</button>
       </form>
     </div>
   );
