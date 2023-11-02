@@ -15,16 +15,16 @@ function Navigation({isLoaded}) {
     <div className="nav-container">
       <nav className="header">
         <div className="logo-container">
-          <NavLink exact to="/">
+          <NavLink exact to="/vehicles/all">
             <img src={logo} alt="logo" id="logo" />
           </NavLink>
         </div>
 
         <div>
-          <div>
+          <div className="profile-corner-container">
             {isLoaded && sessionUser && (
               <div className="nav-links">
-                <div>
+                <div id="post-vehicle-button">
                   <OpenModalButton
                     buttonText="Post Your Vehicle"
                     modalComponent={<CreateVehicleModal />}
