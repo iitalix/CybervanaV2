@@ -35,7 +35,7 @@ def current():
     return [vehicle.to_dict() for vehicle in all_user_vehicles]
 
 
-@vehicles_routes.route('/new', methods=['GET', 'vehicle'])
+@vehicles_routes.route('/new', methods=['GET', 'POST'])
 @login_required
 def new_vehicle():
     form = VehicleForm()

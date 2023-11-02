@@ -12,7 +12,7 @@ export default function CreateVehicleModal() {
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
   const [price, setPrice] = useState(0);
-  const [description, setDescription] = ("");
+  const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const [errors, setErrors] = useState([]);
@@ -40,7 +40,7 @@ export default function CreateVehicleModal() {
 
     if (postData.errors === undefined || !postData.errors) {
 
-      push("/userposts");
+      push("/vehicles/current");
       return closeModal();
     } else {
       setImageLoading(false)
@@ -57,8 +57,12 @@ export default function CreateVehicleModal() {
       errorsObject.description = "Description must be more than 10 characters.";
     }
 
+    if (price < 1) {
+        errorsObject.price = "Price must be an integer greater than 0."
+    }
+
     setValidationObject(errorsObject);
-  }, [description]);
+  }, [description, price]);
 
   return (
     <div className="create-vehicle-parent-container">
@@ -110,18 +114,23 @@ export default function CreateVehicleModal() {
         />
 
         <label>Price</label>
+        <div className="error-box-post">
+          {validationObject?.price && (
+            <p className="errors-one-post"> {validationObject?.price}</p>
+          )}
+        </div>
         <input
           type="text"
           name="price"
           placeholder="Price"
           value={price}
-          onChange={(e) => setModel(e.target.value)}
+          onChange={(e) => setPrice(e.target.value)}
         />
 
         <label>Description</label>
         <div className="error-box-post">
-          {validationObject.description && (
-            <p className="errors-one-post"> {validationObject.description}</p>
+          {validationObject?.description && (
+            <p className="errors-one-post"> {validationObject?.description}</p>
           )}
         </div>
         <textarea

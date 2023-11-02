@@ -7,6 +7,7 @@ import AllVehiclesPage from "./components/Vehicles/AllVehiclesPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import YourVehiclesPage from "./components/Vehicles/YourVehiclesPage";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path="/vehicles/all" >
             <AllVehiclesPage />
+          </Route>
+          <Route path="/" >
+            <LandingPage />
           </Route>
         </Switch>
       )}
