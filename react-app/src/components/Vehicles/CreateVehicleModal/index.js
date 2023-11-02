@@ -44,10 +44,10 @@ export default function CreateVehicleModal() {
     const postData = await dispatch(createVehicleThunk(formData));
 
     setImage(null);
-    setMake("");
-    setModel("");
-    setPrice("");
-    setDescription("");
+    // setMake("");
+    // setModel("");
+    // setPrice("");
+    // setDescription("");
 
     if (postData.errors === undefined || !postData.errors) {
       dispatch(getOwnerVehicles());
