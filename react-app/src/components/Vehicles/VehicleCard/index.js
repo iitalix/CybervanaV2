@@ -1,6 +1,7 @@
 import React from "react";
 import OpenModalButton from "../../OpenModalButton";
 import UpdateVehicleModal from "../UpdateVehicleModal";
+import DeleteVehicleModal from "../DeleteVehicleModal";
 
 export default function VehicleCard({vehicle, user}) {
   return (
@@ -41,10 +42,10 @@ export default function VehicleCard({vehicle, user}) {
             buttonText="Update"
             modalComponent={<UpdateVehicleModal vehicleId={vehicle.id}/>}
           />
-          {/* <OpenModalButton
+          <OpenModalButton
             buttonText="Delete"
-            modalComponent={<CreateVehicleModal />}
-          /> */}
+            modalComponent={<DeleteVehicleModal vehicleId={vehicle.id}/>}
+          />
         </div>
       </div>
     </div>
