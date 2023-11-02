@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink, useHistory} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
 import OpenModalButton from "../OpenModalButton";
 import ProfileButton from "./ProfileButton";
@@ -8,7 +8,6 @@ import logo from "../../images/logo.png";
 import "./Navigation.css";
 
 function Navigation({isLoaded}) {
-  const {push} = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
   return (

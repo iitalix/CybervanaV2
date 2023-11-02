@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { getAllVehicles } from "../../../store/vehicles";
 
 export default function AllVehiclesPage() {
@@ -20,7 +19,7 @@ export default function AllVehiclesPage() {
             {vehicles.map((vehicle) => (
 
                 <div key={vehicle.id}>
-                    <img src={vehicle.photoUrl}></img>
+                    <img src={vehicle.photoUrl} alt="vehicle"></img>
                 </div>
 
             ))}

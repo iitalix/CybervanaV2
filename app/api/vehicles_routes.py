@@ -11,7 +11,6 @@ vehicles_routes = Blueprint('vehicles', __name__)
 
 
 @vehicles_routes.route('/all')
-@login_required
 def all():
     all_vehicles = Vehicle.query.all()
 
