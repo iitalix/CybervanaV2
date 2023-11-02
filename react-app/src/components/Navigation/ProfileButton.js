@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { logout } from "../../store/session";
+import React, {useState, useEffect, useRef} from "react";
+import {useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
+import {logout} from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import YourVehiclesPage from "../Vehicles/YourVehiclesPage";
 
-function ProfileButton({ user }) {
+function ProfileButton({user}) {
   const dispatch = useDispatch();
-  const { push } = useHistory();
+  const {push} = useHistory();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -33,35 +33,40 @@ function ProfileButton({ user }) {
   }, [showMenu]);
 
   const goToYourVehicles = () => {
-    return push ("/vehicles/current")
-  }
+    return push("/vehicles/current");
+  };
 
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
-    push("/")
+    push("/");
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
   return (
-    <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+    <div className="profile-button-container">
+      <button onClick={openMenu} className="profile-button">
+        <div>
+          <i className="fa-solid fa-bars"></i>
+        </div>
+        <div>
+          <i className="fa-regular fa-user"></i>
+        </div>
       </button>
       <div className={ulClassName} ref={ulRef}>
         {user ? (
-          <div>
-            <div>{user.username}</div>
-            <div>{user.email}</div>
-            <button onClick={goToYourVehicles}>Your Vehicles</button>
-            <div>
-              <button onClick={handleLogout}>Log Out</button>
+          <div id="user-menu">
+            <div>Welcome {user.firstName}!</div>
+            <div id="email">{user.email}</div>
+            <div id="user-links">
+              <div onClick={goToYourVehicles}>Your Vehicles</div>
+              <div onClick={handleLogout}>Log Out</div>
             </div>
           </div>
         ) : (
-          <>
+          <div className="profile-container">
             <OpenModalButton
               buttonText="Log In"
               onItemClick={closeMenu}
@@ -73,10 +78,10 @@ function ProfileButton({ user }) {
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
-          </>
+          </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

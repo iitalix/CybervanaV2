@@ -1,0 +1,39 @@
+.login-modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 240px;
+  padding: 20px 20px 20px 20px;
+
+}
+
+.login-modal-container > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+.login-button {
+  padding: 8px;
+  width: 184px;
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+}
+
+.login-button:hover {
+    text-decoration: underline;
+}
+
+input {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 8px;
+  padding: 8px;
+}
+
+.list-errors {
+    color: red;
+    margin-bottom: 16px;
+}

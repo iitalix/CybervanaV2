@@ -21,10 +21,10 @@ function Navigation({isLoaded}) {
         </div>
 
         <div>
-          <div>
+          <div className="profile-corner-container">
             {isLoaded && sessionUser && (
               <div className="nav-links">
-                <div>
+                <div id="post-vehicle-button">
                   <OpenModalButton
                     buttonText="Post Your Vehicle"
                     modalComponent={<CreateVehicleModal />}

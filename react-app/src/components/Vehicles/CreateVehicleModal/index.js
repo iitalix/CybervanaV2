@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../../context/Modal";
-import { createVehicleThunk } from "../../../store/vehicles";
-// import "../../CSS/john.css";
-// import "./create-post.css"
+import { createVehicleThunk, getOwnerVehicles } from "../../../store/vehicles";
+import "../CreateVehicleModal/CreateVehicle.css"
 
 export default function CreateVehicleModal() {
   const { push } = useHistory();
@@ -33,13 +32,14 @@ export default function CreateVehicleModal() {
     const postData = await dispatch(createVehicleThunk(formData));
 
     setImage(null);
-    setMake("");
-    setModel("");
-    setPrice(0);
-    setDescription("");
+    // setMake("");
+    // setModel("");
+    // setPrice(0);
+    // setDescription("");
 
     if (postData.errors === undefined || !postData.errors) {
 
+      dispatch(getOwnerVehicles());
       push("/vehicles/current");
       return closeModal();
     } else {
@@ -75,7 +75,7 @@ export default function CreateVehicleModal() {
         {errors &&
           errors.length >= 1 &&
           errors.map((error, idx) => (
-            <div className="error" key={idx}>
+            <div className="list-errors" key={idx}>
               {error}
             </div>
           ))}
@@ -89,11 +89,10 @@ export default function CreateVehicleModal() {
               className="hide-file-upload"
               onChange={(e) => setImage(e.target.files[0])}
               key={key}
-            />Upload Image
+            />
           </label>
-          <div>{image !== null ? image["name"] : "Choose Image"}</div>
+          {/* <div>{image !== null ? image["name"] : "Choose Image"}</div> */}
         </div>
-
 
         <label>Make</label>
         <input
@@ -114,7 +113,7 @@ export default function CreateVehicleModal() {
         />
 
         <label>Price</label>
-        <div className="error-box-post">
+        <div className="list-errors">
           {validationObject?.price && (
             <p className="errors-one-post"> {validationObject?.price}</p>
           )}
@@ -128,7 +127,7 @@ export default function CreateVehicleModal() {
         />
 
         <label>Description</label>
-        <div className="error-box-post">
+        <div className="list-errors">
           {validationObject?.description && (
             <p className="errors-one-post"> {validationObject?.description}</p>
           )}
