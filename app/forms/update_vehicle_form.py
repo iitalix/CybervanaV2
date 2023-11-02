@@ -4,6 +4,8 @@ from wtforms.validators import DataRequired
 
 
 class UpdateVehicleForm(FlaskForm):
-    title = StringField("Title", validators=[DataRequired()])
+    make = StringField("Make", validators=[DataRequired()])
+    model = StringField("Model", validators=[DataRequired()])
+    price = IntegerField("Price", validators=[DataRequired()])
     description = TextAreaField("Description", validators=[DataRequired()])
     submit = SubmitField("Submit")

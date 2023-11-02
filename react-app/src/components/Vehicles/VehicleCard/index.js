@@ -1,7 +1,8 @@
 import React from "react";
+import OpenModalButton from "../../OpenModalButton";
+import UpdateVehicleModal from "../UpdateVehicleModal";
 
-
-export default function VehicleCard({vehicle}) {
+export default function VehicleCard({vehicle, user}) {
   return (
     <div className="card-container" title={vehicle.name}>
       <div>
@@ -13,14 +14,12 @@ export default function VehicleCard({vehicle}) {
       </div>
       <div className="card-details">
         <div>
-          <div>
-            {vehicle.make}, {vehicle.model}
+          <div id="card-make-model">
+            {vehicle.make} {vehicle.model}
           </div>
-          <div>
-            {vehicle.description}
-          </div>
+          <div>{`$${vehicle.price}`}</div>
 
-          {vehicle.avgRating === "NaN" && (
+          {/* {vehicle.avgRating === "NaN" && (
             <div id="star-new">
               <i className="fa-solid fa-star"></i>
               <div>New</div>
@@ -32,10 +31,21 @@ export default function VehicleCard({vehicle}) {
               <i className="fa-solid fa-star"></i>
               {vehicle.avgRating}
             </div>
-          )}
+          )} */}
         </div>
+      </div>
 
-        <div>{`$${vehicle.price}`}</div>
+      <div className="update-delete-container">
+        <div id="update-vehicle-button">
+          <OpenModalButton
+            buttonText="Update"
+            modalComponent={<UpdateVehicleModal vehicleId={vehicle.id}/>}
+          />
+          {/* <OpenModalButton
+            buttonText="Delete"
+            modalComponent={<CreateVehicleModal />}
+          /> */}
+        </div>
       </div>
     </div>
   );
