@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOwnerVehicles } from "../../../store/vehicles";
+import VehicleCard from "../VehicleCard";
 
 export default function YourVehiclesPage() {
-
+    const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
     const ownerVehicles = useSelector((state) => state.vehicles.ownerVehicles)
     const arrOwnerVehicles = Object.values(ownerVehicles);
@@ -16,13 +17,14 @@ export default function YourVehiclesPage() {
     return (
         <div>
             <h1>Your Vehicles</h1>
-            {vehicles.map((vehicle) => (
+            <div className="vehicles-parent-container">
+                {vehicles.map((vehicle) => (
 
-                <div key={vehicle.id}>
-                    <img src={vehicle.photoUrl} alt="vehicle"></img>
-                </div>
-
-            ))}
+                    <div key={vehicle.id} className="vehicle-card">
+                        <VehicleCard vehicle={vehicle} user={user} />
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

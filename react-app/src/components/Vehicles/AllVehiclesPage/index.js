@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllVehicles } from "../../../store/vehicles";
+import VehicleCard from "../VehicleCard";
 
 export default function AllVehiclesPage() {
 
@@ -14,15 +15,16 @@ export default function AllVehiclesPage() {
     }, [dispatch]);
 
     return (
-        <div className="parent-container" id="allVehicles-parent-container">
+        <div className="parent-container">
             <h1>All Vehicles Page</h1>
-            {vehicles.map((vehicle) => (
+            <div className="vehicles-parent-container">
+                {vehicles.map((vehicle) => (
 
-                <div key={vehicle.id}>
-                    <img src={vehicle.photoUrl} alt="vehicle"></img>
-                </div>
-
-            ))}
+                    <div key={vehicle.id} className="vehicle-card">
+                        <VehicleCard vehicle={vehicle}/>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

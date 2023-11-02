@@ -29,8 +29,6 @@ def current():
         return vehicle.owner_id == current_user.id
     all_user_vehicles = filter(filter_user_id, all_vehicles)
 
-    # ten_vehicles = sample(list(all_user_vehicles), 9)
-
     return [vehicle.to_dict() for vehicle in all_user_vehicles]
 
 
@@ -72,14 +70,20 @@ def update_vehicle(id):
     vehicle_to_update = Vehicle.query.get(id)
     form = UpdateVehicleForm()
 
+    print("VEHICLE ID TO UPDATE::", vehicle_to_update)
+
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
 
-        vehicle_title=form.data['title']
+        vehicle_make=form.data['make']
+        vehicle_model=form.data['model']
+        vehicle_price=form.data['price']
         vehicle_description=form.data['description']
 
-        vehicle_to_update.title=vehicle_title
+        vehicle_to_update.make=vehicle_make
+        vehicle_to_update.model=vehicle_model
+        vehicle_to_update.price=vehicle_price
         vehicle_to_update.description=vehicle_description
 
         db.session.commit()
