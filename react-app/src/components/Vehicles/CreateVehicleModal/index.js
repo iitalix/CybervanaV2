@@ -44,10 +44,10 @@ export default function CreateVehicleModal() {
     const postData = await dispatch(createVehicleThunk(formData));
 
     setImage(null);
-    // setMake("");
-    // setModel("");
-    // setPrice(0);
-    // setDescription("");
+    setMake("");
+    setModel("");
+    setPrice("");
+    setDescription("");
 
     if (postData.errors === undefined || !postData.errors) {
       dispatch(getOwnerVehicles());
@@ -152,7 +152,7 @@ export default function CreateVehicleModal() {
         <button
           className="create-post-submit"
           type="submit"
-          disabled={Object.keys(validationObject).length > 0}
+          // disabled={Object.keys(validationObject).length > 0}
         >
           Submit
         </button>
