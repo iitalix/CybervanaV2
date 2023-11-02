@@ -1,9 +1,9 @@
 from flask import Blueprint, request
-from ..models import Vehicle, User, db
+from ..models import Vehicle, Review, User, db
 from random import choice, sample
 from datetime import date
 from flask_login import login_required, current_user
-from ..forms import VehicleForm, UpdateVehicleForm
+from ..forms import VehicleForm, UpdateVehicleForm, ReviewForm
 from .aws_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 from .auth_routes import validation_errors_to_error_messages
 
@@ -21,24 +21,21 @@ def all():
 @vehicles_routes.route('/current')
 @login_required
 def current():
-    """Getting 10 random images from our db to show on a logged IN users homepage. None of the photos can be from the logged In user."""
-    # all_none_user_vehicles = vehicle.query.filter(vehicle.owner_id.is_not(current_user.id))
-    all_user_vehicles = Vehicle.query.all()
+    """GET all vehicles owned by current user"""
+
+    all_vehicles = Vehicle.query.all()
 
     def filter_user_id(vehicle):
 
-        return vehicle.owner_id != current_user.id
-    all_non_user_vehicles = filter(filter_user_id, all_user_vehicles)
+        return vehicle.owner_id == current_user.id
+    all_user_vehicles = filter(filter_user_id, all_vehicles)
 
-    ten_vehicles = sample(list(all_non_user_vehicles), 9)
+    # ten_vehicles = sample(list(all_user_vehicles), 9)
 
-    return [vehicle.to_dict() for vehicle in ten_vehicles]
-
-    # list of 10 random vehicle dictionaries are going to sent, that are not the current users.
-    # this is not tested bc it needs to be done on the front end to ensure there are no current user vehicles included.
+    return [vehicle.to_dict() for vehicle in all_user_vehicles]
 
 
-@vehicles_routes.route('/new', methods=['GET', 'vehicle'])
+@vehicles_routes.route('/new', methods=['GET', 'POST'])
 @login_required
 def new_vehicle():
     form = VehicleForm()
@@ -51,40 +48,11 @@ def new_vehicle():
         upload = upload_file_to_s3(image)
         url = upload['url']
 
-        vehicle = vehicle(
-            owner_id = current_user.id,
-            title = form.data['title'],
-            album_id = form.data['album_id'],
-            photo_url = url,
-            description = form.data['description'],
-            created_at = date.today()
-        )
-
-        db.session.add(vehicle)
-        db.session.commit()
-        # this is a vehicle dictionary.
-        # this needs to be validated on the front end once its built out.
-        return {"resvehicle": vehicle.to_dict()}
-
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
-
-@vehicles_routes.route('/no_album', methods=['GET', 'vehicle'])
-@login_required
-def new_vehicle_no_album():
-    form = VehicleForm()
-
-    form['csrf_token'].data = request.cookies['csrf_token']
-
-    if form.validate_on_submit():
-        image = form.data["image"]
-        image.filename = get_unique_filename(image.filename)
-        upload = upload_file_to_s3(image)
-        url = upload['url']
-
         vehicle = Vehicle(
             owner_id = current_user.id,
-            title = form.data['title'],
-            album_id = None,
+            make = form.data['make'],
+            model = form.data['model'],
+            price = form.data['price'],
             photo_url = url,
             description = form.data['description'],
             created_at = date.today()
@@ -94,9 +62,10 @@ def new_vehicle_no_album():
         db.session.commit()
         # this is a vehicle dictionary.
         # this needs to be validated on the front end once its built out.
-        return {"resvehicle": vehicle.to_dict()}
+        return {"resPost": vehicle.to_dict()}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
 
 @vehicles_routes.route("/update/<int:id>", methods=["PUT"])
 @login_required
@@ -149,52 +118,50 @@ def get_vehicle_details(id):
     return vehicle.to_dict()
 
 
-@vehicles_routes.route('/<int:id>/comments/', methods=["vehicle"])
+@vehicles_routes.route('/<int:id>/reviews/', methods=["vehicle"])
 @login_required
 def create_comment(id):
-    form = CommentForm()
+    form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         data = form.data
-        create_comment = Comment(
+        create_review = Review(
             user_id=current_user.id,
             vehicle_id=id,
-            comment=data['comment'],
+            comment=data['review'],
             created_at=date.today()
         )
 
-        db.session.add(create_comment)
+        db.session.add(create_review)
         db.session.commit()
 
         return create_comment.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
-# Not sure about how to update comment--by comment ID?
 
-
-@vehicles_routes.route('/<int:id>/comments', methods=["PUT"])
+@vehicles_routes.route('/<int:id>/reviews', methods=["PUT"])
 @login_required
 def update_comment():
-    form = CommentForm()
+    form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
 
         data = form.data
-        create_comment = Comment(
+        create_review = Review(
             user_id=current_user.id,
             vehicle_id=id,
-            comment=data['comment'],
+            comment=data['review'],
             created_at=date.today()
         )
 
-        db.session.add(create_comment)
+        db.session.add(create_review)
         db.session.commit()
         # this is a vehicle dictionary.
         # this needs to be validated on the front end once its built out.
-        return create_comment.to_dict()
+        return create_review.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 

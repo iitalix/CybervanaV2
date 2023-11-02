@@ -5,6 +5,7 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import YourVehiclesPage from "../Vehicles/YourVehiclesPage";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -31,6 +32,10 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+  const goToYourVehicles = () => {
+    return push ("/vehicles/current")
+  }
+
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
@@ -45,15 +50,16 @@ function ProfileButton({ user }) {
       <button onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>
-      <ul className={ulClassName} ref={ulRef}>
+      <div className={ulClassName} ref={ulRef}>
         {user ? (
-          <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
+          <div>
+            <div>{user.username}</div>
+            <div>{user.email}</div>
+            <button onClick={goToYourVehicles}>Your Vehicles</button>
+            <div>
               <button onClick={handleLogout}>Log Out</button>
-            </li>
-          </>
+            </div>
+          </div>
         ) : (
           <>
             <OpenModalButton
@@ -69,7 +75,7 @@ function ProfileButton({ user }) {
             />
           </>
         )}
-      </ul>
+      </div>
     </>
   );
 }
