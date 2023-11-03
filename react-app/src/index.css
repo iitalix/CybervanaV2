@@ -1,5 +1,8 @@
 /* TODO Add site wide styles */
-
+h1 {
+    padding-left: 8px;
+    font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+}
 .black-bg {
     background-color: black;
 }
@@ -32,13 +35,17 @@ img {
 
 .card-details {
     padding: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #card-details-buttons-container {
     border-bottom-left-radius: 8px
 }
 
-#card-make-model {
+.card-make-model {
     font-size: 24px;
 }
 
