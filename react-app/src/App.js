@@ -8,6 +8,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import YourVehiclesPage from "./components/Vehicles/YourVehiclesPage";
 import LandingPage from "./components/LandingPage";
+import VehicleDetailsPage from "./components/Vehicles/VehicleDetailsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/vehicles/all" >
             <AllVehiclesPage />
+          </Route>
+          <Route path="/vehicles/:id">
+            <VehicleDetailsPage />
           </Route>
           <Route path="/" >
             <LandingPage />
