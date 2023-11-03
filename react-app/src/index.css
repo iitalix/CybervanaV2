@@ -1,10 +1,13 @@
 /* TODO Add site wide styles */
 h1 {
-    padding-left: 8px;
+    padding-left: 24px;
     font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
-.black-bg {
-    background-color: black;
+
+.parent-container {
+    /* background-color: #38B6FF;
+    yellow:#FCEE09;
+    pink:#FF66C4 */
 }
 /* Cards */
 
@@ -25,12 +28,15 @@ img {
     border-left: 1px solid rgb(173, 173, 173);
     border-radius: 8px;
     margin-bottom: 24px;
-    box-shadow: 1px 1px 0px 1px rgb(222, 222, 222);
+    box-shadow: 0 0 1px rgba(18,18,20,0.1), 0 2px 4px rgba(18,18,20,0.2);
+    transition: opacity .15s ease-in-out;
+    opacity: 1;
 }
 
 .card-container:hover {
     border: 4px solid yellow;
-    box-shadow: 1px 1px 0px 1px #d525bb;
+    box-shadow: none;
+    opacity: 0.95 ;
 }
 
 .card-details {
