@@ -15,9 +15,11 @@ export default function AllVehiclesPage() {
         dispatch(getAllVehicles());
     }, [dispatch]);
 
+    if (!arrVehicles.length) return null;
+
     return (
         <div className="parent-container">
-            <h1>All Vehicles Page</h1>
+            <h1>Shop Night City's Best Used Vehicles</h1>
             <div className="vehicles-parent-container">
                 {vehicles.map((vehicle) => (
 

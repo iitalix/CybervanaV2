@@ -1,0 +1,36 @@
+.landing-banner-section {
+    position: relative;
+    display: flex;
+}
+
+.landing-banner-section img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#banner-overlay-header {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: yellow;
+    padding: 10px 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 52px;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+}
+
+#banner-overlay-sub {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: yellow;
+  padding: 10px 20px;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  font-size: 22px;
+  text-align: center;
+  text-shadow: 2px 2px 2px black;
+}

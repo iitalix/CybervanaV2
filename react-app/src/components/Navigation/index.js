@@ -1,6 +1,7 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {NavLink, useHistory} from "react-router-dom";
+import {useSelector, useDispatch} from "react-redux";
+import { getAllVehicles } from "../../store/vehicles";
 import OpenModalButton from "../OpenModalButton";
 import ProfileButton from "./ProfileButton";
 import CreateVehicleModal from "../Vehicles/CreateVehicleModal";
@@ -9,14 +10,22 @@ import "./Navigation.css";
 
 function Navigation({isLoaded}) {
   const sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
+  const { push } = useHistory();
+
+  const handleClick = async (e) => {
+
+    await dispatch(getAllVehicles());
+    return push("/")
+  }
 
   return (
     <div className="nav-container">
       <nav className="header">
         <div className="logo-container">
-          <NavLink exact to="/vehicles/all">
+          <div onClick={handleClick}>
             <img src={logo} alt="logo" id="logo" />
-          </NavLink>
+          </div>
         </div>
 
         <div>
