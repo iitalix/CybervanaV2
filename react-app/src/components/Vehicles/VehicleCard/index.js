@@ -23,12 +23,10 @@ export default function VehicleCard({vehicle, user}) {
             <div id="update-delete-buttons">
               <OpenModalButton
                 buttonText="Update"
-                id="update"
                 modalComponent={<UpdateVehicleModal vehicleId={vehicle.id} />}
               />
               <OpenModalButton
                 buttonText="Delete"
-                id="delete"
                 modalComponent={<DeleteVehicleModal vehicleId={vehicle.id} />}
               />
             </div>
