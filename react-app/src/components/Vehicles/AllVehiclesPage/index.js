@@ -6,6 +6,7 @@ import VehicleCard from "../VehicleCard";
 export default function AllVehiclesPage() {
 
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.session.user);
     const allVehicles = useSelector((state) => state.vehicles.allVehicles);
     const arrVehicles = Object.values(allVehicles);
     const vehicles = [...arrVehicles];
@@ -21,7 +22,7 @@ export default function AllVehiclesPage() {
                 {vehicles.map((vehicle) => (
 
                     <div key={vehicle.id} className="vehicle-card">
-                        <VehicleCard vehicle={vehicle}/>
+                        <VehicleCard vehicle={vehicle} user={user}/>
                     </div>
                 ))}
             </div>
