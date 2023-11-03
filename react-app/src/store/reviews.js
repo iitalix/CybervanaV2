@@ -3,11 +3,11 @@
 const READ_REVIEWS = "/read_reviews";
 const ADD_REVIEW = "/add_review";
 // const UPDATE_COMMENT = "/update_review";
-const DELETE_COMMENT = "/delete_review";
+const DELETE_REVIEW = "/delete_review";
 
 //action creator
 
-const actionReadReviews = (review) => ({ type: READ_REVIEW, review });
+const actionReadReviews = (review) => ({ type: READ_REVIEWS, review });
 // const actionUpdateReview = (review)) => ({ type: UPDATE_REVIEW, review });
 const actionDeleteReview = (id) => ({ type: DELETE_REVIEW, id });
 const actionAddReview = (review) => ({ type: ADD_REVIEW, review });
@@ -96,7 +96,7 @@ export default function reviewsReducer(state = initialState, action) {
          newState.allReviews[action.review.id] = action.review;
          return newState;
 
-      case DELETE_REVIEWS:
+      case DELETE_REVIEW:
          newState = { ...state, allReviews: { ...state.allReviews } };
          delete newState.allReviews[action.id];
          return newState;
