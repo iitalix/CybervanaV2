@@ -31,12 +31,7 @@ export default function VehicleCard({vehicle, user}) {
               />
             </div>
           </div>
-
-
         }
-
-
-
       </div>
     </div>
   );
