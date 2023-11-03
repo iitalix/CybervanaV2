@@ -11,22 +11,32 @@ vehicles_routes = Blueprint('vehicles', __name__)
 
 
 @vehicles_routes.route('/all')
+@login_required
 def all():
+    """GET all vehicles NOT owned by current user for the purposes of shopping"""
+
     all_vehicles = Vehicle.query.all()
 
-    return [vehicle.to_dict() for vehicle in all_vehicles]
+    def filter_user_id(vehicle):
+
+        return vehicle.owner_id != current_user.id
+
+    all_nonuser_vehicles = filter(filter_user_id, all_vehicles)
+
+    return [vehicle.to_dict() for vehicle in all_nonuser_vehicles]
 
 
 @vehicles_routes.route('/current')
 @login_required
 def current():
-    """GET all vehicles owned by current user"""
+    """GET all vehicles owned by current user for the purposes of selling"""
 
     all_vehicles = Vehicle.query.all()
 
     def filter_user_id(vehicle):
 
         return vehicle.owner_id == current_user.id
+
     all_user_vehicles = filter(filter_user_id, all_vehicles)
 
     return [vehicle.to_dict() for vehicle in all_user_vehicles]
