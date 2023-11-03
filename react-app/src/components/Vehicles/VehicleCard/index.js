@@ -1,11 +1,21 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import OpenModalButton from "../../OpenModalButton";
 import UpdateVehicleModal from "../UpdateVehicleModal";
 import DeleteVehicleModal from "../DeleteVehicleModal";
 
+
 export default function VehicleCard({vehicle, user}) {
+  const { push } = useHistory();
+
+  const goToVehicleDetails = () => {
+
+    return push(`/vehicles/${vehicle.id}`)
+  }
+
   return (
-    <div className="card-container" title={vehicle.name}>
+    <div className="card-container" title={vehicle.name} onClick={goToVehicleDetails}>
       <img src={`${vehicle.photoUrl}`} alt="vehicle" className="card-image" />
 
       <div id="card-details-buttons-container">
@@ -31,12 +41,7 @@ export default function VehicleCard({vehicle, user}) {
               />
             </div>
           </div>
-
-
         }
-
-
-
       </div>
     </div>
   );

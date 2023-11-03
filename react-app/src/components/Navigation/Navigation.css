@@ -97,7 +97,7 @@
 }
 
 #post-vehicle-button > button {
-  color: yellow;
+  color: #FF66C4;
   background-color: unset;
   border: none;
   cursor: pointer;
@@ -106,9 +106,8 @@
 }
 
 #post-vehicle-button > button:hover {
-  color: #d525bb;
+  color: yellow;
 }
-
 
 nav {
   display: flex;

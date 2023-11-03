@@ -16,7 +16,10 @@ export default function YourVehiclesPage() {
 
     return (
         <div>
-            <h1>Your Vehicles</h1>
+            <div className="header-container">
+                <h1>Your Vehicles</h1>
+                <a href="/vehicles/all">Explore All Vehicles</a>
+            </div>
             <div className="vehicles-parent-container">
                 {vehicles.map((vehicle) => (
 

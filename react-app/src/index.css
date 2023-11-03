@@ -4,6 +4,14 @@ h1 {
     font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
+a {
+    color: #38B6FF
+}
+
+a:hover {
+    color: yellow
+}
+
 
 /* Cards */
 .vehicles-parent-container {
@@ -68,4 +76,28 @@ h1 {
 #update-delete-buttons button:hover {
     text-decoration: underline;
     background-color: yellow;
+}
+
+/* Page Header */
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+
+.header-container > a {
+    padding-left: 16px;
+}
+
+/* Vehicle Details Page */
+
+.vehicle-details-parent-container {
+    padding: 20px;
+}
+
+#detail-image {
+    width: 75%;
+
 }
