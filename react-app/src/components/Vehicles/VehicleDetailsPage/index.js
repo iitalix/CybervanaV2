@@ -40,7 +40,7 @@ export default function VehicleDetailsPage() {
         <div>
           <OpenModalButton
             buttonText="Review This Vehicle"
-            modalComponent={<ReviewFormModal vehicle={vehicle} />}
+            modalComponent={<ReviewFormModal vehicleId={vehicle.id} />}
           />
         </div>
         <div>Reviews List Container</div>

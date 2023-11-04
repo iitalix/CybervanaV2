@@ -1,59 +1,65 @@
 from flask import Blueprint, request
-from ..models import Album, Comment, Favorite, Post, User, db
+from ..models import Review, User, db
 from flask_login import login_required, current_user
-from ..forms import CommentForm
+from ..forms import ReviewForm
 from .auth_routes import validation_errors_to_error_messages
 from datetime import date
 
-comments_routes = Blueprint('comments', __name__)
+reviews_routes = Blueprint('reviews', __name__)
 
-#create a comment
-@comments_routes.route('/new/posts/<int:id>', methods=['POST'])
+#create a review
+@reviews_routes.route('/new/vehicles/<int:id>', methods=['POST'])
 @login_required
-def post_new_comment(id):
-    form = CommentForm()
+def post_new_review(id):
+    form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
     if form.validate_on_submit():
-        new_comment = Comment(
+        new_review = Review(
             user_id=current_user.id,
-            post_id=id,
-            comment=form.data['comment'],
+            vehicle_id=id,
+            review=form.data['review'],
+            stars=form.data['stars'],
             created_at=date.today()
         )
-        db.session.add(new_comment)
+        db.session.add(new_review)
         db.session.commit()
-        return new_comment.to_dict()
+        return new_review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
-@comments_routes.route('/<int:id>/update/posts/', methods=['PUT'])
+@reviews_routes.route('/<int:id>/update/vehicles/', methods=['PUT'])
 @login_required
-def update_new_comment(id):
-    comment_to_update = Comment.query.get(id)
+def update_new_review(id):
+    review_to_update = Review.query.get(id)
 
-    form = CommentForm()
+    form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
     if form.validate_on_submit():
-        new_comment=form.data['comment'],
-        comment_to_update.comment = new_comment[0]
+        new_review=form.data['review']
+        new_stars=form.data['stars']
+
+        review_to_update.review = new_review
+        review_to_update.stars=new_stars
 
         db.session.commit()
-        return comment_to_update.to_dict()
+        return review_to_update.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
-#get all comments
-@comments_routes.route('/all')
+#get all reviews
+@reviews_routes.route('/all')
 @login_required
-def get_all_comments():
-    all_comments = Comment.query.all()
-    return [comment.to_dict() for comment in all_comments]
+def get_all_reviews():
+    all_reviews = Review.query.all()
+    return [review.to_dict() for review in all_reviews]
 
 #get one comment
-@comments_routes.route('/')
+@reviews_routes.route('/')
 
 
 #delete a comment
-@comments_routes.route('/<int:id>', methods=['DELETE'])
+@reviews_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_comment(id):
     comment_to_delete = Comment.query.get(id)
