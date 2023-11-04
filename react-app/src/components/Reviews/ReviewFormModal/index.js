@@ -11,30 +11,7 @@ export default function ReviewFormModal({vehicleId}) {
   const [rating, setRating] = useState(0);
   const [errors, setErrors] = useState({});
 
-  // const handleSubmit = (e) => {
-  //   const revObj = {
-  //     review: revText,
-  //     stars: rating,
-  //   };
-
-  //   e.preventDefault();
-
-  //   setErrors({});
-
-  //   return dispatch(createReviewThunk(vehicleId, revObj))
-  //     .then(() => {
-
-  //       return closeModal();
-  //     })
-  //     .catch(async (res) => {
-  //       const data = await res.json();
-
-  //       if (data && data.errors) {
-  //         setErrors(data.errors);
-  //       }
-  //     });
-  // };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newReview = {
@@ -45,7 +22,7 @@ export default function ReviewFormModal({vehicleId}) {
     dispatch(createReviewThunk(vehicleId, newReview));
     setRevText("");
     setRating(0);
-    return dispatch(getEveryReviewThunk()).then(closeModal());
+    return await dispatch(getEveryReviewThunk()).then(closeModal());
   };
 
   const disableSubmit = () => {
