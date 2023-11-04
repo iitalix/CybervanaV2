@@ -7,13 +7,17 @@ import ReviewFormModal from "../../Reviews/ReviewFormModal";
 
 export default function ReviewsComponent({vehicleId}) {
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
   const vehicles = useSelector((state) => state.vehicles.allVehicles);
-  const vehicle = vehicles[vehicleId]
+  const vehicle = vehicles[vehicleId];
   const allReviews = useSelector((state) => state.reviews.allReviews);
   const vehicleReviews = Object.values(allReviews).filter(
     (review) => review.vehicleId === vehicle.id
   );
-  console.log("🚀 ~ file: index.js:16 ~ ReviewsComponent ~ vehicleReviews:", vehicleReviews)
+  const userVehicleReviews = vehicleReviews.filter(
+    (review) => review.userId === sessionUser.id
+  );
+  console.log("🚀 ~ file: index.js:20 ~ ReviewsComponent ~ userVehicleReviews:", userVehicleReviews)
 
   const fixDate = (dateString) => {
     const date = new Date(dateString);
@@ -32,16 +36,17 @@ export default function ReviewsComponent({vehicleId}) {
   return (
     <div className="vehicle-reviews-container">
       <div>
-        <OpenModalButton
-          buttonText="Review This Vehicle"
-          modalComponent={<ReviewFormModal vehicleId={vehicleId} />}
-        />
-      </div>
-
-      <div>
+        {!userVehicleReviews.length && (
+          <div>
+            <OpenModalButton
+              buttonText="Review This Vehicle"
+              modalComponent={<ReviewFormModal vehicleId={vehicleId} />}
+            />
+          </div>
+        )}
         {vehicleReviews.length > 0 ? (
           vehicleReviews.map((review) => (
-            <div>
+            <div className="user-review" key={review.id}>
               <p>{fixDate(review.createdAt)}</p>
               <p>
                 {review.users.firstName} {review.users.lastName}
@@ -51,7 +56,7 @@ export default function ReviewsComponent({vehicleId}) {
             </div>
           ))
         ) : (
-          <div className="be-the-first">Be the first to write a review!</div>
+          <div id="be-first">Be the first to write a review!</div>
         )}
       </div>
     </div>
