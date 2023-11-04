@@ -3,7 +3,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {useHistory, useParams} from "react-router-dom";
 import {getEveryReviewThunk, createReviewThunk} from "../../../store/reviews";
 import OpenModalButton from "../../OpenModalButton";
-import ReviewFormModal from "../../Reviews/ReviewFormModal";
+import ReviewFormModal from "../ReviewFormModal";
+import UpdateReviewModal from "../UpdateReviewModal";
 
 export default function ReviewsComponent({vehicleId}) {
   const dispatch = useDispatch();
@@ -14,10 +15,10 @@ export default function ReviewsComponent({vehicleId}) {
   const vehicleReviews = Object.values(allReviews).filter(
     (review) => review.vehicleId === vehicle.id
   );
-  const userVehicleReviews = vehicleReviews.filter(
+  const userVehicleReview = vehicleReviews.filter(
     (review) => review.userId === sessionUser.id
   );
-  console.log("🚀 ~ file: index.js:20 ~ ReviewsComponent ~ userVehicleReviews:", userVehicleReviews)
+  let currUserReview = userVehicleReview[0]?.id;
 
   const fixDate = (dateString) => {
     const date = new Date(dateString);
@@ -36,7 +37,7 @@ export default function ReviewsComponent({vehicleId}) {
   return (
     <div className="vehicle-reviews-container">
       <div>
-        {!userVehicleReviews.length && (
+        {!currUserReview && (
           <div>
             <OpenModalButton
               buttonText="Review This Vehicle"
@@ -46,13 +47,24 @@ export default function ReviewsComponent({vehicleId}) {
         )}
         {vehicleReviews.length > 0 ? (
           vehicleReviews.map((review) => (
-            <div className="user-review" key={review.id}>
-              <p>{fixDate(review.createdAt)}</p>
-              <p>
-                {review.users.firstName} {review.users.lastName}
-              </p>
-              <p>{review.stars} Stars</p>
-              <p>{review.review}</p>
+            <div key={review.id}>
+              <div className="user-review" key={review.id}>
+                <p>{fixDate(review.createdAt)}</p>
+                <p>
+                  {review.users.firstName} {review.users.lastName}
+                </p>
+                <p>{review.stars} Stars</p>
+                <p>{review.review}</p>
+              </div>
+
+              {currUserReview === review.id && (
+                <div>
+                  <OpenModalButton
+                    buttonText="Update"
+                    modalComponent={<UpdateReviewModal reviewId={review.id} />}
+                  />
+                </div>
+              )}
             </div>
           ))
         ) : (
