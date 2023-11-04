@@ -54,8 +54,8 @@ export default function UpdateVehicleModal({vehicleId}) {
       const data = await dispatch(updateVehicleThunk(formData, vehicleId));
 
       closeModal();
-      push("/vehicles/current");
-      return dispatch(getOwnerVehicles());
+      push(`/vehicles/${vehicleId}`);
+      return dispatch(getVehicleDetailsThunk(vehicleId));
     } else {
       setErrors(newErrors);
     }

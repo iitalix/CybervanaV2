@@ -37,7 +37,7 @@ export default function ReviewsComponent({vehicleId}) {
   return (
     <div className="vehicle-reviews-container">
       <div>
-        {!currUserReview && (
+        {!currUserReview && sessionUser.id !== vehicle?.ownerId && (
           <div>
             <OpenModalButton
               buttonText="Review This Vehicle"
@@ -68,7 +68,8 @@ export default function ReviewsComponent({vehicleId}) {
             </div>
           ))
         ) : (
-          <div id="be-first">Be the first to write a review!</div>
+
+          <div id="be-first">This vehicle has not been reviewed.</div>
         )}
       </div>
     </div>
