@@ -116,6 +116,12 @@ a:hover {
   width: 75%;
 }
 
+/* Reviews Component */
+.vehicle-reviews-container {
+  border-top: 1px solid black;
+  padding: 0px 20px;
+}
+
 /* Review Form Modal */
 .review-modal-container {
   display: flex;

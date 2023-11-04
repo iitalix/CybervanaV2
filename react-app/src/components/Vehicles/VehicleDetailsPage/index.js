@@ -1,9 +1,7 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory, useParams} from "react-router-dom";
-import {getEveryReviewThunk, createReviewThunk} from "../../../store/reviews";
-import OpenModalButton from "../../OpenModalButton";
-import ReviewFormModal from "../../Reviews/ReviewFormModal";
+import ReviewsComponent from "../../Reviews/ReviewsComponent";
 import {getAllVehicles} from "../../../store/vehicles";
 
 export default function VehicleDetailsPage() {
@@ -36,15 +34,7 @@ export default function VehicleDetailsPage() {
         <div id="detail-description">{vehicle.description}</div>
       </div>
 
-      <div className="vehicle-reviews-container">
-        <div>
-          <OpenModalButton
-            buttonText="Review This Vehicle"
-            modalComponent={<ReviewFormModal vehicleId={vehicle.id} />}
-          />
-        </div>
-        <div>Reviews List Container</div>
-      </div>
+      <ReviewsComponent vehicleId={vehicle.id} />
     </div>
   );
 }
