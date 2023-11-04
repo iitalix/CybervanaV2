@@ -2,6 +2,7 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory, useParams} from "react-router-dom";
 import {getEveryReviewThunk, createReviewThunk} from "../../../store/reviews";
+import StarInputRatings from "../../StarInputRatings";
 import OpenModalButton from "../../OpenModalButton";
 import ReviewFormModal from "../ReviewFormModal";
 import UpdateReviewModal from "../UpdateReviewModal";
@@ -54,6 +55,7 @@ export default function ReviewsComponent({vehicleId}) {
                   {review.users.firstName} {review.users.lastName}
                 </p>
                 <p>{review.stars} Stars</p>
+                {review.stars && <StarInputRatings rating={review.stars} disabled={true}/>}
                 <p>{review.review}</p>
               </div>
 
