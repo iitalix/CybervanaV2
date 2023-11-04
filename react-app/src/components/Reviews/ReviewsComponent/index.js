@@ -7,10 +7,13 @@ import ReviewFormModal from "../../Reviews/ReviewFormModal";
 
 export default function ReviewsComponent({vehicleId}) {
   const dispatch = useDispatch();
+  const vehicles = useSelector((state) => state.vehicles.allVehicles);
+  const vehicle = vehicles[vehicleId]
   const allReviews = useSelector((state) => state.reviews.allReviews);
   const vehicleReviews = Object.values(allReviews).filter(
-    (review) => review.vehicleId === vehicleId
+    (review) => review.vehicleId === vehicle.id
   );
+  console.log("🚀 ~ file: index.js:16 ~ ReviewsComponent ~ vehicleReviews:", vehicleReviews)
 
   const fixDate = (dateString) => {
     const date = new Date(dateString);
@@ -25,8 +28,6 @@ export default function ReviewsComponent({vehicleId}) {
   useEffect(() => {
     dispatch(getEveryReviewThunk());
   }, [dispatch]);
-
-  if (!vehicleReviews.length) return null;
 
   return (
     <div className="vehicle-reviews-container">

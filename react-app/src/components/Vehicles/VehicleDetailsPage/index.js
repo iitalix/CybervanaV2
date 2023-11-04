@@ -34,7 +34,7 @@ export default function VehicleDetailsPage() {
         <div id="detail-description">{vehicle.description}</div>
       </div>
 
-      <div>this works <ReviewsComponent vehicleId={vehicle.id}/></div>
+      <ReviewsComponent vehicleId={vehicle.id} />
     </div>
   );
 }
