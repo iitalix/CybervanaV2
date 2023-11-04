@@ -1,9 +1,8 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
-import {useModal} from "../../context/Modal";
-import StarInputRatings from "../StarInputRatings";
-import "../../index.css";
-import { createReviewThunk } from "../../../store/reviews";
+import {useModal} from "../../../context/Modal";
+import StarInputRatings from "../../StarInputRatings";
+import {createReviewThunk, getEveryReviewThunk} from "../../../store/reviews";
 
 export default function ReviewFormModal({vehicleId}) {
   const dispatch = useDispatch();
@@ -12,29 +11,41 @@ export default function ReviewFormModal({vehicleId}) {
   const [rating, setRating] = useState(0);
   const [errors, setErrors] = useState({});
 
+  // const handleSubmit = (e) => {
+  //   const revObj = {
+  //     review: revText,
+  //     stars: rating,
+  //   };
 
+  //   e.preventDefault();
+
+  //   setErrors({});
+
+  //   return dispatch(createReviewThunk(vehicleId, revObj))
+  //     .then(() => {
+
+  //       return closeModal();
+  //     })
+  //     .catch(async (res) => {
+  //       const data = await res.json();
+
+  //       if (data && data.errors) {
+  //         setErrors(data.errors);
+  //       }
+  //     });
+  // };
   const handleSubmit = (e) => {
-    const revObj = {
+    e.preventDefault();
+
+    const newReview = {
       review: revText,
       stars: rating,
     };
 
-    e.preventDefault();
-
-    setErrors({});
-
-    return dispatch(createReviewThunk(vehicleId, revObj))
-      .then(() => {
-        dispatch(thunkClearReviews())
-        return closeModal();
-      })
-      .catch(async (res) => {
-        const data = await res.json();
-
-        if (data && data.errors) {
-          setErrors(data.errors);
-        }
-      });
+    dispatch(createReviewThunk(vehicleId, newReview));
+    setRevText("");
+    setRating(0);
+    return dispatch(getEveryReviewThunk()).then(closeModal());
   };
 
   const disableSubmit = () => {
@@ -45,15 +56,22 @@ export default function ReviewFormModal({vehicleId}) {
     setRating(parseInt(number));
   };
 
-  const ulClassName = (disableSubmit ? " " : "action-button");
+  const ulClassName = disableSubmit ? " " : "action-button";
 
   return (
     <div className="review-modal-container">
-
-      <h1>Driven this model? Write a review!</h1>
+      <p className="modal-headers">Write a review!</p>
       {errors.review && <p>{errors.review}</p>}
       {errors.stars && <p>{errors.stars}</p>}
       <form onSubmit={handleSubmit} className="review-form-container">
+        <div className="stars-container">
+          <StarInputRatings
+            disabled={false}
+            onChange={onChange}
+            rating={rating}
+          />
+        </div>
+
         <label>
           <textarea
             type="text"
@@ -64,15 +82,12 @@ export default function ReviewFormModal({vehicleId}) {
           />
         </label>
 
-        <div className="stars-container">
-          <StarInputRatings
-            disabled={false}
-            onChange={onChange}
-            rating={rating}
-          />
-        </div>
-
-        <button type="submit" className={ulClassName} id="review-submit" disabled={disableSubmit()}>
+        <button
+          type="submit"
+          className={ulClassName}
+          id="review-submit"
+          disabled={disableSubmit()}
+        >
           Submit Your Review
         </button>
       </form>

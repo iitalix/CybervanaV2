@@ -85,7 +85,7 @@ export default function reviewsReducer(state = initialState, action) {
    switch (action.type) {
       case READ_REVIEWS:
          newState = { ...state, allReviews: {} };
-         action.comment.forEach((review) => (newState.allReviews[review.id] = review));
+         action.review.forEach((review) => (newState.allReviews[review.id] = review));
          return newState;
 
       case ADD_REVIEW:

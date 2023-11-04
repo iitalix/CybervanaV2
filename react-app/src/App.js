@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
+import { authenticate } from "./store/session";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import AllVehiclesPage from "./components/Vehicles/AllVehiclesPage";
-import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import YourVehiclesPage from "./components/Vehicles/YourVehiclesPage";
 import LandingPage from "./components/LandingPage";
