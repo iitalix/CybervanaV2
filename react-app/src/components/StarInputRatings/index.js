@@ -1,6 +1,4 @@
 import {useState} from "react";
-import "./StarInputRatings.css"
-import "../../index.css"
 
 export default function StarInputRatings({rating, disabled, onChange}) {
   let [activeStarRating, setActiveStarRating] = useState(rating);
@@ -83,7 +81,6 @@ export default function StarInputRatings({rating, disabled, onChange}) {
           <i className="fa-solid fa-star"></i>
         </div>
 
-        <div>Stars</div>
       </div>
     </div>
   );
