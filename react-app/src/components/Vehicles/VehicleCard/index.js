@@ -4,7 +4,7 @@ import {useHistory} from "react-router-dom";
 import OpenModalButton from "../../OpenModalButton";
 import UpdateVehicleModal from "../UpdateVehicleModal";
 import DeleteVehicleModal from "../DeleteVehicleModal";
-import ReviewFormModal from "../../Reviews/ReviewFormModal"
+import ComingSoonModal from "../../ShoppingCart/ComingSoonModal";
 
 export default function VehicleCard({vehicle, user}) {
   const {push} = useHistory();
@@ -13,17 +13,14 @@ export default function VehicleCard({vehicle, user}) {
     return push(`/vehicles/${vehicle.id}`);
   };
 
-  const comingSoon = (e) => {
-    e.preventDefault();
-    alert("Feature coming soon!");
-  };
-
   return (
-    <div
-      className="card-container"
-      title={vehicle.name}
-    >
-      <img src={`${vehicle.photoUrl}`} alt="vehicle" className="card-image" onClick={goToVehicleDetails} />
+    <div className="card-container">
+      <img
+        src={`${vehicle.photoUrl}`}
+        alt="vehicle"
+        className="card-image"
+        onClick={goToVehicleDetails}
+      />
 
       <div id="card-details-buttons-container">
         <div className="card-details" onClick={goToVehicleDetails}>
@@ -34,7 +31,6 @@ export default function VehicleCard({vehicle, user}) {
         </div>
 
         {user.id === vehicle.ownerId && (
-
           <div className="update-delete-container">
             <div id="update-delete-buttons">
               <OpenModalButton
@@ -50,18 +46,17 @@ export default function VehicleCard({vehicle, user}) {
         )}
 
         {user.id !== vehicle.ownerId && (
-
           <div className="update-delete-container">
-            <div id="review-add-buttons">
-              <OpenModalButton
+            <div id="add-remove-buttons">
+              {/* <OpenModalButton
                 buttonText="Review"
                 modalComponent={<ReviewFormModal vehicleId={vehicle.id} />}
-              />
-              <button onClick={comingSoon}>Add To Cart</button>
-              {/* <OpenModalButton
-                buttonText="Add To Cart"
-                modalComponent={<AddToCartModal vehicleId={vehicle.id} />}
               /> */}
+
+              <OpenModalButton
+                buttonText="Add To Cart"
+                modalComponent={<ComingSoonModal />}
+              />
             </div>
           </div>
         )}

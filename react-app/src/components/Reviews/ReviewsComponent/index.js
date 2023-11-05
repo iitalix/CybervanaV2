@@ -1,11 +1,11 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useHistory, useParams} from "react-router-dom";
 import {getEveryReviewThunk, createReviewThunk} from "../../../store/reviews";
 import StarInputRatings from "../../StarInputRatings";
 import OpenModalButton from "../../OpenModalButton";
 import ReviewFormModal from "../ReviewFormModal";
 import UpdateReviewModal from "../UpdateReviewModal";
+import DeleteReviewModal from "../DeleteReviewModal";
 
 export default function ReviewsComponent({vehicleId}) {
   const dispatch = useDispatch();
@@ -37,15 +37,18 @@ export default function ReviewsComponent({vehicleId}) {
 
   return (
     <div className="vehicle-reviews-container">
-      <div>
+      <div className="header-container">
+        <h1>User Reviews</h1>
         {!currUserReview && sessionUser.id !== vehicle?.ownerId && (
-          <div>
+          <a id="review-link-button">
             <OpenModalButton
               buttonText="Review This Vehicle"
               modalComponent={<ReviewFormModal vehicleId={vehicleId} />}
             />
-          </div>
+          </a>
         )}
+      </div>
+      <div>
         {vehicleReviews.length > 0 ? (
           vehicleReviews.map((review) => (
             <div key={review.id}>
@@ -55,7 +58,9 @@ export default function ReviewsComponent({vehicleId}) {
                   {review.users.firstName} {review.users.lastName}
                 </p>
                 <p>{review.stars} Stars</p>
-                {review.stars && <StarInputRatings rating={review.stars} disabled={true}/>}
+                {review.stars && (
+                  <StarInputRatings rating={review.stars} disabled={true} />
+                )}
                 <p>{review.review}</p>
               </div>
 
@@ -65,12 +70,20 @@ export default function ReviewsComponent({vehicleId}) {
                     buttonText="Update"
                     modalComponent={<UpdateReviewModal reviewId={review.id} />}
                   />
+                  <OpenModalButton
+                    buttonText="Delete"
+                    modalComponent={
+                      <DeleteReviewModal
+                        reviewId={review.id}
+                        vehicleId={vehicleId}
+                      />
+                    }
+                  />
                 </div>
               )}
             </div>
           ))
         ) : (
-
           <div id="be-first">This vehicle has not been reviewed.</div>
         )}
       </div>

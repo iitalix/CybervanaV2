@@ -24,8 +24,12 @@ export default function VehicleDetailsPage() {
       </div>
 
       <div className="vehicle-details-container">
-        <img src={vehicle.photoUrl} alt="vehicle" id="detail-image" />
-        <div>
+
+        <div id="detail-image-container">
+          <img src={vehicle.photoUrl} alt="vehicle" id="detail-image" />
+        </div>
+
+        <div id="detail-section-container">
           <p>
             {vehicle.make} {vehicle.model}
           </p>

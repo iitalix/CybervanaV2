@@ -54,15 +54,15 @@ def get_all_reviews():
     all_reviews = Review.query.all()
     return [review.to_dict() for review in all_reviews]
 
-#get one comment
+#get one review
 @reviews_routes.route('/')
 
 
-#delete a comment
+#delete a review
 @reviews_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
-def delete_comment(id):
-    comment_to_delete = Comment.query.get(id)
-    db.session.delete(comment_to_delete)
+def delete_review(id):
+    review_to_delete = Review.query.get(id)
+    db.session.delete(review_to_delete)
     db.session.commit()
-    return {"Message" : "Comment Deleted"}
+    return {"Message" : "Review Deleted"}
