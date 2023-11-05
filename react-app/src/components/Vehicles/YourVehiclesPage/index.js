@@ -17,7 +17,7 @@ export default function YourVehiclesPage() {
     return (
         <div>
             <div className="header-container">
-                <h1>Your Vehicles</h1>
+                <h1>Manage Your Vehicle Posts</h1>
                 <a href="/vehicles/all">Explore All Vehicles</a>
             </div>
             <div className="vehicles-parent-container">
