@@ -1,15 +1,21 @@
-import React, {useState} from "react";
-import {useDispatch} from "react-redux";
+import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {useModal} from "../../../context/Modal";
 import StarInputRatings from "../../StarInputRatings";
-import {createReviewThunk, getEveryReviewThunk} from "../../../store/reviews";
+import {updateReviewThunk, getEveryReviewThunk} from "../../../store/reviews";
 
-export default function ReviewFormModal({vehicleId}) {
+export default function UpdateReviewModal({reviewId}) {
   const dispatch = useDispatch();
   const {closeModal} = useModal();
-  const [revText, setRevText] = useState("");
-  const [rating, setRating] = useState(0);
   const [errors, setErrors] = useState({});
+  const allReviews = useSelector((state) => state.reviews.allReviews)
+  const reviewToUpdate = allReviews[reviewId];
+  const [revText, setRevText] = useState(reviewToUpdate.review);
+  const [rating, setRating] = useState(reviewToUpdate.stars);
+
+  useEffect(() => {
+    dispatch(getEveryReviewThunk());
+  }, [dispatch])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +25,7 @@ export default function ReviewFormModal({vehicleId}) {
       stars: rating,
     };
 
-    dispatch(createReviewThunk(vehicleId, newReview));
+    dispatch(updateReviewThunk(newReview, reviewId));
     setRevText("");
     setRating(0);
     return await dispatch(getEveryReviewThunk()).then(closeModal());
@@ -37,7 +43,7 @@ export default function ReviewFormModal({vehicleId}) {
 
   return (
     <div className="review-modal-container">
-      <p className="modal-headers">Write a review!</p>
+      <p className="modal-headers">Update your review!</p>
       {errors.review && <p>{errors.review}</p>}
       {errors.stars && <p>{errors.stars}</p>}
       <form onSubmit={handleSubmit} className="review-form-container">
