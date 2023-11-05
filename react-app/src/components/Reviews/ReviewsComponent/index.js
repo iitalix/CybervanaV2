@@ -84,7 +84,7 @@ export default function ReviewsComponent({vehicleId}) {
             </div>
           ))
         ) : (
-          <div id="be-first">This vehicle has not been reviewed.</div>
+          <p id="not-reviewed">This vehicle has not been reviewed.</p>
         )}
       </div>
     </div>
