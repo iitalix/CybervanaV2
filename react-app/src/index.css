@@ -94,6 +94,26 @@ a:hover {
   background-color: yellow;
 }
 
+#review-add-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-top: 1px solid black;
+  margin-top: 16px;
+}
+
+#review-add-buttons button {
+  background-color: unset;
+  border: none;
+  padding: 24px 72px;
+  font-size: 16px;
+}
+
+#review-add-buttons button:hover {
+  text-decoration: underline;
+  background-color: yellow;
+}
+
 /* Page Header */
 .header-container {
   display: flex;
