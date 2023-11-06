@@ -1,8 +1,17 @@
-import React, {useEffect, useState} from "react";
-import {useSelector, useDispatch} from "react-redux";
+import React, {useEffect, useState, useRef} from "react";
+import { useHistory } from "react-router-dom";
+import OpenModalButton from "../OpenModalButton";
+import LoginFormModal from "../LoginFormModal";
+import SignupFormModal from "../SignupFormModal";
 import "../LandingPage/LandingPage.css";
 
 export default function LandingPage() {
+  const { push } = useHistory();
+
+  const goToAllVehicles = () => {
+    return push("/vehicles/all");
+  };
+
   return (
     <div className="landingpage-parent-container">
       <div className="landing-banner-section">
@@ -12,6 +21,19 @@ export default function LandingPage() {
         />
         <div id="banner-overlay-header">DEALS ON WHEELS</div>
         <div id="banner-overlay-sub">The Best Selection in Night City</div>
+      </div>
+
+      <div id="landing-button-menu">
+        <button onClick={goToAllVehicles}>Browse Vehicles</button>
+        <OpenModalButton
+          buttonText="Log In"
+          modalComponent={<LoginFormModal />}
+        />
+
+        <OpenModalButton
+          buttonText="Sign Up"
+          modalComponent={<SignupFormModal />}
+        />
       </div>
     </div>
   );
