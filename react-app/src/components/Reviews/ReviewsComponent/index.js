@@ -38,8 +38,8 @@ export default function ReviewsComponent({vehicleId}) {
   return (
     <div className="vehicle-reviews-container">
       <div className="header-container">
-        <h1>User Reviews</h1>
-        {!currUserReview && sessionUser.id !== vehicle?.ownerId && (
+        <h2>User Reviews</h2>
+        {sessionUser && !currUserReview && sessionUser?.id !== vehicle?.ownerId && (
           <a id="review-link-button">
             <OpenModalButton
               buttonText="Review This Vehicle"
@@ -48,26 +48,29 @@ export default function ReviewsComponent({vehicleId}) {
           </a>
         )}
       </div>
-      <div>
+      <div id="review-container">
         {vehicleReviews.length > 0 ? (
           vehicleReviews.map((review) => (
             <div key={review.id}>
               <div className="user-review" key={review.id}>
-                <p>{fixDate(review.createdAt)}</p>
-                <p>
-                  {review.users.firstName} {review.users.lastName}
-                </p>
-                <p>{review.stars} Stars</p>
-                {review.stars && (
-                  <StarInputRatings rating={review.stars} disabled={true} />
-                )}
-                <p>{review.review}</p>
+                <div className="name-and-stars">
+                  <p id="revName">
+                    {review.users.firstName} {review.users.lastName}
+                  </p>
+                  <div id="revStars">
+                    {review.stars && (
+                      <StarInputRatings rating={review.stars} disabled={true} />
+                    )}
+                  </div>
+                  <p id="revDate">Posted on: {fixDate(review.createdAt)}</p>
+                </div>
+                <div id="revReview">{review.review}</div>
               </div>
 
               {currUserReview === review.id && (
-                <div>
+                <div className="review-edit-delete-buttons">
                   <OpenModalButton
-                    buttonText="Update"
+                    buttonText="Edit Review"
                     modalComponent={<UpdateReviewModal reviewId={review.id} />}
                   />
                   <OpenModalButton
@@ -84,7 +87,7 @@ export default function ReviewsComponent({vehicleId}) {
             </div>
           ))
         ) : (
-          <div id="be-first">This vehicle has not been reviewed.</div>
+          <p id="not-reviewed">This vehicle has not yet been reviewed.</p>
         )}
       </div>
     </div>

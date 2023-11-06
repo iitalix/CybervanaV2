@@ -1,13 +1,14 @@
 import React from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
 import OpenModalButton from "../../OpenModalButton";
 import UpdateVehicleModal from "../UpdateVehicleModal";
 import DeleteVehicleModal from "../DeleteVehicleModal";
 import ComingSoonModal from "../../ShoppingCart/ComingSoonModal";
 
-export default function VehicleCard({vehicle, user}) {
+export default function VehicleCard({vehicle}) {
   const {push} = useHistory();
+  const sessionUser = useSelector((state) => state.session.user);
 
   const goToVehicleDetails = () => {
     return push(`/vehicles/${vehicle.id}`);
@@ -30,13 +31,14 @@ export default function VehicleCard({vehicle, user}) {
           <div className="card-make-model">{`$${vehicle.price}`}</div>
         </div>
 
-        {user.id === vehicle.ownerId && (
+        {sessionUser?.id === vehicle.ownerId && (
           <div className="update-delete-container">
             <div id="update-delete-buttons">
               <OpenModalButton
                 buttonText="Update"
                 modalComponent={<UpdateVehicleModal vehicleId={vehicle.id} />}
               />
+
               <OpenModalButton
                 buttonText="Delete"
                 modalComponent={<DeleteVehicleModal vehicleId={vehicle.id} />}
@@ -45,7 +47,7 @@ export default function VehicleCard({vehicle, user}) {
           </div>
         )}
 
-        {user.id !== vehicle.ownerId && (
+        {sessionUser?.id !== vehicle.ownerId && (
           <div className="update-delete-container">
             <div id="add-remove-buttons">
               {/* <OpenModalButton
