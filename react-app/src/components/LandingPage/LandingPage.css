@@ -34,3 +34,23 @@
   text-align: center;
   text-shadow: 2px 2px 2px black;
 }
+
+#landing-button-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #38B6FF;
+}
+
+#landing-button-menu button {
+    border: none;
+    background-color: unset;
+    padding: 20px;
+    width: 33%;
+    font-size: 18px;
+}
+
+#landing-button-menu button:hover {
+    background-color: yellow;
+    text-decoration: underline;
+}

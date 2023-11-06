@@ -5,6 +5,7 @@ import ReviewsComponent from "../../Reviews/ReviewsComponent";
 import {getAllVehicles} from "../../../store/vehicles";
 
 export default function VehicleDetailsPage() {
+  const { push } = useHistory();
   const dispatch = useDispatch();
   const {id} = useParams();
   const vehicles = useSelector((state) => state.vehicles.allVehicles);
@@ -14,17 +15,20 @@ export default function VehicleDetailsPage() {
     dispatch(getAllVehicles());
   }, [dispatch]);
 
+  const goToAllVehicles = () => {
+    return push("/vehicles/all");
+  };
+
   if (!Object.values(vehicles).length) return null;
 
   return (
-    <div>
+    <div className="vehicle-details-page-container">
       <div className="header-container">
         <h1>Vehicle Details</h1>
-        <a href="/vehicles/all">Explore All Vehicles</a>
+        <button onClick={goToAllVehicles} className="header-buttons">Explore All Vehicles</button>
       </div>
 
       <div className="vehicle-details-container">
-
         <div id="detail-image-container">
           <img src={vehicle.photoUrl} alt="vehicle" id="detail-image" />
         </div>
