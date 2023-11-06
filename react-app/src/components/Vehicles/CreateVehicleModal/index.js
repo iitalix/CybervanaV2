@@ -82,6 +82,7 @@ export default function CreateVehicleModal() {
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
+
         {errors &&
           errors.length >= 1 &&
           errors.map((error, idx) => (
@@ -107,7 +108,7 @@ export default function CreateVehicleModal() {
         <input
           type="text"
           name="make"
-          placeholder="Make"
+          placeholder="Required field"
           value={make}
           onChange={(e) => setMake(e.target.value)}
         />
@@ -116,7 +117,7 @@ export default function CreateVehicleModal() {
         <input
           type="text"
           name="model"
-          placeholder="Model"
+          placeholder="Required field"
           value={model}
           onChange={(e) => setModel(e.target.value)}
         />
@@ -130,7 +131,7 @@ export default function CreateVehicleModal() {
         <input
           type="text"
           name="price"
-          placeholder="Price"
+          placeholder="Required field"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
