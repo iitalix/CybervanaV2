@@ -59,12 +59,14 @@
   margin-bottom: 12px;
   margin-top: 5px;
   cursor: pointer;
+  width: 100%;
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
 .profile-container button:hover {
   text-decoration: underline;
   cursor: pointer;
+  background-color: yellow;
   border-radius: 4px;
 }
 

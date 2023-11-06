@@ -2,7 +2,7 @@
 
 const READ_REVIEWS = "/read_reviews";
 const ADD_REVIEW = "/add_review";
-// const UPDATE_COMMENT = "/update_review";
+// const UPDATE_REVIEW = "/update_review";
 const DELETE_REVIEW = "/delete_review";
 
 //action creator

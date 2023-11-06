@@ -15,7 +15,7 @@ export default function UpdateReviewModal({reviewId}) {
 
   useEffect(() => {
     dispatch(getEveryReviewThunk());
-  }, [dispatch])
+  }, [dispatch, rating])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ export default function UpdateReviewModal({reviewId}) {
     dispatch(updateReviewThunk(newReview, reviewId));
     setRevText("");
     setRating(0);
-    return await dispatch(getEveryReviewThunk()).then(closeModal());
+    return dispatch(getEveryReviewThunk()).then(closeModal());
   };
 
   const disableSubmit = () => {
