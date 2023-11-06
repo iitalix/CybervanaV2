@@ -49,7 +49,6 @@ def update_new_review(id):
 
 #get all reviews
 @reviews_routes.route('/all')
-@login_required
 def get_all_reviews():
     all_reviews = Review.query.all()
     return [review.to_dict() for review in all_reviews]

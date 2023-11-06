@@ -17,7 +17,7 @@ export default function ReviewsComponent({vehicleId}) {
     (review) => review.vehicleId === vehicle.id
   );
   const userVehicleReview = vehicleReviews.filter(
-    (review) => review.userId === sessionUser.id
+    (review) => review.userId === sessionUser?.id
   );
   let currUserReview = userVehicleReview[0]?.id;
 
