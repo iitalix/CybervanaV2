@@ -39,21 +39,21 @@
   z-index: 3;
   background-color: ghostwhite;
   box-shadow: 2px 2px 2px lightgrey;
+  padding: 10px;
 }
 
 .profile-menu-container {
-  padding: 0px;
+  padding: 0;
 }
 
 .profile-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   padding: 10px;
 }
 
 .profile-container button {
-
+  text-align: left;
   background-color: ghostwhite;
   border: none;
   margin-bottom: 12px;
@@ -66,7 +66,6 @@
 .profile-container button:hover {
   text-decoration: underline;
   cursor: pointer;
-  background-color: yellow;
   border-radius: 4px;
 }
 

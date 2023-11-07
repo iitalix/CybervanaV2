@@ -57,12 +57,14 @@ export default function ReviewsComponent({vehicleId}) {
                   <p id="revName">
                     {review.users.firstName} {review.users.lastName}
                   </p>
-                  <div id="revStars">
-                    {review.stars && (
-                      <StarInputRatings rating={review.stars} disabled={true} />
-                    )}
+                  <div className="stars-and-review">
+                    <div id="revStars">
+                      {review.stars && (
+                        <StarInputRatings rating={review.stars} disabled={true} />
+                      )}
+                    </div>
+                    <p id="revDate">Posted on: {fixDate(review.createdAt)}</p>
                   </div>
-                  <p id="revDate">Posted on: {fixDate(review.createdAt)}</p>
                 </div>
                 <div id="revReview">{review.review}</div>
               </div>

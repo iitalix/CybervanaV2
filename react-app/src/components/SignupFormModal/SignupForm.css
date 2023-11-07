@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 45px 60px
 }
 
 .sign-up-container > form {
@@ -10,4 +11,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.form-buttons {
+    display: flex;
+    flex-direction: column;
+    padding-top: 16px;
 }

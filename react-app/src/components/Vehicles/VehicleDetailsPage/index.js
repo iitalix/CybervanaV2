@@ -40,6 +40,7 @@ export default function VehicleDetailsPage() {
           <p>${vehicle.price}</p>
         </div>
         <div id="detail-description">{vehicle.description}</div>
+        <p id="posted-by">Posted by {vehicle.users.firstName} {vehicle.users.lastName}</p>
       </div>
 
       <ReviewsComponent vehicleId={vehicle.id} />
