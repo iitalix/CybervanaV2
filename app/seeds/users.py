@@ -22,7 +22,7 @@ def seed_users():
         last_name = 'Jones',
         age = randint(21,50),
         username = 'rjones',
-        email = fake.email(),
+        email = 'DemoUser2@gmail.com',
         password = 'password'
         )
     new_user3 = User(
@@ -30,7 +30,7 @@ def seed_users():
         last_name = 'Okada',
         age = randint(21,50),
         username = 'wokada',
-        email = fake.email(),
+        email = 'DemoUser3@gmail.com',
         password = 'password'
         )
     new_user4 = User(
@@ -38,7 +38,7 @@ def seed_users():
         last_name = 'Smith',
         age = randint(21,50),
         username = 'dsmith',
-        email = fake.email(),
+        email = 'DemoUser4@gmail.com',
         password = 'password'
         )
     new_user5 = User(
@@ -46,7 +46,7 @@ def seed_users():
         last_name = 'Dinovic',
         age = randint(21,50),
         username = 'ddinovic',
-        email = fake.email(),
+        email = 'DemoUser5@gmail.com',
         password = 'password'
         )
     new_user6 = User(
@@ -54,43 +54,11 @@ def seed_users():
         last_name = 'Ibarra',
         age = randint(21,50),
         username = 'Padre',
-        email = fake.email(),
-        password = 'password'
-        )
-    new_user7 = User(
-        first_name = 'Muamar',
-        last_name = 'Reyes',
-        age = randint(21,50),
-        username = "ElCapitan",
-        email = fake.email(),
-        password = 'password'
-        )
-    new_user8 = User(
-        first_name = fake.first_name(),
-        last_name = fake.last_name(),
-        age = randint(21,50),
-        username = fake.name(),
-        email = fake.email(),
-        password = 'password'
-        )
-    new_user9 = User(
-        first_name = fake.first_name(),
-        last_name = fake.last_name(),
-        age = randint(21,50),
-        username = fake.name(),
-        email = fake.email(),
-        password = 'password'
-        )
-    new_user10 = User(
-        first_name = fake.first_name(),
-        last_name = fake.last_name(),
-        age = randint(21,50),
-        username = fake.name(),
-        email = fake.email(),
+        email = 'DemoUser6@gmail.com',
         password = 'password'
         )
 
-    users_list = [new_user1, new_user2, new_user3, new_user4, new_user5, new_user6, new_user7, new_user8, new_user9, new_user10]
+    users_list = [new_user1, new_user2, new_user3, new_user4, new_user5, new_user6]
     [db.session.add(user) for user in users_list]
     db.session.commit()
 

@@ -1,7 +1,14 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import {useDispatch} from "react-redux";
+import { getEveryReviewThunk } from "../../store/reviews";
 
 export default function StarInputRatings({rating, disabled, onChange}) {
+  const dispatch = useDispatch();
   let [activeStarRating, setActiveStarRating] = useState(rating);
+
+  useEffect(() => {
+    dispatch(getEveryReviewThunk());
+  }, [dispatch]);
 
   return (
     <div className="star-container">
