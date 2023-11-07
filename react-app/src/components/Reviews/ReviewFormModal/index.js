@@ -37,7 +37,7 @@ export default function ReviewFormModal({vehicleId}) {
 
   return (
     <div className="review-modal-container">
-      <p className="modal-headers">Write a review!</p>
+      <h1 className="modal-headers">Write a review</h1>
       {errors.review && <p>{errors.review}</p>}
       {errors.stars && <p>{errors.stars}</p>}
       <form onSubmit={handleSubmit} className="review-form-container">

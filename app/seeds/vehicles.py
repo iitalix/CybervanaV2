@@ -21,7 +21,7 @@ def seed_posts():
         model="Caliburn",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/rayfieldcaliburn_dark.jpg",
         price=650000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Unmatched speed. Elegant design.",
         created_at=date.today()
     )
     db.session.add(new_post_2)
@@ -32,7 +32,7 @@ def seed_posts():
         model="Nazare Special",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/archnazarejackie.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="This rare Nazre is a one-of-a-kind Limited Edition!",
         created_at=date.today()
     )
     db.session.add(new_post_3)
@@ -43,7 +43,7 @@ def seed_posts():
         model="Nazare Itsumade",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/archnazareitsumade.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Made for cruising the city.",
         created_at=date.today()
     )
     db.session.add(new_post_4)
@@ -54,7 +54,7 @@ def seed_posts():
         model="Machinaw Beast",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/thortonmackinawbeast.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Guaranteed toughness, on and off road!",
         created_at=date.today()
     )
     db.session.add(new_post_5)
@@ -66,7 +66,7 @@ def seed_posts():
         model="Galena G240",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/thortongalenag240.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="It isn't pretty, but it gets the job done.",
         created_at=date.today()
     )
     db.session.add(new_post_6)
@@ -77,7 +77,7 @@ def seed_posts():
         model="Quartz EC-T2 R660",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/archerquartz.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Find out why this one is called 'The Perfect Getaway Vehicle.'",
         created_at=date.today()
     )
     db.session.add(new_post_7)
@@ -88,7 +88,7 @@ def seed_posts():
         model="Colby C125",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/thortoncolbyc125.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Station wagon-inspired hauler for the family!",
         created_at=date.today()
     )
     db.session.add(new_post_8)
@@ -99,7 +99,7 @@ def seed_posts():
         model="Shion M22",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/mizutanishionm22.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Mizutani's finest!",
         created_at=date.today()
     )
     db.session.add(new_post_9)
@@ -110,7 +110,7 @@ def seed_posts():
         model="Apollo Nomad",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/brennanapolloaldecaldos.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Need Street Cred? Make sure to get The Aldecaldos to vouch for this one!",
         created_at=date.today()
     )
     db.session.add(new_post_10)
@@ -122,8 +122,8 @@ def seed_posts():
         make="Makigai",
         model="Maimai P126",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/makigaimaimaip126.jpg",
-        price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        price=80000,
+        description="Minimal and compact for the inconspicuous driver.",
         created_at=date.today()
     )
     db.session.add(new_post_11)
@@ -134,7 +134,7 @@ def seed_posts():
         model="Kusanagi CT-3X",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/yaibakusanagict3x.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="The Akira-inpspired CT-3X is every anime lover's dream bike!",
         created_at=date.today()
     )
     db.session.add(new_post_12)
@@ -143,9 +143,9 @@ def seed_posts():
         owner_id=3,
         make="Quadra",
         model="Turbo-R 740",
-        photo_url="https://cybervana.s3.us-west-1.amazonaws.com/brennanapolloaldecaldos.jpg",
+        photo_url="https://cybervana.s3.us-west-1.amazonaws.com/quadraturbor740.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Looking for a race?",
         created_at=date.today()
     )
     db.session.add(new_post_13)
@@ -156,7 +156,7 @@ def seed_posts():
         model="Nazaré",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/archnazare.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Sit down and stand out!",
         created_at=date.today()
     )
     db.session.add(new_post_14)
@@ -167,7 +167,7 @@ def seed_posts():
         model="Aerondight Guinevere",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/rayfieldaerondightguinevre.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Protection and privacy for a price!",
         created_at=date.today()
     )
     db.session.add(new_post_15)
@@ -176,11 +176,11 @@ def seed_posts():
 
     new_post_16 = Vehicle(
         owner_id=4,
-        make="Thorton",
+        make="Thornton",
         model="Galena Gecko",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/thortongalenagecko.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Thornton's most popular vehicle!",
         created_at=date.today()
     )
     db.session.add(new_post_16)
@@ -191,7 +191,7 @@ def seed_posts():
         model="Colby Little Mule",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/thortoncolbylittlemule.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="One of the best off-road vehicles in it's class!",
         created_at=date.today()
     )
     db.session.add(new_post_17)
@@ -202,7 +202,7 @@ def seed_posts():
         model="Shion Coyote",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/mizutanishioncoyotered.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Built for rally racing...and much much more!",
         created_at=date.today()
     )
     db.session.add(new_post_18)
@@ -213,7 +213,7 @@ def seed_posts():
         model="Type-66 Javelina",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/quadratype66javelina.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Toughness and speed is what you NEED.",
         created_at=date.today()
     )
     db.session.add(new_post_19)
@@ -226,7 +226,7 @@ def seed_posts():
         model="Columbus V340-F Freight",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/villefortcolumbusv340ffreight.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="You could throw a party in here!",
         created_at=date.today()
     )
     db.session.add(new_post_20)
@@ -237,7 +237,7 @@ def seed_posts():
         model="Emperor 620 Ragnar",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/chevillonemperor620ragnar.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Who says armored vehicles can't be stylish?",
         created_at=date.today()
     )
     db.session.add(new_post_21)
@@ -248,7 +248,7 @@ def seed_posts():
         model="Type-66 Avenger",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/quadratype66avenger.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="A muscle car for those who need to compensate for their lack of it.",
         created_at=date.today()
     )
     db.session.add(new_post_22)
@@ -259,7 +259,7 @@ def seed_posts():
         model="Outlaw GTS",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/herreraoutlawgts.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Luxury and style that won't get you killed...LITERALLY.",
         created_at=date.today()
     )
     db.session.add(new_post_23)
@@ -268,9 +268,9 @@ def seed_posts():
         owner_id=5,
         make="Rayfield",
         model="Caliburn",
-        photo_url="https://cybervana.s3.us-west-1.amazonaws.com/brennanapolloaldecaldos.jpg",
+        photo_url="https://cybervana.s3.us-west-1.amazonaws.com/rayfieldcaliburnwhite.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Nothing beats a Caliburn.",
         created_at=date.today()
     )
     db.session.add(new_post_24)
@@ -283,7 +283,7 @@ def seed_posts():
         model="Thrax 388 Jefferson",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/chevillonthrax388jefferson.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="Vintage style with protection.",
         created_at=date.today()
     )
     db.session.add(new_post_25)
@@ -294,7 +294,7 @@ def seed_posts():
         model="Cortes V5000 Valor",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/villefortcortesv5000valor.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="For those who want classic style with zero compromise.",
         created_at=date.today()
     )
     db.session.add(new_post_26)
@@ -305,7 +305,7 @@ def seed_posts():
         model="Apollo",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/brennanapollo.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="The delivery service bike that holds more than just food.",
         created_at=date.today()
     )
     db.session.add(new_post_27)
@@ -316,7 +316,7 @@ def seed_posts():
         model="Alvarado V4F 570 Delegate",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/villefortalvaradov4f570delegate.jpg",
         price=350000,
-        description="Sleek, stylish, and will definitely get you noticed!",
+        description="You don't know luxury until you've sat on six wheels.",
         created_at=date.today()
     )
     db.session.add(new_post_28)

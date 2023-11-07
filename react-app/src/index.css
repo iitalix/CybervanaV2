@@ -17,22 +17,6 @@ a:hover {
   padding: 20px;
 }
 
-.modal-headers {
-  font-size: 24px;
-  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
-}
-
-.review-form-container button {
-  background-color: unset;
-  border: none;
-  padding: 24px 82px;
-  font-size: 16px;
-}
-
-.review-form-container button:hover {
-  text-decoration: underline;
-  background-color: yellow;
-}
 
 /* Cards */
 .vehicles-parent-container {
@@ -149,6 +133,7 @@ a:hover {
 
 .header-container > a {
   padding-left: 16px;
+  padding-top: 10px;
 }
 
 /* Vehicle Details Page */
@@ -186,6 +171,10 @@ a:hover {
   margin-bottom: 24px;
 }
 
+#posted-by {
+  padding: 0 32px;
+}
+
 /* Reviews Component */
 .vehicle-reviews-container {
   border-top: 1px solid black;
@@ -199,6 +188,7 @@ a:hover {
   border: 1px solid grey;
   padding: 8px 20px;
   border-radius: 12px;
+  margin-top: 10px;
 }
 
 #revDate {
@@ -228,6 +218,8 @@ a:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  border-bottom: 1px solid grey;
+  margin-bottom: 10px;
 }
 
 .review-edit-delete-buttons button {
@@ -243,6 +235,18 @@ a:hover {
 }
 
 /* Review Form Modal */
+
+.review-form-container button {
+  background-color: unset;
+  border: none;
+  padding: 24px 82px;
+  font-size: 16px;
+}
+
+.review-form-container button:hover {
+  text-decoration: underline;
+  background-color: yellow;
+}
 .review-modal-container {
   display: flex;
   flex-direction: column;
@@ -271,10 +275,12 @@ a:hover {
 .stars-container {
   display: flex;
   flex-direction: row;
+  margin-bottom: 20px;
 }
 
 .filled {
   color: yellow;
+  text-shadow: 0 0 1px grey, 0 2px 4px grey;
 }
 
 .empty {
@@ -284,4 +290,26 @@ a:hover {
 textarea {
   height: 100px;
   width: 245px;
+}
+
+/* Delete Form Modal */
+
+#delete-vehicle-modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.confirm-buttons button {
+  text-wrap: nowrap;
+  border: none;
+  background-color: unset;
+  padding: 10px;
+  width: 50%;
+}
+
+.confirm-buttons button:hover {
+  background-color: yellow;
+  text-decoration: underline;
 }

@@ -33,14 +33,16 @@ export default function DeleteVehicleModal({ vehicleId }) {
         <div id="delete-vehicle-modal-container">
         <h1>Delete Post</h1>
         <p className="delete-confirm">
-           Are you sure you want to remove this Post?
+           Remove this vehicle?
         </p>
-        <button className="delete-button" onClick={handleSubmit}>
-           Yes (Delete Vehicle)
-        </button>
-        <button className="cancel-button" onClick={closeModal}>
-           No (Keep Vehicle)
-        </button>
+        <div className="confirm-buttons">
+            <button className="delete-button" onClick={handleSubmit}>
+            Yes (Delete Vehicle)
+            </button>
+            <button className="cancel-button" onClick={closeModal}>
+            No (Keep Vehicle)
+            </button>
+        </div>
      </div>
     )
 }
