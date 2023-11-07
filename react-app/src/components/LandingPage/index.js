@@ -14,7 +14,7 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="landingpage-parent-container">
+    <div className="landingpage-parent-container" onClick={goToAllVehicles}>
       <div className="landing-banner-section">
         <img
           src="https://cybervana.s3.us-west-1.amazonaws.com/cybervana-banner.png"
