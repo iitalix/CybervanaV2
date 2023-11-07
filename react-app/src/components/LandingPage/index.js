@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import BrandCard from "../BrandCards";
 import "../LandingPage/LandingPage.css";
 
 export default function LandingPage() {
@@ -21,6 +22,10 @@ export default function LandingPage() {
         />
         <div id="banner-overlay-header">DEALS ON WHEELS</div>
         <div id="banner-overlay-sub">The Best Selection in Night City</div>
+      </div>
+
+      <div>
+        <BrandCard />
       </div>
 
       <div id="landing-button-menu">
