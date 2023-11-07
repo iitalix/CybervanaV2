@@ -33,14 +33,16 @@ export default function DeleteReviewModal({ reviewId, vehicleId }) {
         <div id="delete-vehicle-modal-container">
         <h1>Delete Your Review</h1>
         <p className="delete-confirm">
-           Are you sure you want to delete this Review?
+           Delete this review?
         </p>
-        <button className="delete-button" onClick={handleSubmit}>
-           Yes (Delete Review)
-        </button>
-        <button className="cancel-button" onClick={closeModal}>
-           No (Keep Review)
-        </button>
+        <div className="confirm-buttons">
+            <button className="delete-button" onClick={handleSubmit}>
+            Yes (Delete Review)
+            </button>
+            <button className="cancel-button" onClick={closeModal}>
+            No (Keep Review)
+            </button>
+        </div>
      </div>
     )
 }

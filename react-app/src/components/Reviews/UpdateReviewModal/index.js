@@ -43,7 +43,7 @@ export default function UpdateReviewModal({reviewId}) {
 
   return (
     <div className="review-modal-container">
-      <p className="modal-headers">Update your review!</p>
+      <h1 className="modal-headers">Update your review</h1>
       {errors.review && <p>{errors.review}</p>}
       {errors.stars && <p>{errors.stars}</p>}
       <form onSubmit={handleSubmit} className="review-form-container">

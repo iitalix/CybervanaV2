@@ -43,12 +43,6 @@ export default function CreateVehicleModal() {
     setImageLoading(true);
     const postData = await dispatch(createVehicleThunk(formData));
 
-    setImage(null);
-    // setMake("");
-    // setModel("");
-    // setPrice("");
-    // setDescription("");
-
     if (postData.errors === undefined || !postData.errors) {
       dispatch(getOwnerVehicles());
       push("/vehicles/current");
@@ -60,19 +54,6 @@ export default function CreateVehicleModal() {
     }
   };
 
-  // useEffect(() => {
-  //   const errorsObject = {};
-
-  //   if (description?.length < 10) {
-  //     errorsObject.description = "Description must be more than 10 characters.";
-  //   }
-
-  //   if (price < 1) {
-  //     errorsObject.price = "Price must be an integer greater than 0.";
-  //   }
-
-  //   setValidationObject(errorsObject);
-  // }, [description, price]);
 
   return (
     <div className="create-vehicle-parent-container">
@@ -111,6 +92,7 @@ export default function CreateVehicleModal() {
           placeholder="Required field"
           value={make}
           onChange={(e) => setMake(e.target.value)}
+          required
         />
 
         <label>Model</label>
@@ -120,6 +102,7 @@ export default function CreateVehicleModal() {
           placeholder="Required field"
           value={model}
           onChange={(e) => setModel(e.target.value)}
+          required
         />
 
         <label>Price</label>
@@ -134,6 +117,7 @@ export default function CreateVehicleModal() {
           placeholder="Required field"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
+          required
         />
 
         <label>Description</label>
@@ -148,6 +132,7 @@ export default function CreateVehicleModal() {
           placeholder="Please write at least 10 characters"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          required
         />
 
         <button
@@ -159,6 +144,7 @@ export default function CreateVehicleModal() {
         </button>
         {imageLoading && (
           <div aria-busy="true" aria-describedby="progress-bar">
+            <p>Uploading</p>
             <progress
               id="progress-bar"
               aria-label="Content loading…"

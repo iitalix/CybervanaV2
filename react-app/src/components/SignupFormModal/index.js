@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { useModal } from "../../context/Modal";
-import { signUp } from "../../store/session";
-import { login } from "../../store/session";
-import "../SignupFormModal/SignupForm.css"
+import React, {useState} from "react";
+import {useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
+import {useModal} from "../../context/Modal";
+import {signUp} from "../../store/session";
+import {login} from "../../store/session";
+import "../SignupFormModal/SignupForm.css";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
-  const { push } = useHistory();
+  const {push} = useHistory();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState("");
@@ -17,7 +17,7 @@ function SignupFormModal() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const { closeModal } = useModal();
+  const {closeModal} = useModal();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,8 +32,7 @@ function SignupFormModal() {
     if (password.length < 6)
       newErrors.password = "Password must be at least six characters";
     if (password !== confirmPassword)
-      newErrors.confirmPassword =
-        "Passwords must match";
+      newErrors.confirmPassword = "Passwords must match";
     if (isNaN(age) || age <= 0) newErrors.age = "Age must be a positive number";
 
     if (Object.keys(newErrors).length === 0) {
@@ -57,8 +56,8 @@ function SignupFormModal() {
     if (data) {
       setErrors(data);
     } else {
-      closeModal()
-      push("/vehicles/all")
+      closeModal();
+      push("/vehicles/all");
     }
   };
 
@@ -67,12 +66,18 @@ function SignupFormModal() {
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          {errors && errors.length >= 1 && errors.map((error, idx) => (
-            <div className="list-errors" key={idx}>{error}</div>
-          ))}
+          {errors &&
+            errors.length >= 1 &&
+            errors.map((error, idx) => (
+              <div className="list-errors" key={idx}>
+                {error}
+              </div>
+            ))}
         </div>
         <label>
-          {errors.firstName && <p className="list-errors">{errors.firstName}</p>}
+          {errors.firstName && (
+            <p className="list-errors">{errors.firstName}</p>
+          )}
           <input
             type="text"
             placeholder="First Name"
@@ -143,8 +148,18 @@ function SignupFormModal() {
             required
           />
         </label>
-        <button type="submit" className="login-button">Sign Up</button>
-        <button onClick={handleDemo} className="login-button" id="demo-button">Demo User</button>
+        <div className="form-buttons">
+          <button type="submit" className="login-button">
+            Sign Up
+          </button>
+          <button
+            onClick={handleDemo}
+            className="login-button"
+            id="demo-button"
+          >
+            Demo User
+          </button>
+        </div>
       </form>
     </div>
   );
