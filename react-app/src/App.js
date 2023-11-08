@@ -9,6 +9,10 @@ import Navigation from "./components/Navigation";
 import YourVehiclesPage from "./components/Vehicles/YourVehiclesPage";
 import LandingPage from "./components/LandingPage";
 import VehicleDetailsPage from "./components/Vehicles/VehicleDetailsPage";
+import ShopRayfieldPage from "./components/Vehicles/ShopRayfieldPage";
+import ShopThorntonPage from "./components/Vehicles/ShopThorntonPage";
+import ShopQuadraPage from "./components/Vehicles/ShopQuadraPage";
+import ShopMizutaniPage from "./components/Vehicles/ShopMizutaniPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +31,18 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/vehicles/mizutani">
+            <ShopMizutaniPage />
+          </Route>
+          <Route exact path="/vehicles/quadra">
+            <ShopQuadraPage />
+          </Route>
+          <Route exact path="/vehicles/thornton">
+            <ShopThorntonPage />
+          </Route>
+          <Route exact path="/vehicles/rayfield">
+            <ShopRayfieldPage />
           </Route>
           <Route path="/vehicles/current" >
             <YourVehiclesPage />

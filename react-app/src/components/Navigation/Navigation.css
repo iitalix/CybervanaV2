@@ -4,7 +4,7 @@
 
 .nav-container {
   padding: 20px;
-  background-color: black;
+  background-color: #38b6ff;
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
@@ -15,7 +15,6 @@
 }
 
 
-
 /* Profile Button */
 .profile-button {
   display: flex;
@@ -23,7 +22,10 @@
   align-items: center;
   justify-content: space-evenly;
   padding: 8px 16px;
+  border: none;
+  background-color: unset;
   cursor: pointer;
+  font-size: 22px;
 }
 
 .fa-bars {
@@ -34,8 +36,8 @@
   border-radius: 8px;
   min-height: 90px;
   position: absolute;
-  top: 80px;
-  right: 60px;
+  top: 65px;
+  right: 55px;
   z-index: 3;
   background-color: ghostwhite;
   box-shadow: 2px 2px 2px lightgrey;
@@ -97,24 +99,28 @@
   align-items: center;
 }
 
+.profile-corner-container button:hover {
+  color: #FCEE09;
+}
+
 #post-vehicle-button > button {
-  color: #38b6ff;
+  color: black;
   background-color: unset;
   border: none;
   cursor: pointer;
   margin-right: 10px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 #post-vehicle-button > button:hover {
-  color: yellow;
+  color: #FCEE09;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid lightgray;
+  border-bottom: 2px solid #FCEE09;
 }
 
 .nav-links  {
