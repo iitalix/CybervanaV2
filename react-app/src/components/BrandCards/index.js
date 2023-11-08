@@ -17,9 +17,20 @@ export default function BrandCard() {
     return push("vehicles/quadra");
   };
 
+  const goToMizutani = () => {
+    return push("vehicles/mizutani");
+  };
+
+  const goToAllVehicles = () => {
+    return push("vehicles/all");
+  };
+
   return (
     <div className="parent-container">
-      <h2>Browse by make</h2>
+      <div className="header-container">
+        <h2>Browse Popular Makes</h2>
+        <button onClick={goToAllVehicles} className="header-buttons">Explore All Vehicles</button>
+      </div>
       <div id="brandcard-parent-container">
         <div
           className="brandcard-container"
@@ -46,6 +57,15 @@ export default function BrandCard() {
         >
           <img src="https://cybervana.s3.us-west-1.amazonaws.com/quadratype66avenger.jpg" />
           <p>Quadra</p>
+        </div>
+
+        <div
+          className="brandcard-container"
+          id="mizutani-card"
+          onClick={goToMizutani}
+        >
+          <img src="	https://cybervana.s3.us-west-1.amazonaws.com/mizutanishioncoyotered.jpg" />
+          <p>Mizutani</p>
         </div>
       </div>
     </div>

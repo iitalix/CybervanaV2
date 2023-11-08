@@ -4,7 +4,7 @@
 
 .nav-container {
   padding: 20px;
-  background-color: black;
+  background-color: white;
   font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
 }
 
@@ -12,6 +12,7 @@
 #logo {
   width: 195px;
   cursor: pointer;
+  ;
 }
 
 
