@@ -1,7 +1,8 @@
 /* TODO Add site wide styles */
 body {
   margin: 0;
-  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  font-family: 'Roboto Slab', serif;
+  /* font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif; */
 }
 
 h1,
@@ -9,7 +10,8 @@ h2 {
   /* font-family: 'Orbitron', sans-serif; */
   color: black;
   /* text-shadow: 0 0 1px black, 0 2px 4px black; */
-  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  font-family: 'Roboto Slab', serif;
+  /* font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif; */
 }
 
 a {
@@ -46,6 +48,7 @@ button {
   border-left: 1px solid rgb(173, 173, 173);
   border-radius: 8px;
   margin-bottom: 24px;
+  background-color: white;
   box-shadow: 0 0 1px rgba(18, 18, 20, 0.1), 0 2px 4px rgba(18, 18, 20, 0.2);
   transition: opacity 0.15s ease-in-out;
   opacity: 1;
