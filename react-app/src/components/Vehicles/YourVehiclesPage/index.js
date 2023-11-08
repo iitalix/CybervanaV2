@@ -21,7 +21,7 @@ export default function YourVehiclesPage() {
     }
 
     return (
-        <div>
+        <div className="vehicle-details-page-container">
             <div className="header-container">
                 <h1>Manage Your Vehicle Posts</h1>
                 <button onClick={goToAllVehicles} className="header-buttons">Explore All Vehicles</button>
