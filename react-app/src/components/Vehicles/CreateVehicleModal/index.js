@@ -3,7 +3,6 @@ import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {useModal} from "../../../context/Modal";
 import {createVehicleThunk, getOwnerVehicles} from "../../../store/vehicles";
-import "../CreateVehicleModal/CreateVehicle.css";
 
 export default function CreateVehicleModal() {
   const {push} = useHistory();
@@ -28,7 +27,7 @@ export default function CreateVehicleModal() {
       errorsObject.description = "Description must be more than 10 characters.";
     }
 
-    if (price < 1 || price.includes('.')) {
+    if (price < 1 || price.includes(".")) {
       errorsObject.price = "Price must be an integer greater than 0.";
     }
 
@@ -54,7 +53,6 @@ export default function CreateVehicleModal() {
     }
   };
 
-
   return (
     <div className="create-vehicle-parent-container">
       <h1>Post Your Vehicle</h1>
@@ -63,7 +61,6 @@ export default function CreateVehicleModal() {
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-
         {errors &&
           errors.length >= 1 &&
           errors.map((error, idx) => (
@@ -85,63 +82,63 @@ export default function CreateVehicleModal() {
           {/* <div>{image !== null ? image["name"] : "Choose Image"}</div> */}
         </div>
 
-        <label>Make</label>
-        <input
-          type="text"
-          name="make"
-          placeholder="Required field"
-          value={make}
-          onChange={(e) => setMake(e.target.value)}
-          required
-        />
-
-        <label>Model</label>
-        <input
-          type="text"
-          name="model"
-          placeholder="Required field"
-          value={model}
-          onChange={(e) => setModel(e.target.value)}
-          required
-        />
-
-        <label>Price</label>
-        <div className="list-errors">
-          {validationObject?.price && (
-            <p className="errors-one-post"> {validationObject?.price}</p>
-          )}
+        <div className="label-input-container">
+          <label>Make</label>
+          <input
+            type="text"
+            name="make"
+            placeholder="Required field"
+            value={make}
+            onChange={(e) => setMake(e.target.value)}
+            required
+          />
         </div>
-        <input
-          type="text"
-          name="price"
-          placeholder="Required field"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
-        />
 
-        <label>Description</label>
-        <div className="list-errors">
-          {validationObject?.description && (
-            <p className="errors-one-post"> {validationObject?.description}</p>
-          )}
+        <div className="label-input-container">
+          <label>Model</label>
+
+          <input
+            type="text"
+            name="model"
+            placeholder="Required field"
+            value={model}
+            onChange={(e) => setModel(e.target.value)}
+            required
+          />
         </div>
-        <textarea
-          type="text"
-          name="description"
-          placeholder="Please write at least 10 characters"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
 
-        <button
-          className="create-post-submit"
-          type="submit"
-          // disabled={Object.keys(validationObject).length > 0}
-        >
-          Submit
-        </button>
+        <div className="label-input-container">
+          <label>Price</label>
+          <input
+            type="text"
+            name="price"
+            placeholder="Required field"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="description-input-container">
+          <label className="description-label">Description</label>
+          <textarea
+            type="text"
+            name="description"
+            placeholder="Please write at least 10 characters"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div>
+        <div className="submit-container">
+          <button
+            className="submit-button"
+            type="submit"
+            // disabled={Object.keys(validationObject).length > 0}
+          >
+            Submit
+          </button>
+        </div>
         {imageLoading && (
           <div aria-busy="true" aria-describedby="progress-bar">
             <p>Uploading</p>

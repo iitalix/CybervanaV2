@@ -7,7 +7,7 @@ import {
   getVehicleDetailsThunk,
   getOwnerVehicles,
 } from "../../../store/vehicles";
-import "../CreateVehicleModal/CreateVehicle.css";
+
 
 export default function UpdateVehicleModal({vehicleId}) {
   const {push} = useHistory();
@@ -119,9 +119,11 @@ export default function UpdateVehicleModal({vehicleId}) {
           onChange={(e) => setDescription(e.target.value)}
         />
 
-        <button className="create-post-submit" type="submit">
-          Submit
-        </button>
+          <div className="submit-container">
+            <button className="submit-button" type="submit">
+              Submit
+            </button>
+          </div>
       </form>
     </div>
   );
