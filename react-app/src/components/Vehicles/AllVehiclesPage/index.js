@@ -20,7 +20,7 @@ export default function AllVehiclesPage() {
     return (
         <div>
             <div className="header-container">
-                <h1 id="all-header">Shop Night City's Best Used Vehicles</h1>
+                <h1 id="all-header">Shop The Best Used Vehicles</h1>
             </div>
             <div className="vehicles-parent-container">
                 {vehicles.map((vehicle) => (
