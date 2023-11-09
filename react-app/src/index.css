@@ -342,20 +342,6 @@ textarea {
   padding-bottom: 10px;
 }
 
-input[type="file" i] {
-  appearance: none;
-  background-color: initial;
-  cursor: default;
-  align-items: baseline;
-  color: inherit;
-  text-overflow: ellipsis;
-  text-align: start !important;
-  padding: initial;
-  border: initial;
-  white-space: pre;
-  overflow: hidden !important;
-}
-
 .submit-container {
   width: 100%;
 }
@@ -367,7 +353,7 @@ input[type="file" i] {
   margin-top: 20px;
   width: 100%;
   border: 1px solid black;
-  background-color: rgb(211, 211, 211);
+  background-color: #38b6ff;
 }
 
 .submit-button:hover {
@@ -388,13 +374,15 @@ input[type="file" i] {
   text-wrap: nowrap;
   border: none;
   background-color: unset;
-  padding: 10px;
+  padding: 24px;
+  font-size: 16px;
   width: 50%;
 }
 
 .confirm-buttons button:hover {
   background-color: #FCEE09;
   text-decoration: underline;
+  border: 1px solid black;
 }
 
 /* Brand Cards */

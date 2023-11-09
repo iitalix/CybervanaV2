@@ -41,8 +41,7 @@ export default function UpdateVehicleModal({vehicleId}) {
 
     const postData = await dispatch(updateVehicleThunk(formData, vehicleId));
 
-
-    if (Object.values(postData).includes("errors")) {
+    if (!Object.values(postData).includes("errors")) {
 
       closeModal();
       push(`/vehicles/${vehicleId}`);

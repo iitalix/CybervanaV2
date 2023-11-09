@@ -53,6 +53,19 @@ export default function CreateVehicleModal() {
   return (
     <div className="create-vehicle-parent-container">
       <h1>Post Your Vehicle</h1>
+
+      <div className="listerrors-container">
+        {errors &&
+          errors.length >= 1 &&
+          errors.map((error, idx) => (
+            <p className="list-errors" key={idx}>
+              {error}
+            </p>
+          ))}
+
+        {validationObject.price && <p className="list-errors">{validationObject.price}</p>}
+      </div>
+
       <form
         className="create-post-form"
         onSubmit={handleSubmit}
@@ -119,18 +132,6 @@ export default function CreateVehicleModal() {
             />
           </label>
         </div>
-
-        <div className="listerrors-container">
-        {errors &&
-          errors.length >= 1 &&
-          errors.map((error, idx) => (
-            <p className="list-errors" key={idx}>
-              {error}
-            </p>
-          ))}
-
-        {validationObject.price && <p className="list-errors">{validationObject.price}</p>}
-      </div>
 
         <div className="submit-container">
           <button
