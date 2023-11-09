@@ -8,7 +8,6 @@ import {
   getOwnerVehicles,
 } from "../../../store/vehicles";
 
-
 export default function UpdateVehicleModal({vehicleId}) {
   const {push} = useHistory();
   const dispatch = useDispatch();
@@ -33,16 +32,6 @@ export default function UpdateVehicleModal({vehicleId}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let newErrors = {};
-
-    if (!make) newErrors.make = "Make is a required field.";
-    if (!model) newErrors.model = "Model is a required field.";
-    if (price.toString().includes(".")) newErrors.price = "Price must be an INTEGER greater than 0."
-    if (price % 1 !== 0) newErrors.price = "Price must be an INTEGER greater than 0.";
-    if (price < 1) newErrors.price = "Price must be an INTEGER greater than 0.";
-    if (description.length < 10)
-      newErrors.description = "Description must be at least 10 characters.";
-
     const formData = {
       make,
       model,
@@ -50,14 +39,16 @@ export default function UpdateVehicleModal({vehicleId}) {
       description,
     };
 
-    if (Object.keys(newErrors).length === 0) {
-      const data = await dispatch(updateVehicleThunk(formData, vehicleId));
+    const postData = await dispatch(updateVehicleThunk(formData, vehicleId));
+
+
+    if (Object.values(postData).includes("errors")) {
 
       closeModal();
       push(`/vehicles/${vehicleId}`);
       return dispatch(getVehicleDetailsThunk(vehicleId));
     } else {
-      setErrors(newErrors);
+      setErrors(postData.errors);
     }
   };
 
@@ -77,53 +68,55 @@ export default function UpdateVehicleModal({vehicleId}) {
             </div>
           ))}
 
-        <label>Make</label>
-        {errors.make && <p className="list-errors">{errors.make}</p>}
-        <input
-          type="text"
-          name="make"
-          placeholder="Make"
-          value={make}
-          onChange={(e) => setMake(e.target.value)}
-        />
+        <div className="label-input-container">
+          <label>Make</label>
+          <input
+            type="text"
+            name="make"
+            placeholder="Make"
+            value={make}
+            onChange={(e) => setMake(e.target.value)}
+          />
+        </div>
 
-        <label>Model</label>
-        {errors.model && <p className="list-errors">{errors.model}</p>}
-        <input
-          type="text"
-          name="model"
-          placeholder="Model"
-          value={model}
-          onChange={(e) => setModel(e.target.value)}
-        />
+        <div className="label-input-container">
+          <label>Model</label>
+          <input
+            type="text"
+            name="model"
+            placeholder="Model"
+            value={model}
+            onChange={(e) => setModel(e.target.value)}
+          />
+        </div>
 
-        <label>Price</label>
-        {errors.price && <p className="list-errors">{errors.price}</p>}
-        <input
-          type="text"
-          name="price"
-          placeholder="Price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
+        <div className="label-input-container">
+          <label>Price</label>
+          <input
+            type="text"
+            name="price"
+            placeholder="Price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+        </div>
 
-        <label>Description</label>
-        {errors.description && (
-          <p className="list-errors">{errors.description}</p>
-        )}
-        <textarea
-          type="text"
-          name="description"
-          placeholder="Please write at least 10 characters"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
+        <div className="description-input-container">
+        <label className="description-label">Description</label>
+          <textarea
+            type="text"
+            name="description"
+            placeholder="Please write at least 10 characters"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
 
-          <div className="submit-container">
-            <button className="submit-button" type="submit">
-              Submit
-            </button>
-          </div>
+        <div className="submit-container">
+          <button className="submit-button" type="submit">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -32,6 +32,10 @@ input {
   padding: 8px;
 }
 
+.listerrors-container {
+  display: flex;
+  flex-direction: column;
+}
 .list-errors, .list-errors p {
     color: red;
     margin-bottom: 16px;
