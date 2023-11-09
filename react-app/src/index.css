@@ -342,8 +342,18 @@ textarea {
   padding-bottom: 10px;
 }
 
-#choosefile-button {
-  border: 2px solid red;
+input[type="file" i] {
+  appearance: none;
+  background-color: initial;
+  cursor: default;
+  align-items: baseline;
+  color: inherit;
+  text-overflow: ellipsis;
+  text-align: start !important;
+  padding: initial;
+  border: initial;
+  white-space: pre;
+  overflow: hidden !important;
 }
 
 .submit-container {

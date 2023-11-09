@@ -28,8 +28,8 @@
 input {
   margin-left: 10px;
   margin-right: 10px;
-  margin-bottom: 8px;
   padding: 8px;
+  width: 172px;
 }
 
 .listerrors-container {

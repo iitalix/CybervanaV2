@@ -64,7 +64,7 @@ export default function CreateVehicleModal() {
           <input
             type="text"
             name="make"
-            placeholder="Required field"
+            placeholder="No more than 15 characters."
             value={make}
             onChange={(e) => setMake(e.target.value)}
             required
@@ -77,7 +77,7 @@ export default function CreateVehicleModal() {
           <input
             type="text"
             name="model"
-            placeholder="Required field"
+            placeholder="No more than 30 characters."
             value={model}
             onChange={(e) => setModel(e.target.value)}
             required
@@ -89,7 +89,7 @@ export default function CreateVehicleModal() {
           <input
             type="text"
             name="price"
-            placeholder="Required field"
+            placeholder="Integer greater than 0."
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             required
