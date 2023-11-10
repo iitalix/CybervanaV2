@@ -29,7 +29,6 @@ export default function BrandCard() {
     <div className="parent-container">
       <div className="header-container">
         <h2>Browse Popular Makes</h2>
-        <button onClick={goToAllVehicles} className="header-buttons">Explore All Vehicles</button>
       </div>
       <div id="brandcard-parent-container">
         <div

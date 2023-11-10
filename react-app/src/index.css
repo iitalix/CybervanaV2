@@ -35,6 +35,10 @@ button {
   text-align: center;
 }
 
+#no-posts {
+  text-align: center;
+}
+
 /* Cards */
 .vehicles-parent-container {
   display: flex;
