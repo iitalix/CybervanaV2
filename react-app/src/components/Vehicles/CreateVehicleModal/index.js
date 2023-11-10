@@ -6,6 +6,7 @@ import {createVehicleThunk, getOwnerVehicles} from "../../../store/vehicles";
 
 export default function CreateVehicleModal() {
   const {push} = useHistory();
+  const {closeModal} = useModal();
   const dispatch = useDispatch();
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
@@ -14,20 +15,37 @@ export default function CreateVehicleModal() {
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const [errors, setErrors] = useState([]);
-  const {closeModal} = useModal();
   const [validationObject, setValidationObject] = useState({});
   const [key, setKey] = useState(Date.now());
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  let [filename, setFilename] = useState("");
+  const [imageURL, setImageURL] = useState("https://cybervana.s3.us-west-1.amazonaws.com/plus.png");
+  const [file, setFile] = useState("");
+  const [optional, setOptional] = useState("");
+  const maxFileError = "Selected image exceeds the maximum file size of 5Mb";
 
-    const errorsObject = {};
 
-    if (price < 1 || price.includes('.')) {
-      errorsObject.price = "Price must be an integer greater than 0.";
+  const fileWrap = (e) => {
+    e.stopPropagation();
+
+    const tempFile = e.target.files[0];
+
+    // Check for max image size of 5Mb
+    if (tempFile.size > 5000000) {
+      setFilename(maxFileError); // "Selected image exceeds the maximum file size of 5Mb"
+      return;
     }
 
-    setValidationObject(errorsObject);
+    const newImageURL = URL.createObjectURL(tempFile); // Generate a local URL to render the image file inside of the <img> tag.
+    setImage(tempFile);
+    setImageURL(newImageURL);
+    setFile(tempFile);
+    setFilename(tempFile.name);
+    setOptional("");
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     const formData = new FormData();
     formData.append("image", image);
@@ -63,7 +81,9 @@ export default function CreateVehicleModal() {
             </p>
           ))}
 
-        {validationObject.price && <p className="list-errors">{validationObject.price}</p>}
+        {validationObject.price && (
+          <p className="list-errors">{validationObject.price}</p>
+        )}
       </div>
 
       <form
@@ -71,13 +91,12 @@ export default function CreateVehicleModal() {
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-
         <div className="label-input-container">
           <label>Make</label>
           <input
             type="text"
             name="make"
-            placeholder="No more than 15 characters."
+            placeholder="No more than 15 characters"
             value={make}
             onChange={(e) => setMake(e.target.value)}
             required
@@ -90,7 +109,7 @@ export default function CreateVehicleModal() {
           <input
             type="text"
             name="model"
-            placeholder="No more than 30 characters."
+            placeholder="No more than 30 characters"
             value={model}
             onChange={(e) => setModel(e.target.value)}
             required
@@ -98,30 +117,51 @@ export default function CreateVehicleModal() {
         </div>
 
         <div className="label-input-container">
-          <label>Price</label>
+          <label>Price (without decimal)</label>
+        </div>
           <input
             type="text"
             name="price"
-            placeholder="Integer greater than 0."
+            placeholder="Integer greater than 0"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             required
           />
-        </div>
 
         <div className="description-input-container">
           <label className="description-label">Description</label>
           <textarea
             type="text"
             name="description"
-            placeholder="Please write at least 10 characters"
+            placeholder="Min. 10 - Max 100 characters"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
           />
         </div>
 
-        <div className="div-file-section">
+        <div className="file-inputs-container">
+          <input
+            type="file"
+            accept="image/png, image/jpeg, image/jpg"
+            id="post-image-input"
+            onChange={fileWrap}
+          ></input>
+          <div
+            className="file-inputs-filename"
+            style={{color: filename === maxFileError ? "red" : "#B7BBBF"}}
+          >
+            {filename}
+          </div>
+          <label htmlFor="post-image-input" className="file-input-labels">
+          <div style={{position: "absolute", top: "14px", left: "100px"}}>
+            <img src={imageURL} className="thumbnails"></img>
+          </div>
+            Choose File
+          </label>
+        </div>
+
+        {/* <div className="file-inputs-container">
           <label className="file-upload">
             <input
               type="file"
@@ -131,7 +171,7 @@ export default function CreateVehicleModal() {
               key={key}
             />
           </label>
-        </div>
+        </div> */}
 
         <div className="submit-container">
           <button

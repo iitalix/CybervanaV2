@@ -17,6 +17,7 @@ export default function UpdateVehicleModal({vehicleId}) {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
+  const [validationObject, setValidationObject] = useState({});
   const {closeModal} = useModal();
 
   useEffect(() => {
@@ -41,11 +42,10 @@ export default function UpdateVehicleModal({vehicleId}) {
 
     const postData = await dispatch(updateVehicleThunk(formData, vehicleId));
 
-    if (!Object.values(postData).includes("errors")) {
-
-      closeModal();
+    if (postData.errors === undefined || !postData.errors) {
+      dispatch(getVehicleDetailsThunk(vehicleId));
       push(`/vehicles/${vehicleId}`);
-      return dispatch(getVehicleDetailsThunk(vehicleId));
+      return closeModal();
     } else {
       setErrors(postData.errors);
     }
@@ -54,18 +54,26 @@ export default function UpdateVehicleModal({vehicleId}) {
   return (
     <div className="create-vehicle-parent-container">
       <h1>Update Your Post</h1>
+
+      <div className="listerrors-container">
+        {errors &&
+          errors.length >= 1 &&
+          errors?.map((error, idx) => (
+            <p className="list-errors" key={idx}>
+              {error}
+            </p>
+          ))}
+
+        {validationObject.price && (
+          <p className="list-errors">{validationObject.price}</p>
+        )}
+      </div>
+
       <form
         className="create-post-form"
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-        {errors &&
-          errors.length >= 1 &&
-          errors?.map((error, idx) => (
-            <div className="list-errors" key={idx}>
-              {error}
-            </div>
-          ))}
 
         <div className="label-input-container">
           <label>Make</label>
@@ -74,6 +82,7 @@ export default function UpdateVehicleModal({vehicleId}) {
             name="make"
             placeholder="Make"
             value={make}
+            required
             onChange={(e) => setMake(e.target.value)}
           />
         </div>
@@ -85,20 +94,22 @@ export default function UpdateVehicleModal({vehicleId}) {
             name="model"
             placeholder="Model"
             value={model}
+            required
             onChange={(e) => setModel(e.target.value)}
           />
         </div>
 
         <div className="label-input-container">
-          <label>Price</label>
+          <label>Price (without decimal)</label>
+        </div>
           <input
             type="text"
             name="price"
             placeholder="Price"
             value={price}
+            required
             onChange={(e) => setPrice(e.target.value)}
           />
-        </div>
 
         <div className="description-input-container">
         <label className="description-label">Description</label>
@@ -107,6 +118,7 @@ export default function UpdateVehicleModal({vehicleId}) {
             name="description"
             placeholder="Please write at least 10 characters"
             value={description}
+            required
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>

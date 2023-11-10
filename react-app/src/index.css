@@ -34,7 +34,7 @@ button {
 .vehicles-parent-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .card-image {
@@ -47,7 +47,7 @@ button {
   width: 425px;
   border-left: 1px solid rgb(173, 173, 173);
   border-radius: 8px;
-  margin-bottom: 24px;
+  margin: 12px;
   background-color: white;
   box-shadow: 0 0 1px rgba(18, 18, 20, 0.1), 0 2px 4px rgba(18, 18, 20, 0.2);
   transition: opacity 0.15s ease-in-out;
@@ -314,9 +314,7 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 20px;
-  width: 350px;
-  height: 624px;
+padding: 30px;
 }
 
 .create-vehicle-parent-container > form {
@@ -415,4 +413,70 @@ textarea {
   background-color: #FCEE09;
   text-decoration: underline;
   box-shadow: none;
+}
+
+/* AWS File Uploader */
+.file-inputs-container {
+  position: relative; /* This allows the elements within it to be positioned without taking this element out of the document flow. As it's parent is NOT positioned, it only effects the children. */
+}
+
+#post-image-input {
+  visibility: hidden;
+  /* Here we make the default file input button invisible on the page.
+     As the label for this input is connected to it using the htmlFor property, we can style the label as a button instead, and have it behave the same as the <input type="file" />
+     This extra step is necessary as the default <input type="file" /> CANNOT be styled with CSS!!
+  */
+}
+
+/*
+  Important note here is that the element is positioned "absolute".
+  You will need to adjust the top and left properties to get the label to appear where you want it on your page.
+ */
+
+.file-inputs-filename {
+  position: absolute;
+  top: 68px;
+  left: 100px;
+  z-index: 2;
+  color: var(--minimal-border);
+  background-color: var(--minimal-background);
+  font-size: 14px;
+  min-width: 90px;
+  padding-bottom: 2px;
+}
+
+/*
+  Here we set fixed dimensions for the thumbnail. Size it to your liking!
+  Positioning for this element has been done inline, in the hopes of making this class more re-usable.
+  Feel free to position it in the CSS file if it suits your aims.
+*/
+
+.thumbnails {
+  width: 50px;
+  height: 50px;
+  outline: none;
+}
+
+/*
+  The 2 directives below style our label like a button and give it a nice on hover effect.
+*/
+
+.file-input-labels {
+  display: block;
+  border: 2px solid var(--minimal-border);
+  border-radius: 4px;
+  color: var(--minimal-border);
+  background-color: var(--minimal-background);
+  width: 124px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  padding-top: 7px;
+  transition: all 0.3s ease-in-out;
+}
+
+.file-input-labels:hover {
+  color: #FCEE09;
+  border-color:#38b6ff;
+  cursor: pointer;
 }
