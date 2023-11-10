@@ -3,10 +3,10 @@ import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {useModal} from "../../../context/Modal";
 import {createVehicleThunk, getOwnerVehicles} from "../../../store/vehicles";
-import "../CreateVehicleModal/CreateVehicle.css";
 
 export default function CreateVehicleModal() {
   const {push} = useHistory();
+  const {closeModal} = useModal();
   const dispatch = useDispatch();
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
@@ -15,24 +15,38 @@ export default function CreateVehicleModal() {
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const [errors, setErrors] = useState([]);
-  const {closeModal} = useModal();
   const [validationObject, setValidationObject] = useState({});
   const [key, setKey] = useState(Date.now());
+
+  let [filename, setFilename] = useState("");
+  const [imageURL, setImageURL] = useState("https://cybervana.s3.us-west-1.amazonaws.com/plus.png");
+  const [file, setFile] = useState("");
+  const [optional, setOptional] = useState("");
+  const maxFileError = "Selected image exceeds the maximum file size of 5Mb";
+
+
+  const fileWrap = (e) => {
+    e.stopPropagation();
+
+    const tempFile = e.target.files[0];
+
+    // Check for max image size of 5Mb
+    if (tempFile.size > 5000000) {
+      setFilename(maxFileError); // "Selected image exceeds the maximum file size of 5Mb"
+      return;
+    }
+
+    const newImageURL = URL.createObjectURL(tempFile); // Generate a local URL to render the image file inside of the <img> tag.
+    setImage(tempFile);
+    setImageURL(newImageURL);
+    setFile(tempFile);
+    setFilename(tempFile.name);
+    setOptional("");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const errorsObject = {};
-
-    if (description?.length < 10) {
-      errorsObject.description = "Description must be more than 10 characters.";
-    }
-
-    if (price < 1 || price.includes('.')) {
-      errorsObject.price = "Price must be an integer greater than 0.";
-    }
-
-    setValidationObject(errorsObject);
     const formData = new FormData();
     formData.append("image", image);
     formData.append("make", make);
@@ -54,94 +68,120 @@ export default function CreateVehicleModal() {
     }
   };
 
-
   return (
     <div className="create-vehicle-parent-container">
       <h1>Post Your Vehicle</h1>
+
+      <div className="listerrors-container">
+        {errors &&
+          errors.length >= 1 &&
+          errors.map((error, idx) => (
+            <p className="list-errors" key={idx}>
+              {error}
+            </p>
+          ))}
+
+        {validationObject.price && (
+          <p className="list-errors">{validationObject.price}</p>
+        )}
+      </div>
+
       <form
         className="create-post-form"
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
+        <div className="label-input-container">
+          <label>Make</label>
+          <input
+            type="text"
+            name="make"
+            placeholder="No more than 15 characters"
+            value={make}
+            onChange={(e) => setMake(e.target.value)}
+            required
+          />
+        </div>
 
-        {errors &&
-          errors.length >= 1 &&
-          errors.map((error, idx) => (
-            <div className="list-errors" key={idx}>
-              {error}
-            </div>
-          ))}
+        <div className="label-input-container">
+          <label>Model</label>
 
-        <div className="div-file-section">
-          <label className="style-file-upload">
+          <input
+            type="text"
+            name="model"
+            placeholder="No more than 30 characters"
+            value={model}
+            onChange={(e) => setModel(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="label-input-container">
+          <label>Price (without decimal)</label>
+        </div>
+          <input
+            type="text"
+            name="price"
+            placeholder="Integer greater than 0"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            required
+          />
+
+        <div className="description-input-container">
+          <label className="description-label">Description</label>
+          <textarea
+            type="text"
+            name="description"
+            placeholder="Min. 10 - Max 100 characters"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="file-inputs-container">
+          <input
+            type="file"
+            accept="image/png, image/jpeg, image/jpg"
+            id="post-image-input"
+            onChange={fileWrap}
+          ></input>
+          <div
+            className="file-inputs-filename"
+            style={{color: filename === maxFileError ? "red" : "#B7BBBF"}}
+          >
+            {filename}
+          </div>
+          <label htmlFor="post-image-input" className="file-input-labels">
+          <div style={{position: "absolute", top: "14px", left: "100px"}}>
+            <img src={imageURL} className="thumbnails"></img>
+          </div>
+            Choose File
+          </label>
+        </div>
+
+        {/* <div className="file-inputs-container">
+          <label className="file-upload">
             <input
               type="file"
               accept="image/*"
-              className="hide-file-upload"
+              id="choosefile-button"
               onChange={(e) => setImage(e.target.files[0])}
               key={key}
             />
           </label>
-          {/* <div>{image !== null ? image["name"] : "Choose Image"}</div> */}
+        </div> */}
+
+        <div className="submit-container">
+          <button
+            className="submit-button"
+            type="submit"
+            // disabled={Object.keys(validationObject).length > 0}
+          >
+            Submit
+          </button>
         </div>
-
-        <label>Make</label>
-        <input
-          type="text"
-          name="make"
-          placeholder="Required field"
-          value={make}
-          onChange={(e) => setMake(e.target.value)}
-          required
-        />
-
-        <label>Model</label>
-        <input
-          type="text"
-          name="model"
-          placeholder="Required field"
-          value={model}
-          onChange={(e) => setModel(e.target.value)}
-          required
-        />
-
-        <label>Price</label>
-        <div className="list-errors">
-          {validationObject?.price && (
-            <p className="errors-one-post"> {validationObject?.price}</p>
-          )}
-        </div>
-        <input
-          type="text"
-          name="price"
-          placeholder="Required field"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
-        />
-
-        <label>Description</label>
-        <div className="list-errors">
-          {validationObject?.description && (
-            <p className="errors-one-post"> {validationObject?.description}</p>
-          )}
-        </div>
-        <textarea
-          type="text"
-          name="description"
-          placeholder="Please write at least 10 characters"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-
-        <button
-          className="create-post-submit"
-          type="submit"
-          // disabled={Object.keys(validationObject).length > 0}
-        >
-          Submit
-        </button>
         {imageLoading && (
           <div aria-busy="true" aria-describedby="progress-bar">
             <p>Uploading</p>

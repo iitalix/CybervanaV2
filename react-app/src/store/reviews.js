@@ -36,6 +36,8 @@ export const createReviewThunk = (vehicleId, review) => async (dispatch) => {
       body: JSON.stringify(review),
    });
 
+   console.log("RESPONSE", response)
+
    if (response.ok) {
       const data = await response.json();
 
@@ -43,6 +45,7 @@ export const createReviewThunk = (vehicleId, review) => async (dispatch) => {
       return data;
    } else {
       const errors = await response.json();
+      console.log("ERRORS", errors)
       return errors;
    }
 };

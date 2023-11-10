@@ -73,8 +73,6 @@ def update_vehicle(id):
     vehicle_to_update = Vehicle.query.get(id)
     form = UpdateVehicleForm()
 
-    print("VEHICLE ID TO UPDATE::", vehicle_to_update)
-
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():

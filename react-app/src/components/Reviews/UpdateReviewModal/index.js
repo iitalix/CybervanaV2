@@ -8,14 +8,14 @@ export default function UpdateReviewModal({reviewId}) {
   const dispatch = useDispatch();
   const {closeModal} = useModal();
   const [errors, setErrors] = useState({});
-  const allReviews = useSelector((state) => state.reviews.allReviews)
+  const allReviews = useSelector((state) => state.reviews.allReviews);
   const reviewToUpdate = allReviews[reviewId];
   const [revText, setRevText] = useState(reviewToUpdate.review);
   const [rating, setRating] = useState(reviewToUpdate.stars);
 
   useEffect(() => {
     dispatch(getEveryReviewThunk());
-  }, [dispatch, rating])
+  }, [dispatch, rating]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,27 +25,37 @@ export default function UpdateReviewModal({reviewId}) {
       stars: rating,
     };
 
-    dispatch(updateReviewThunk(newReview, reviewId));
-    setRevText("");
-    setRating(0);
-    return dispatch(getEveryReviewThunk()).then(closeModal());
-  };
+    const newRevData = await dispatch(updateReviewThunk(newReview, reviewId));
 
-  const disableSubmit = () => {
-    if (revText.length < 10 || rating === 0) return true;
+    if (newRevData?.errors === undefined || !newRevData.errors) {
+      setRevText("");
+      setRating(0);
+      dispatch(getEveryReviewThunk());
+      return closeModal();
+    } else {
+      setErrors(newRevData.errors);
+    }
   };
 
   const onChange = (number) => {
     setRating(parseInt(number));
   };
 
-  const ulClassName = disableSubmit ? " " : "action-button";
 
   return (
     <div className="review-modal-container">
       <h1 className="modal-headers">Update your review</h1>
-      {errors.review && <p>{errors.review}</p>}
-      {errors.stars && <p>{errors.stars}</p>}
+
+      <div className="listerrors-rev-container">
+        {errors &&
+          errors.length >= 1 &&
+          errors.map((error, idx) => (
+            <p className="list-errors" key={idx}>
+              {error}
+            </p>
+          ))}
+      </div>
+
       <form onSubmit={handleSubmit} className="review-form-container">
         <div className="stars-container">
           <StarInputRatings
@@ -67,9 +77,7 @@ export default function UpdateReviewModal({reviewId}) {
 
         <button
           type="submit"
-          className={ulClassName}
           id="review-submit"
-          disabled={disableSubmit()}
         >
           Submit Your Review
         </button>

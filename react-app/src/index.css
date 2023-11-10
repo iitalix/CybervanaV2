@@ -1,7 +1,8 @@
 /* TODO Add site wide styles */
 body {
   margin: 0;
-  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  font-family: 'Roboto Slab', serif;
+  /* font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif; */
 }
 
 h1,
@@ -9,7 +10,8 @@ h2 {
   /* font-family: 'Orbitron', sans-serif; */
   color: black;
   /* text-shadow: 0 0 1px black, 0 2px 4px black; */
-  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  font-family: 'Roboto Slab', serif;
+  /* font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif; */
 }
 
 a {
@@ -28,11 +30,16 @@ button {
   font-family: 'Orbitron', sans-serif;
 }
 
+.fine-print {
+  font-size: 12px;
+  text-align: center;
+}
+
 /* Cards */
 .vehicles-parent-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .card-image {
@@ -45,7 +52,8 @@ button {
   width: 425px;
   border-left: 1px solid rgb(173, 173, 173);
   border-radius: 8px;
-  margin-bottom: 24px;
+  margin: 12px;
+  background-color: white;
   box-shadow: 0 0 1px rgba(18, 18, 20, 0.1), 0 2px 4px rgba(18, 18, 20, 0.2);
   transition: opacity 0.15s ease-in-out;
   opacity: 1;
@@ -275,6 +283,13 @@ button {
   align-items: center;
   justify-content: center;
 }
+
+.listerrors-rev-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 34px;
+}
+
 .star-input-container {
   display: flex;
   flex-direction: row;
@@ -302,12 +317,62 @@ button {
 }
 
 textarea {
-  height: 100px;
-  width: 245px;
+  height: 106px;
+  width: 265px;
 }
 
-/* Delete Form Modal */
+/* Create/Update Form Modal */
+.create-vehicle-parent-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+padding: 30px;
+}
 
+.create-vehicle-parent-container > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.description-input-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.description-label {
+  padding-bottom: 10px;
+}
+
+.submit-container {
+  width: 100%;
+}
+
+.submit-button {
+  background-color: unset;
+  border: none;
+  padding: 20px;
+  margin-top: 20px;
+  width: 100%;
+  border: 1px solid black;
+  background-color: #38b6ff;
+}
+
+.submit-button:hover {
+  text-decoration: underline;
+  background-color: #FCEE09;
+}
+
+
+/* Delete Form Modal */
 #delete-vehicle-modal-container {
   display: flex;
   flex-direction: column;
@@ -319,13 +384,15 @@ textarea {
   text-wrap: nowrap;
   border: none;
   background-color: unset;
-  padding: 10px;
+  padding: 24px;
+  font-size: 16px;
   width: 50%;
 }
 
 .confirm-buttons button:hover {
   background-color: #FCEE09;
   text-decoration: underline;
+  border: 1px solid black;
 }
 
 /* Brand Cards */
@@ -358,4 +425,70 @@ textarea {
   background-color: #FCEE09;
   text-decoration: underline;
   box-shadow: none;
+}
+
+/* AWS File Uploader */
+.file-inputs-container {
+  position: relative; /* This allows the elements within it to be positioned without taking this element out of the document flow. As it's parent is NOT positioned, it only effects the children. */
+}
+
+#post-image-input {
+  visibility: hidden;
+  /* Here we make the default file input button invisible on the page.
+     As the label for this input is connected to it using the htmlFor property, we can style the label as a button instead, and have it behave the same as the <input type="file" />
+     This extra step is necessary as the default <input type="file" /> CANNOT be styled with CSS!!
+  */
+}
+
+/*
+  Important note here is that the element is positioned "absolute".
+  You will need to adjust the top and left properties to get the label to appear where you want it on your page.
+ */
+
+.file-inputs-filename {
+  position: absolute;
+  top: 68px;
+  left: 100px;
+  z-index: 2;
+  color: var(--minimal-border);
+  background-color: var(--minimal-background);
+  font-size: 14px;
+  min-width: 90px;
+  padding-bottom: 2px;
+}
+
+/*
+  Here we set fixed dimensions for the thumbnail. Size it to your liking!
+  Positioning for this element has been done inline, in the hopes of making this class more re-usable.
+  Feel free to position it in the CSS file if it suits your aims.
+*/
+
+.thumbnails {
+  width: 50px;
+  height: 50px;
+  outline: none;
+}
+
+/*
+  The 2 directives below style our label like a button and give it a nice on hover effect.
+*/
+
+.file-input-labels {
+  display: block;
+  border: 2px solid var(--minimal-border);
+  border-radius: 4px;
+  color: var(--minimal-border);
+  background-color: var(--minimal-background);
+  width: 124px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  padding-top: 7px;
+  transition: all 0.3s ease-in-out;
+}
+
+.file-input-labels:hover {
+  color: #FCEE09;
+  border-color:#38b6ff;
+  cursor: pointer;
 }

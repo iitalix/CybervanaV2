@@ -74,82 +74,111 @@ function SignupFormModal() {
               </div>
             ))}
         </div>
-        <label>
-          {errors.firstName && (
-            <p className="list-errors">{errors.firstName}</p>
-          )}
+
+        <div className="label-input-container">
+          <label>First Name</label>
           <input
             type="text"
-            placeholder="First Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
-        </label>
-        <label>
-          {errors.lastName && <p className="list-errors">{errors.lastName}</p>}
+        </div>
+
+        <div className="signup-error">
+          {errors.firstName && (
+            <p className="list-errors">{errors.firstName}</p>
+          )}
+        </div>
+
+        <div className="label-input-container">
+          <label>Last Name</label>
           <input
             type="text"
-            placeholder="Last Name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
           />
-        </label>
-        <label>
-          {errors.age && <p className="list-errors">{errors.age}</p>}
+        </div>
+
+        <div className="signup-error">
+          {errors.lastName && <p className="list-errors">{errors.lastName}</p>}
+        </div>
+
+        <div className="label-input-container">
+          <label>Age</label>
           <input
             type="text"
-            placeholder="Age"
             value={age}
             onChange={(e) => setAge(e.target.value)}
             required
           />
-        </label>
-        <label>
-          {errors.email && <p className="list-errors">{errors.email}</p>}
+        </div>
+
+        <div className="signup-error">
+          {errors.age && <p className="list-errors">{errors.age}</p>}
+        </div>
+
+        <div className="label-input-container">
+          <label>Email</label>
           <input
             type="text"
-            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
-        <label>
-          {errors.username && <p className="list-errors">{errors.username}</p>}
+        </div>
+
+        <div className="signup-error">
+          {errors.email && <p className="list-errors">{errors.email}</p>}
+        </div>
+
+        <div className="label-input-container">
+          <label>Username</label>
           <input
             type="text"
-            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-        </label>
-        <label>
-          {errors.password && <p className="list-errors">{errors.password}</p>}
+        </div>
+
+        <div className="signup-error">
+          {errors.username && <p className="list-errors">{errors.username}</p>}
+        </div>
+
+        <div className="label-input-container">
+          <label>Password</label>
           <input
             type="password"
-            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
-        <label>
-          {errors.confirmPassword && (
-            <p className="list-errors">{errors.confirmPassword}</p>
-          )}
+        </div>
+
+        <div className="signup-error">
+          {errors.password && <p className="list-errors">{errors.password}</p>}
+        </div>
+
+        <div className="label-input-container">
+          <label>Confirm Password</label>
           <input
             type="password"
-            placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-        </label>
+        </div>
+
+        <div className="signup-error">
+          {errors.confirmPassword && (
+            <p className="list-errors">{errors.confirmPassword}</p>
+          )}
+        </div>
+
         <div className="form-buttons">
-          <button type="submit" className="login-button">
+          <button type="submit" className="submit-button">
             Sign Up
           </button>
           <button

@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { login } from "../../store/session";
-import { useDispatch } from "react-redux";
-import { useModal } from "../../context/Modal";
-import "../LoginFormModal/LoginForm.css"
+import React, {useState} from "react";
+import {useHistory} from "react-router-dom";
+import {login} from "../../store/session";
+import {useDispatch} from "react-redux";
+import {useModal} from "../../context/Modal";
+import "../LoginFormModal/LoginForm.css";
 
 function LoginFormModal() {
-  const { push } = useHistory();
+  const {push} = useHistory();
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const { closeModal } = useModal();
+  const {closeModal} = useModal();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,8 +19,8 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-      closeModal()
-      push("/vehicles/all")
+      closeModal();
+      push("/vehicles/all");
     }
   };
 
@@ -30,21 +30,26 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-      closeModal()
-      push("/vehicles/all")
+      closeModal();
+      push("/vehicles/all");
     }
   };
 
   return (
     <div className="login-modal-container">
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit} className="login-form-modal">
+
+      <div id="login-errors-container">
         <div className="list-errors">
           {errors.map((error, idx) => (
             <div key={idx}>{error}</div>
           ))}
         </div>
-        <label>
+      </div>
+
+      <form onSubmit={handleSubmit} className="login-form-modal">
+        <div className="label-input-container">
+          <label>Email</label>
           <input
             type="text"
             value={email}
@@ -53,8 +58,10 @@ function LoginFormModal() {
             required
             className="login-modal-input"
           />
-        </label>
-        <label>
+        </div>
+
+        <div className="label-input-container">
+          <label>Password</label>
           <input
             type="password"
             value={password}
@@ -63,9 +70,13 @@ function LoginFormModal() {
             required
             className="login-modal-input"
           />
-        </label>
-        <button type="submit" className="login-button">Log In</button>
-        <button onClick={handleDemo} className="login-button"id="demo-button">Demo User</button>
+        </div>
+        <button type="submit" className="submit-button">
+          Log In
+        </button>
+        <button onClick={handleDemo} className="login-button" id="demo-button">
+          Demo User
+        </button>
       </form>
     </div>
   );

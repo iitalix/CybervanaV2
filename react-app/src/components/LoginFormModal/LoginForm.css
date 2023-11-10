@@ -2,15 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 240px;
   padding: 20px 30px;
-
 }
 
 .login-modal-container > form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding-bottom: 24px;
 }
 
@@ -28,8 +25,22 @@
 input {
   margin-left: 10px;
   margin-right: 10px;
-  margin-bottom: 8px;
   padding: 8px;
+  width: 172px;
+}
+
+#login-errors-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 35px;
+}
+
+
+/* Create Vehicle Form */
+.listerrors-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 75px;
 }
 
 .list-errors, .list-errors p {
