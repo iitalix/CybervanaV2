@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { login } from "../../store/session";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import './LoginForm.css';
+import React, {useState} from "react";
+import {login} from "../../store/session";
+import {useDispatch, useSelector} from "react-redux";
+import {Redirect} from "react-router-dom";
+import "./LoginForm.css";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -27,30 +27,29 @@ function LoginFormPage() {
       <form onSubmit={handleSubmit}>
         <div>
           {errors.map((error) => (
-            <>
-              <div className="list-errors">{error}</div>
-            </>
+            <div className="list-errors">{error}</div>
           ))}
-
         </div>
-        <label>
-          Email
+
+        <div className="label-input-container">
+          <label>Email</label>
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Password
+        </div>
+
+        <div className="label-input-container">
+          <label>Password</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
+        </div>
         <button type="submit">Log In</button>
       </form>
     </>

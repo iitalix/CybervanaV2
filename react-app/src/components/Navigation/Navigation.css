@@ -5,7 +5,7 @@
 .nav-container {
   padding: 20px;
   background-color: #38b6ff;
-  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  font-family: 'Roboto Slab', serif;
 }
 
 /* Header */
@@ -62,7 +62,7 @@
   margin-top: 5px;
   cursor: pointer;
   width: 100%;
-  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  font-family: 'Orbitron', sans-serif;
 }
 
 .profile-container button:hover {
@@ -86,6 +86,7 @@
 
 #user-links {
   border-top: 1px solid black;
+  font-family: 'Orbitron', sans-serif;
 }
 
 #user-links div:hover {

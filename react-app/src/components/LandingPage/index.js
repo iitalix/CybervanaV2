@@ -21,7 +21,7 @@ export default function LandingPage() {
           id="landing-image"
         />
         <div id="banner-overlay-header">DEALS ON WHEELS</div>
-        <div id="banner-overlay-sub">The Best Selection in Night City</div>
+        <div id="banner-overlay-sub">Night City's Best Used Vehicles</div>
       </div>
 
       <div>

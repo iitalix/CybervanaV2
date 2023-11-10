@@ -7,7 +7,6 @@ import {
   getVehicleDetailsThunk,
   getOwnerVehicles,
 } from "../../../store/vehicles";
-import "../CreateVehicleModal/CreateVehicle.css";
 
 export default function UpdateVehicleModal({vehicleId}) {
   const {push} = useHistory();
@@ -18,6 +17,7 @@ export default function UpdateVehicleModal({vehicleId}) {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
+  const [validationObject, setValidationObject] = useState({});
   const {closeModal} = useModal();
 
   useEffect(() => {
@@ -33,16 +33,6 @@ export default function UpdateVehicleModal({vehicleId}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let newErrors = {};
-
-    if (!make) newErrors.make = "Make is a required field.";
-    if (!model) newErrors.model = "Model is a required field.";
-    if (price.toString().includes(".")) newErrors.price = "Price must be an INTEGER greater than 0."
-    if (price % 1 !== 0) newErrors.price = "Price must be an INTEGER greater than 0.";
-    if (price < 1) newErrors.price = "Price must be an INTEGER greater than 0.";
-    if (description.length < 10)
-      newErrors.description = "Description must be at least 10 characters.";
-
     const formData = {
       make,
       model,
@@ -50,78 +40,94 @@ export default function UpdateVehicleModal({vehicleId}) {
       description,
     };
 
-    if (Object.keys(newErrors).length === 0) {
-      const data = await dispatch(updateVehicleThunk(formData, vehicleId));
+    const postData = await dispatch(updateVehicleThunk(formData, vehicleId));
 
-      closeModal();
+    if (postData.errors === undefined || !postData.errors) {
+      dispatch(getVehicleDetailsThunk(vehicleId));
       push(`/vehicles/${vehicleId}`);
-      return dispatch(getVehicleDetailsThunk(vehicleId));
+      return closeModal();
     } else {
-      setErrors(newErrors);
+      setErrors(postData.errors);
     }
   };
 
   return (
     <div className="create-vehicle-parent-container">
       <h1>Update Your Post</h1>
+
+      <div className="listerrors-container">
+        {errors &&
+          errors.length >= 1 &&
+          errors?.map((error, idx) => (
+            <p className="list-errors" key={idx}>
+              {error}
+            </p>
+          ))}
+
+        {validationObject.price && (
+          <p className="list-errors">{validationObject.price}</p>
+        )}
+      </div>
+
       <form
         className="create-post-form"
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-        {errors &&
-          errors.length >= 1 &&
-          errors?.map((error, idx) => (
-            <div className="list-errors" key={idx}>
-              {error}
-            </div>
-          ))}
 
-        <label>Make</label>
-        {errors.make && <p className="list-errors">{errors.make}</p>}
-        <input
-          type="text"
-          name="make"
-          placeholder="Make"
-          value={make}
-          onChange={(e) => setMake(e.target.value)}
-        />
+        <div className="label-input-container">
+          <label>Make</label>
+          <input
+            type="text"
+            name="make"
+            placeholder="Make"
+            value={make}
+            required
+            onChange={(e) => setMake(e.target.value)}
+          />
+        </div>
 
-        <label>Model</label>
-        {errors.model && <p className="list-errors">{errors.model}</p>}
-        <input
-          type="text"
-          name="model"
-          placeholder="Model"
-          value={model}
-          onChange={(e) => setModel(e.target.value)}
-        />
+        <div className="label-input-container">
+          <label>Model</label>
+          <input
+            type="text"
+            name="model"
+            placeholder="Model"
+            value={model}
+            required
+            onChange={(e) => setModel(e.target.value)}
+          />
+        </div>
 
-        <label>Price</label>
-        {errors.price && <p className="list-errors">{errors.price}</p>}
-        <input
-          type="text"
-          name="price"
-          placeholder="Price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
+        <div className="label-input-container">
+          <label>Price (without decimal)</label>
+        </div>
+          <input
+            type="text"
+            name="price"
+            placeholder="Price"
+            value={price}
+            required
+            onChange={(e) => setPrice(e.target.value)}
+          />
 
-        <label>Description</label>
-        {errors.description && (
-          <p className="list-errors">{errors.description}</p>
-        )}
-        <textarea
-          type="text"
-          name="description"
-          placeholder="Please write at least 10 characters"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
+        <div className="description-input-container">
+        <label className="description-label">Description</label>
+          <textarea
+            type="text"
+            name="description"
+            placeholder="Please write at least 10 characters"
+            value={description}
+            required
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
 
-        <button className="create-post-submit" type="submit">
-          Submit
-        </button>
+        <div className="submit-container">
+          <button className="submit-button" type="submit">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );
