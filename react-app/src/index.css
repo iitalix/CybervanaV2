@@ -30,6 +30,11 @@ button {
   font-family: 'Orbitron', sans-serif;
 }
 
+.fine-print {
+  font-size: 12px;
+  text-align: center;
+}
+
 /* Cards */
 .vehicles-parent-container {
   display: flex;
@@ -278,6 +283,13 @@ button {
   align-items: center;
   justify-content: center;
 }
+
+.listerrors-rev-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 34px;
+}
+
 .star-input-container {
   display: flex;
   flex-direction: row;

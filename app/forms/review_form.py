@@ -7,6 +7,9 @@ def review_charlimit(form, field):
  #Checks for character limits in Make field
     review = field.data
 
+    if len(review) < 10:
+        raise ValidationError('Review must be at least 10 characters.')
+
     if len(review) > 1000:
         raise ValidationError('Review is limited to 1000 characters')
 
