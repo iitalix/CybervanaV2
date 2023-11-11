@@ -4,7 +4,8 @@
 
 .nav-container {
   padding: 20px;
-  background-color: #38b6ff;
+  background-color: black;
+  /* background-color: #38b6ff; */
   font-family: 'Roboto Slab', serif;
 }
 
@@ -26,6 +27,7 @@
   background-color: unset;
   cursor: pointer;
   font-size: 22px;
+  color: yellow;
 }
 
 .fa-bars {
@@ -101,11 +103,11 @@
 }
 
 .profile-corner-container button:hover {
-  color: #FCEE09;
+  color: #38B6FF;
 }
 
 #post-vehicle-button > button {
-  color: black;
+  color: yellow;
   background-color: unset;
   border: none;
   cursor: pointer;
@@ -114,7 +116,7 @@
 }
 
 #post-vehicle-button > button:hover {
-  color: #FCEE09;
+  color: #38B6FF;
 }
 
 nav {

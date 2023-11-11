@@ -5,7 +5,7 @@ import ReviewsComponent from "../../Reviews/ReviewsComponent";
 import {getAllVehicles} from "../../../store/vehicles";
 
 export default function VehicleDetailsPage() {
-  const { push } = useHistory();
+  const {push} = useHistory();
   const dispatch = useDispatch();
   const {id} = useParams();
   const vehicles = useSelector((state) => state.vehicles.allVehicles);
@@ -25,7 +25,9 @@ export default function VehicleDetailsPage() {
     <div className="vehicle-details-page-container">
       <div className="header-container">
         <h1>Vehicle Details</h1>
-        <button onClick={goToAllVehicles} className="header-buttons">Explore All Vehicles</button>
+        <button onClick={goToAllVehicles} className="header-buttons">
+          Explore All Vehicles
+        </button>
       </div>
 
       <div className="vehicle-details-container">
@@ -33,14 +35,18 @@ export default function VehicleDetailsPage() {
           <img src={vehicle.photoUrl} alt="vehicle" id="detail-image" />
         </div>
 
-        <div id="detail-section-container">
-          <p>
-            {vehicle.make} {vehicle.model}
+        <div id="detail-section-parent">
+          <div id="detail-section-container">
+            <p>
+              {vehicle.make} {vehicle.model}
+            </p>
+            <p>${vehicle.price}</p>
+          </div>
+          <div id="detail-description">{vehicle.description}</div>
+          <p id="posted-by">
+            Posted by {vehicle.users.firstName} {vehicle.users.lastName}
           </p>
-          <p>${vehicle.price}</p>
         </div>
-        <div id="detail-description">{vehicle.description}</div>
-        <p id="posted-by">Posted by {vehicle.users.firstName} {vehicle.users.lastName}</p>
       </div>
 
       <ReviewsComponent vehicleId={vehicle.id} />

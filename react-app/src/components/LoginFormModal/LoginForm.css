@@ -27,6 +27,8 @@ input {
   margin-right: 10px;
   padding: 8px;
   width: 172px;
+  border-radius: 8px;
+  border-color: deepskyblue;
 }
 
 #login-errors-container {
