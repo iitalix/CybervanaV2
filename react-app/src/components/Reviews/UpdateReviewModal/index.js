@@ -77,6 +77,7 @@ export default function UpdateReviewModal({reviewId}) {
 
         <button
           type="submit"
+          className="submit-button"
           id="review-submit"
         >
           Submit Your Review

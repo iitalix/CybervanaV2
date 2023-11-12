@@ -74,6 +74,7 @@ export default function ReviewFormModal({vehicleId}) {
 
         <button
           type="submit"
+          className="submit-button"
           id="review-submit"
         >
           Submit Your Review
