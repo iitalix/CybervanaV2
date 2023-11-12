@@ -4,6 +4,8 @@
   align-items: center;
   justify-content: center;
   padding: 45px 60px;
+  background-color: yellow;
+  border-radius: 8px;
 }
 
 .sign-up-container > form {

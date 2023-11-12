@@ -15,7 +15,6 @@ export default function CreateVehicleModal() {
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const [errors, setErrors] = useState([]);
-  const [validationObject, setValidationObject] = useState({});
   const [key, setKey] = useState(Date.now());
 
   let [filename, setFilename] = useState("");
@@ -80,10 +79,6 @@ export default function CreateVehicleModal() {
               {error}
             </p>
           ))}
-
-        {validationObject.price && (
-          <p className="list-errors">{validationObject.price}</p>
-        )}
       </div>
 
       <form
@@ -161,23 +156,10 @@ export default function CreateVehicleModal() {
           </label>
         </div>
 
-        {/* <div className="file-inputs-container">
-          <label className="file-upload">
-            <input
-              type="file"
-              accept="image/*"
-              id="choosefile-button"
-              onChange={(e) => setImage(e.target.files[0])}
-              key={key}
-            />
-          </label>
-        </div> */}
-
         <div className="submit-container">
           <button
             className="submit-button"
             type="submit"
-            // disabled={Object.keys(validationObject).length > 0}
           >
             Submit
           </button>
