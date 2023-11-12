@@ -42,12 +42,12 @@ export default function ReviewsComponent({vehicleId}) {
         {sessionUser &&
           !currUserReview &&
           sessionUser?.id !== vehicle?.ownerId && (
-            <a id="review-link-button">
+            <div id="review-link-button">
               <OpenModalButton
                 buttonText="Review This Vehicle"
                 modalComponent={<ReviewFormModal vehicleId={vehicleId} />}
               />
-            </a>
+            </div>
           )}
       </div>
       <div id="review-container">
