@@ -33,7 +33,6 @@ def update_new_review(id):
     review_to_update = Review.query.get(id)
 
     form = ReviewForm()
-    print("REV FORM", form)
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
@@ -45,7 +44,7 @@ def update_new_review(id):
 
         db.session.commit()
         return review_to_update.to_dict()
-    print("ERRORS::", form.errors)
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 

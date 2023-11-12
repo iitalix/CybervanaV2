@@ -29,18 +29,18 @@
     cursor: pointer;
 }
 
-#banner-overlay-sub {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #FCEE09;
-  padding: 10px 20px;
-  font-family: 'Roboto Slab', serif;
-  font-size: 22px;
-  text-align: center;
-  text-shadow: 2px 2px 2px black;
-  cursor: pointer;
+#banner-overlay-header > p {
+    margin-bottom: 0;
+}
+
+#subheading {
+    font-family: 'Roboto Slab', serif;
+    font-size: 22px;
+    color: #FCEE09;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    cursor: pointer;
+    margin: 0;
 }
 
 #landing-button-menu {
