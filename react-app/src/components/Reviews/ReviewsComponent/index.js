@@ -39,14 +39,16 @@ export default function ReviewsComponent({vehicleId}) {
     <div className="vehicle-reviews-container">
       <div className="header-container">
         <h2>User Reviews</h2>
-        {sessionUser && !currUserReview && sessionUser?.id !== vehicle?.ownerId && (
-          <a id="review-link-button">
-            <OpenModalButton
-              buttonText="Review This Vehicle"
-              modalComponent={<ReviewFormModal vehicleId={vehicleId} />}
-            />
-          </a>
-        )}
+        {sessionUser &&
+          !currUserReview &&
+          sessionUser?.id !== vehicle?.ownerId && (
+            <a id="review-link-button">
+              <OpenModalButton
+                buttonText="Review This Vehicle"
+                modalComponent={<ReviewFormModal vehicleId={vehicleId} />}
+              />
+            </a>
+          )}
       </div>
       <div id="review-container">
         {vehicleReviews.length > 0 ? (
@@ -60,32 +62,37 @@ export default function ReviewsComponent({vehicleId}) {
                   <div className="stars-and-review">
                     <div id="revStars">
                       {review.stars && (
-                        <StarInputRatings rating={review.stars} disabled={true} />
+                        <StarInputRatings
+                          rating={review.stars}
+                          disabled={true}
+                        />
                       )}
                     </div>
                     <p id="revDate">Posted on: {fixDate(review.createdAt)}</p>
                   </div>
                 </div>
                 <div id="revReview">{review.review}</div>
-              </div>
 
-              {currUserReview === review.id && (
-                <div className="review-edit-delete-buttons">
-                  <OpenModalButton
-                    buttonText="Edit Review"
-                    modalComponent={<UpdateReviewModal reviewId={review.id} />}
-                  />
-                  <OpenModalButton
-                    buttonText="Delete"
-                    modalComponent={
-                      <DeleteReviewModal
-                        reviewId={review.id}
-                        vehicleId={vehicleId}
-                      />
-                    }
-                  />
-                </div>
-              )}
+                {currUserReview === review.id && (
+                  <div className="review-edit-delete-buttons">
+                    <OpenModalButton
+                      buttonText="Edit Review"
+                      modalComponent={
+                        <UpdateReviewModal reviewId={review.id} />
+                      }
+                    />
+                    <OpenModalButton
+                      buttonText="Delete"
+                      modalComponent={
+                        <DeleteReviewModal
+                          reviewId={review.id}
+                          vehicleId={vehicleId}
+                        />
+                      }
+                    />
+                  </div>
+                )}
+              </div>
             </div>
           ))
         ) : (
