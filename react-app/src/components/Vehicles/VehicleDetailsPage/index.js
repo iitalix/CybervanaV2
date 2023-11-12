@@ -19,7 +19,7 @@ export default function VehicleDetailsPage() {
     return push("/vehicles/all");
   };
 
-  if (!Object.values(vehicles).length) return null;
+  if (!Object.values(vehicles).length || !vehicle) return null;
 
   return (
     <div className="vehicle-details-page-container">

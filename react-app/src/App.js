@@ -6,6 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import AllVehiclesPage from "./components/Vehicles/AllVehiclesPage";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
 import YourVehiclesPage from "./components/Vehicles/YourVehiclesPage";
 import LandingPage from "./components/LandingPage";
 import VehicleDetailsPage from "./components/Vehicles/VehicleDetailsPage";
@@ -58,6 +59,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

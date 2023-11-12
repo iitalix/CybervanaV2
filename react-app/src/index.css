@@ -112,12 +112,13 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  border-top: 1px solid black;
+  border-top: 1px solid white;
   margin-top: 16px;
 }
 
 #add-remove-buttons button {
   background-color: unset;
+  color: white;
   border: none;
   padding: 24px;
   width: 100%;
@@ -126,7 +127,8 @@ button {
 
 #add-remove-buttons button:hover {
   text-decoration: underline;
-  background-color: #FCEE09;
+  background-color: #38B6FF;
+  color: black;
 }
 
 #coming-soon {
@@ -225,6 +227,7 @@ button {
 /* Reviews Component */
 .vehicle-reviews-container {
   border-top: 2px solid black;
+  padding-top: 10px;
 }
 
 #not-reviewed {
@@ -539,7 +542,38 @@ textarea {
 }
 
 .file-input-labels:hover {
-  color: #FCEE09;
+  color: #38b6ff;
   border-color:#38b6ff;
   cursor: pointer;
+}
+
+/* Footer */
+#footer-links {
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+}
+
+.footer-link-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: yellow;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+  padding: 20px;
+  text-decoration: none;
+  width: 33.3%;
+}
+
+.footer-link-container i {
+  font-size: 40px;
+  margin-right: 10px;
+}
+
+.footer-link-container:hover {
+  background-color: #38b6ff;
+  color: black;
+  text-decoration: underline;
 }
