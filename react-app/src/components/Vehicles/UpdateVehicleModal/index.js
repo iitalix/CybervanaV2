@@ -4,8 +4,7 @@ import {useHistory} from "react-router-dom";
 import {useModal} from "../../../context/Modal";
 import {
   updateVehicleThunk,
-  getVehicleDetailsThunk,
-  getOwnerVehicles,
+  getVehicleDetailsThunk
 } from "../../../store/vehicles";
 
 export default function UpdateVehicleModal({vehicleId}) {
@@ -17,7 +16,6 @@ export default function UpdateVehicleModal({vehicleId}) {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
-  const [validationObject, setValidationObject] = useState({});
   const {closeModal} = useModal();
 
   useEffect(() => {
@@ -63,10 +61,6 @@ export default function UpdateVehicleModal({vehicleId}) {
               {error}
             </p>
           ))}
-
-        {validationObject.price && (
-          <p className="list-errors">{validationObject.price}</p>
-        )}
       </div>
 
       <form

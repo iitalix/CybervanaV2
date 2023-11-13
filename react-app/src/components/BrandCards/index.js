@@ -1,29 +1,25 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
 
 export default function BrandCard() {
   const {push} = useHistory();
 
   const goToRayfield = () => {
-    return push("vehicles/rayfield");
+    return push("/vehicles/rayfield");
   };
 
   const goToThornton = () => {
-    return push("vehicles/thornton");
+    return push("/vehicles/thornton");
   };
 
   const goToQuadra = () => {
-    return push("vehicles/quadra");
+    return push("/vehicles/quadra");
   };
 
   const goToMizutani = () => {
-    return push("vehicles/mizutani");
+    return push("/vehicles/mizutani");
   };
 
-  const goToAllVehicles = () => {
-    return push("vehicles/all");
-  };
 
   return (
     <div className="parent-container">
@@ -36,7 +32,7 @@ export default function BrandCard() {
           id="rayfield-card"
           onClick={goToRayfield}
         >
-          <img src="https://cybervana.s3.us-west-1.amazonaws.com/rayfieldaerondightguinevre.jpg" />
+          <img src="https://cybervana.s3.us-west-1.amazonaws.com/rayfieldaerondightguinevre.jpg" alt="vehicle" />
           <p>Rayfield</p>
         </div>
 
@@ -45,7 +41,7 @@ export default function BrandCard() {
           id="thornton-card"
           onClick={goToThornton}
         >
-          <img src="https://cybervana.s3.us-west-1.amazonaws.com/thortoncolbylittlemule.jpg" />
+          <img src="https://cybervana.s3.us-west-1.amazonaws.com/thortoncolbylittlemule.jpg" alt="vehicle" />
           <p>Thornton</p>
         </div>
 
@@ -54,7 +50,7 @@ export default function BrandCard() {
           id="quadra-card"
           onClick={goToQuadra}
         >
-          <img src="https://cybervana.s3.us-west-1.amazonaws.com/quadratype66avenger.jpg" />
+          <img src="https://cybervana.s3.us-west-1.amazonaws.com/quadratype66avenger.jpg" alt="vehicle" />
           <p>Quadra</p>
         </div>
 
@@ -63,7 +59,7 @@ export default function BrandCard() {
           id="mizutani-card"
           onClick={goToMizutani}
         >
-          <img src="	https://cybervana.s3.us-west-1.amazonaws.com/mizutanishioncoyotered.jpg" />
+          <img src="	https://cybervana.s3.us-west-1.amazonaws.com/mizutanishioncoyotered.jpg" alt="vehicle" />
           <p>Mizutani</p>
         </div>
       </div>
