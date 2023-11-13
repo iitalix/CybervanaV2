@@ -3,9 +3,7 @@ body {
   margin: 0;
   font-family: 'Roboto Slab', serif;
   background-color: #FCEE09;
-  /* background-color: yellow; */
-  /* background-color: #38b6ff; */
-  /* font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif; */
+  /* min-height: 100vh; */
 }
 
 h1,
@@ -548,6 +546,12 @@ textarea {
 }
 
 /* Footer */
+/* #footer-parent-container {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+} */
+
 #footer-links {
   display: flex;
   flex-direction: row;

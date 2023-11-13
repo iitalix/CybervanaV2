@@ -30,18 +30,6 @@ export default function LandingPage() {
         <BrandCard />
       </div>
 
-      {/* <div id="landing-button-menu">
-        <button onClick={goToAllVehicles}>Browse Vehicles</button>
-        <OpenModalButton
-          buttonText="Log In"
-          modalComponent={<LoginFormModal />}
-        />
-
-        <OpenModalButton
-          buttonText="Sign Up"
-          modalComponent={<SignupFormModal />}
-        />
-      </div> */}
     </div>
   );
 }
