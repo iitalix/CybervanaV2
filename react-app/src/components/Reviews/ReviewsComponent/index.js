@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getEveryReviewThunk, createReviewThunk} from "../../../store/reviews";
+import {getEveryReviewThunk} from "../../../store/reviews";
 import StarInputRatings from "../../StarInputRatings";
 import OpenModalButton from "../../OpenModalButton";
 import ReviewFormModal from "../ReviewFormModal";

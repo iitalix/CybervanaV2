@@ -1,5 +1,4 @@
 import {useState, useEffect} from "react";
-import {useDispatch} from "react-redux";
 
 export default function StarInputRatings({rating, disabled, onChange}) {
   const [activeStarRating, setActiveStarRating] = useState(rating);

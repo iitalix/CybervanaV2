@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal"
 import { useHistory } from "react-router-dom";
@@ -7,25 +7,25 @@ import { getEveryReviewThunk, deleteReviewThunk } from "../../../store/reviews";
 export default function DeleteReviewModal({ reviewId, vehicleId }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
-    const [errors, setErrors] = useState({});
+    // const [errors, setErrors] = useState({});
     const { push } = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        setErrors({});
+        // setErrors({});
 
         await dispatch(deleteReviewThunk(reviewId));
 
         return dispatch(getEveryReviewThunk())
         .then(closeModal)
-        .catch(async (res) => {
-            const data = await res.json();
+        // .catch(async (res) => {
+        //     const data = await res.json();
 
-            if (data.errors) {
-                setErrors(data.errors);
-            }
-        })
+        //     if (data.errors) {
+        //         setErrors(data.errors);
+        //     }
+        // })
         .then(push(`/vehicles/${vehicleId}`))
     };
 
