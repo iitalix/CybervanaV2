@@ -15,7 +15,7 @@ export default function ShopRayfieldPage() {
   const vehicles = [...arrVehicles];
 
   const goToAllVehicles = () => {
-    return push("vehicles/all");
+    return push("/vehicles/all");
   };
 
   useEffect(() => {

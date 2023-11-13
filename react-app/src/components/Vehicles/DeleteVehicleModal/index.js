@@ -1,31 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal"
-import { deleteVehicleThunk, getAllVehicles, getOwnerVehicles } from "../../../store/vehicles";
+import { deleteVehicleThunk, getOwnerVehicles } from "../../../store/vehicles";
 import { useHistory } from "react-router-dom";
 
 export default function DeleteVehicleModal({ vehicleId }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
-    const [errors, setErrors] = useState({});
+    // const [errors, setErrors] = useState({});
     const { push } = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        setErrors({});
+        // setErrors({});
 
         await dispatch(deleteVehicleThunk(vehicleId));
 
         return dispatch(getOwnerVehicles())
         .then(closeModal)
-        .catch(async (res) => {
-            const data = await res.json();
+        // .catch(async (res) => {
+        //     const data = await res.json();
 
-            if (data.errors) {
-                setErrors(data.errors);
-            }
-        })
+        //     if (data.errors) {
+        //         setErrors(data.errors);
+        //     }
+        // })
         .then(push('/vehicles/current'))
     };
 

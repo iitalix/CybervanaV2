@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {useModal} from "../../../context/Modal";
@@ -15,12 +15,10 @@ export default function CreateVehicleModal() {
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const [errors, setErrors] = useState([]);
-  const [key, setKey] = useState(Date.now());
+  // const [key, setKey] = useState(Date.now());
 
   let [filename, setFilename] = useState("");
   const [imageURL, setImageURL] = useState("https://cybervana.s3.us-west-1.amazonaws.com/plus.png");
-  const [file, setFile] = useState("");
-  const [optional, setOptional] = useState("");
   const maxFileError = "Selected image exceeds the maximum file size of 5Mb";
 
 
@@ -38,9 +36,7 @@ export default function CreateVehicleModal() {
     const newImageURL = URL.createObjectURL(tempFile); // Generate a local URL to render the image file inside of the <img> tag.
     setImage(tempFile);
     setImageURL(newImageURL);
-    setFile(tempFile);
     setFilename(tempFile.name);
-    setOptional("");
   };
 
   const handleSubmit = async (e) => {
@@ -63,7 +59,7 @@ export default function CreateVehicleModal() {
     } else {
       setImageLoading(false);
       setErrors(postData.errors);
-      setKey(Date.now());
+      // setKey(Date.now());
     }
   };
 
@@ -150,7 +146,7 @@ export default function CreateVehicleModal() {
           </div>
           <label htmlFor="post-image-input" className="file-input-labels">
           <div style={{position: "absolute", top: "14px", left: "100px"}}>
-            <img src={imageURL} className="thumbnails"></img>
+            <img src={imageURL} className="thumbnails" alt="thumbnail"></img>
           </div>
             Choose File
           </label>
