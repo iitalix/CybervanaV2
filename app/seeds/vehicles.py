@@ -209,7 +209,7 @@ def seed_posts():
 
     new_post_19 = Vehicle(
         owner_id=4,
-        make="Quadra ",
+        make="Quadra",
         model="Type-66 Javelina",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/quadratype66javelina.jpg",
         price=350000,
@@ -290,7 +290,7 @@ def seed_posts():
 
     new_post_26 = Vehicle(
         owner_id=6,
-        make="Villefort ",
+        make="Villefort",
         model="Cortes V5000 Valor",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/villefortcortesv5000valor.jpg",
         price=350000,
