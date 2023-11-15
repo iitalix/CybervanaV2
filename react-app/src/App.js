@@ -10,10 +10,8 @@ import Footer from "./components/Footer";
 import YourVehiclesPage from "./components/Vehicles/YourVehiclesPage";
 import LandingPage from "./components/LandingPage";
 import VehicleDetailsPage from "./components/Vehicles/VehicleDetailsPage";
-import ShopRayfieldPage from "./components/Vehicles/ShopRayfieldPage";
-import ShopThorntonPage from "./components/Vehicles/ShopThorntonPage";
-import ShopQuadraPage from "./components/Vehicles/ShopQuadraPage";
-import ShopMizutaniPage from "./components/Vehicles/ShopMizutaniPage";
+import ShopBrandPage from "./components/Vehicles/ShopBrandPage";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -34,17 +32,8 @@ function App() {
             <Route path="/signup">
               <SignupFormPage />
             </Route>
-            <Route exact path="/vehicles/mizutani">
-              <ShopMizutaniPage />
-            </Route>
-            <Route exact path="/vehicles/quadra">
-              <ShopQuadraPage />
-            </Route>
-            <Route exact path="/vehicles/thornton">
-              <ShopThorntonPage />
-            </Route>
-            <Route exact path="/vehicles/rayfield">
-              <ShopRayfieldPage />
+            <Route path="/vehicles/brand/:id">
+              <ShopBrandPage />
             </Route>
             <Route path="/vehicles/current">
               <YourVehiclesPage />

@@ -5,19 +5,19 @@ export default function BrandCard() {
   const {push} = useHistory();
 
   const goToRayfield = () => {
-    return push("/vehicles/rayfield");
+    return push("/vehicles/brand/rayfield");
   };
 
   const goToThornton = () => {
-    return push("/vehicles/thornton");
+    return push("/vehicles/brand/thornton");
   };
 
   const goToQuadra = () => {
-    return push("/vehicles/quadra");
+    return push("/vehicles/brand/quadra");
   };
 
   const goToMizutani = () => {
-    return push("/vehicles/mizutani");
+    return push("/vehicles/brand/mizutani");
   };
 
 
