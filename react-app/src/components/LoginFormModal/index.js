@@ -41,7 +41,7 @@ function LoginFormModal() {
 
       {/* Google Auth */}
       <a href={"/api/auth/oauth_login"}>
-        <button>Sign In With Google</button>
+        <button id="google">Log in with Google</button>
       </a>
 
       <div id="login-errors-container">
