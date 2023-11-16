@@ -3,7 +3,7 @@ from .users import seed_users, undo_users
 from .vehicles import seed_posts, undo_posts
 from .reviews import seed_reviews, undo_reviews
 
-from app.models.db import db, environment, SCHEMA
+from ..models import db, environment, SCHEMA
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
