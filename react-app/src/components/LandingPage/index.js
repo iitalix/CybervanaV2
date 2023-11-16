@@ -12,15 +12,15 @@ export default function LandingPage() {
 
   return (
     <div className="landingpage-parent-container">
-      <div className="landing-banner-section" onClick={goToAllVehicles}>
+      <div className="landing-banner-section">
         <img
           src="https://cybervana.s3.us-west-1.amazonaws.com/cybervana-banner.png"
           id="landing-image"
           alt="vehicle fight"
         />
-        <div id="banner-overlay-header">
+        <div id="banner-overlay-header" onClick={goToAllVehicles}>
           <p>DEALS ON WHEELS</p>
-          <p id="subheading">Night City's Best Used Vehicles</p>
+          <p id="subheading">Shop Night City's Best Used Vehicles</p>
         </div>
       </div>
 

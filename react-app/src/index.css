@@ -296,7 +296,7 @@ button {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background-color: yellow;
+  background-color: rgb(180, 180, 180);
   border-radius: 8px;
   color: black;
 }
@@ -355,7 +355,7 @@ textarea {
   flex-direction: column;
   align-items: center;
   padding: 30px 40px;
-  background-color: yellow;
+  background-color: rgb(180, 180, 180);
   border-radius: 8px;
 }
 

@@ -1,19 +1,16 @@
 """empty message
 
-Revision ID: c85428d23fee
-Revises:
-Create Date: 2023-11-06 22:48:48.499797
+Revision ID: 96f545820f2c
+Revises: 
+Create Date: 2023-11-15 16:22:57.084844
 
 """
 from alembic import op
 import sqlalchemy as sa
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = 'c85428d23fee'
+revision = '96f545820f2c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -33,10 +30,6 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-
     op.create_table('vehicles',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=True),
@@ -49,25 +42,17 @@ def upgrade():
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
-    if environment == "production":
-        op.execute(f"ALTER TABLE vehicles SET SCHEMA {SCHEMA};")
-
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('vehicle_id', sa.Integer(), nullable=False),
     sa.Column('review', sa.String(length=1000), nullable=False),
-    sa.Column('created_at', sa.Date(), nullable=False),
     sa.Column('stars', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.Date(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['vehicle_id'], ['vehicles.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
-    if environment == "production":
-        op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
-
     # ### end Alembic commands ###
 
 
