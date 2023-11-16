@@ -29,10 +29,10 @@ def seed_posts():
     new_post_3 = Vehicle(
         owner_id=1,
         make="Arch",
-        model="Nazare Special",
+        model="Nazaré Special",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/archnazarejackie.jpg",
-        price=350000,
-        description="This rare Nazre is a one-of-a-kind Limited Edition!",
+        price=85000,
+        description="This rare Nazaré is a one-of-a-kind Limited Edition!",
         created_at=date.today()
     )
     db.session.add(new_post_3)
@@ -40,9 +40,9 @@ def seed_posts():
     new_post_4 = Vehicle(
         owner_id=1,
         make="Arch",
-        model="Nazare Itsumade",
+        model="Nazaré Itsumade",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/archnazareitsumade.jpg",
-        price=350000,
+        price=60000,
         description="Made for cruising the city.",
         created_at=date.today()
     )
@@ -53,7 +53,7 @@ def seed_posts():
         make="Thornton",
         model="Machinaw Beast",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/thortonmackinawbeast.jpg",
-        price=350000,
+        price=55000,
         description="Guaranteed toughness, on and off road!",
         created_at=date.today()
     )
@@ -65,7 +65,7 @@ def seed_posts():
         make="Thornton",
         model="Galena G240",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/thortongalenag240.jpg",
-        price=350000,
+        price=20000,
         description="It isn't pretty, but it gets the job done.",
         created_at=date.today()
     )
@@ -76,7 +76,7 @@ def seed_posts():
         make="Archer",
         model="Quartz EC-T2 R660",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/archerquartz.jpg",
-        price=350000,
+        price=65000,
         description="Find out why this one is called 'The Perfect Getaway Vehicle.'",
         created_at=date.today()
     )
@@ -87,7 +87,7 @@ def seed_posts():
         make="Thornton",
         model="Colby C125",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/thortoncolbyc125.jpg",
-        price=350000,
+        price=75000,
         description="Station wagon-inspired hauler for the family!",
         created_at=date.today()
     )
@@ -98,7 +98,7 @@ def seed_posts():
         make="Mizutani",
         model="Shion M22",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/mizutanishionm22.jpg",
-        price=350000,
+        price=100000,
         description="Mizutani's finest!",
         created_at=date.today()
     )
@@ -109,7 +109,7 @@ def seed_posts():
         make="Brennan",
         model="Apollo Nomad",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/brennanapolloaldecaldos.jpg",
-        price=350000,
+        price=25000,
         description="Need Street Cred? Make sure to get The Aldecaldos to vouch for this one!",
         created_at=date.today()
     )
@@ -122,7 +122,7 @@ def seed_posts():
         make="Makigai",
         model="Maimai P126",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/makigaimaimaip126.jpg",
-        price=80000,
+        price=35000,
         description="Minimal and compact for the inconspicuous driver.",
         created_at=date.today()
     )
@@ -133,7 +133,7 @@ def seed_posts():
         make="Yaiba",
         model="Kusanagi CT-3X",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/yaibakusanagict3x.jpg",
-        price=350000,
+        price=250000,
         description="The Akira-inpspired CT-3X is every anime lover's dream bike!",
         created_at=date.today()
     )
@@ -144,7 +144,7 @@ def seed_posts():
         make="Quadra",
         model="Turbo-R 740",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/quadraturbor740.jpg",
-        price=350000,
+        price=150000,
         description="Looking for a race?",
         created_at=date.today()
     )
@@ -155,7 +155,7 @@ def seed_posts():
         make="Arch",
         model="Nazaré",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/archnazare.jpg",
-        price=350000,
+        price=65000,
         description="Sit down and stand out!",
         created_at=date.today()
     )
@@ -179,7 +179,7 @@ def seed_posts():
         make="Thornton",
         model="Galena Gecko",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/thortongalenagecko.jpg",
-        price=350000,
+        price=75000,
         description="Thornton's most popular vehicle!",
         created_at=date.today()
     )
@@ -190,7 +190,7 @@ def seed_posts():
         make="Thornton",
         model="Colby Little Mule",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/thortoncolbylittlemule.jpg",
-        price=350000,
+        price=85000,
         description="One of the best off-road vehicles in it's class!",
         created_at=date.today()
     )
@@ -201,7 +201,7 @@ def seed_posts():
         make="Mizutani",
         model="Shion Coyote",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/mizutanishioncoyotered.jpg",
-        price=350000,
+        price=85000,
         description="Built for rally racing...and much much more!",
         created_at=date.today()
     )
@@ -209,10 +209,10 @@ def seed_posts():
 
     new_post_19 = Vehicle(
         owner_id=4,
-        make="Quadra ",
+        make="Quadra",
         model="Type-66 Javelina",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/quadratype66javelina.jpg",
-        price=350000,
+        price=95000,
         description="Toughness and speed is what you NEED.",
         created_at=date.today()
     )
@@ -225,7 +225,7 @@ def seed_posts():
         make="Villefort",
         model="Columbus V340-F Freight",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/villefortcolumbusv340ffreight.jpg",
-        price=350000,
+        price=95000,
         description="You could throw a party in here!",
         created_at=date.today()
     )
@@ -236,7 +236,7 @@ def seed_posts():
         make="Chevillon",
         model="Emperor 620 Ragnar",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/chevillonemperor620ragnar.jpg",
-        price=350000,
+        price=100000,
         description="Who says armored vehicles can't be stylish?",
         created_at=date.today()
     )
@@ -247,7 +247,7 @@ def seed_posts():
         make="Quadra",
         model="Type-66 Avenger",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/quadratype66avenger.jpg",
-        price=350000,
+        price=185000,
         description="A muscle car for those who need to compensate for their lack of it.",
         created_at=date.today()
     )
@@ -258,7 +258,7 @@ def seed_posts():
         make="Herrera",
         model="Outlaw GTS",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/herreraoutlawgts.jpg",
-        price=350000,
+        price=265000,
         description="Luxury and style that won't get you killed...LITERALLY.",
         created_at=date.today()
     )
@@ -269,7 +269,7 @@ def seed_posts():
         make="Rayfield",
         model="Caliburn",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/rayfieldcaliburnwhite.jpg",
-        price=350000,
+        price=650000,
         description="Nothing beats a Caliburn.",
         created_at=date.today()
     )
@@ -282,7 +282,7 @@ def seed_posts():
         make="Chevillon",
         model="Thrax 388 Jefferson",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/chevillonthrax388jefferson.jpg",
-        price=350000,
+        price=120000,
         description="Vintage style with protection.",
         created_at=date.today()
     )
@@ -290,10 +290,10 @@ def seed_posts():
 
     new_post_26 = Vehicle(
         owner_id=6,
-        make="Villefort ",
+        make="Villefort",
         model="Cortes V5000 Valor",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/villefortcortesv5000valor.jpg",
-        price=350000,
+        price=110000,
         description="For those who want classic style with zero compromise.",
         created_at=date.today()
     )
@@ -304,7 +304,7 @@ def seed_posts():
         make="Brennan",
         model="Apollo",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/brennanapollo.jpg",
-        price=350000,
+        price=3500,
         description="The delivery service bike that holds more than just food.",
         created_at=date.today()
     )
@@ -313,9 +313,9 @@ def seed_posts():
     new_post_28 = Vehicle(
         owner_id=6,
         make="Villefort",
-        model="Alvarado V4F 570 Delegate",
+        model="Alvarado Delegate",
         photo_url="https://cybervana.s3.us-west-1.amazonaws.com/villefortalvaradov4f570delegate.jpg",
-        price=350000,
+        price=125000,
         description="You don't know luxury until you've sat on six wheels.",
         created_at=date.today()
     )

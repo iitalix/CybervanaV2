@@ -1,18 +1,22 @@
 import React, {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {useHistory} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 import {getAllVehicles} from "../../../store/vehicles";
 import VehicleCard from "../VehicleCard";
 
-export default function ShopRayfieldPage() {
+export default function ShopBrandPage() {
+  const {id} = useParams();
   const dispatch = useDispatch();
   const {push} = useHistory();
   const user = useSelector((state) => state.session.user);
   const allVehicles = useSelector((state) => state.vehicles.allVehicles);
   const arrVehicles = Object.values(allVehicles).filter(
-    (vehicle) => vehicle.make === "Rayfield"
+    (vehicle) => vehicle.make.toLowerCase() === id
   );
   const vehicles = [...arrVehicles];
+
+  console.log("vehicles", id, allVehicles, vehicles);
+  console.log("aVehicles", Object.values(allVehicles))
 
   const goToAllVehicles = () => {
     return push("/vehicles/all");
@@ -27,7 +31,7 @@ export default function ShopRayfieldPage() {
   return (
     <div className="parent-container">
       <div className="header-container">
-        <h1>Shop Rayfield's Most Popular Vehicles</h1>
+        <h1>{`Shop ${id}'s Most Popular Vehicles`}</h1>
         <button onClick={goToAllVehicles} className="header-buttons">
           Explore All Vehicles
         </button>
