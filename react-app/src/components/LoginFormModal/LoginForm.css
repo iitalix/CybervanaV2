@@ -60,3 +60,18 @@ textarea {
     font-family: sans-serif;
     margin: 0 0;
 }
+
+#google {
+  background-color: white;
+  color: #4285F4;
+  border: 1px solid #4285F4;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#google:hover {
+  background-color: #4285F4;
+  color: white;
+}
