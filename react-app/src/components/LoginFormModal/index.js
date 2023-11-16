@@ -39,6 +39,11 @@ function LoginFormModal() {
     <div className="login-modal-container">
       <h1>Log In</h1>
 
+      {/* Google Auth */}
+      <a href={"/api/auth/oauth_login"}>
+        <button>Sign In With Google</button>
+      </a>
+
       <div id="login-errors-container">
         <div className="list-errors">
           {errors.map((error, idx) => (
