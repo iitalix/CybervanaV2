@@ -8,6 +8,7 @@ import CreateVehicleModal from "../Vehicles/CreateVehicleModal";
 import logo from "../../images/logo.png";
 import "./Navigation.css";
 
+
 function Navigation({isLoaded}) {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();

@@ -4,6 +4,7 @@ import {useHistory} from "react-router-dom";
 import {useModal} from "../../context/Modal";
 import {signUp} from "../../store/session";
 import {login} from "../../store/session";
+import googlesignup from "../../images/googlesignup.png"
 import "../SignupFormModal/SignupForm.css";
 
 function SignupFormModal() {
@@ -64,8 +65,14 @@ function SignupFormModal() {
   return (
     <div className="sign-up-container">
       <h1>Sign Up</h1>
+
+      {/* Google Auth */}
+      <a href={"/api/auth/oauth_login"}>
+        <img src={googlesignup} id="google-button" alt="google login button"/>
+      </a>
+
       <form onSubmit={handleSubmit}>
-        <div>
+        {/* <div>
           {errors &&
             errors.length >= 1 &&
             errors.map((error, idx) => (
@@ -73,7 +80,7 @@ function SignupFormModal() {
                 {error}
               </div>
             ))}
-        </div>
+        </div> */}
 
         <div className="label-input-container">
           <label>First Name</label>

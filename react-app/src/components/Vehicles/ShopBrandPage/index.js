@@ -15,9 +15,6 @@ export default function ShopBrandPage() {
   );
   const vehicles = [...arrVehicles];
 
-  console.log("vehicles", id, allVehicles, vehicles);
-  console.log("aVehicles", Object.values(allVehicles))
-
   const goToAllVehicles = () => {
     return push("/vehicles/all");
   };

@@ -70,8 +70,3 @@ textarea {
   cursor: pointer;
   border-radius: 5px;
 }
-
-#google:hover {
-  background-color: #4285F4;
-  color: white;
-}
