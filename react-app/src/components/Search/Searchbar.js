@@ -11,14 +11,16 @@ const SearchBar = ({setResults, setIsResultsOpen, results, isResultsOpen}) => {
     fetch("/api/vehicles/all")
       .then((response) => response.json())
       .then((json) => {
-        const results = json.filter((vehicle) => {
+        const filteredResults = json.filter((vehicle) => {
           return (
             vehicle &&
-            vehicle.model &&
-            vehicle.model.toLowerCase().includes(value)
+            (
+              vehicle.model.toLowerCase().includes(value) ||
+              vehicle.make.toLowerCase().includes(value)
+            )
           );
         });
-        setResults(results);
+        setResults(filteredResults);
         setIsResultsOpen(true);
       });
   };
@@ -64,16 +66,16 @@ const SearchBar = ({setResults, setIsResultsOpen, results, isResultsOpen}) => {
   }, []);
 
   return (
-    <div className="input-wrapper">
+<div className="input-wrapper">
       <FaSearch id="search-icon" />
       <input
         className="search-input"
-        placeholder="Search by Model..."
+        placeholder="Search All Vehicles..."
         value={search}
         onChange={(e) => handleChange(e.target.value)}
       />
       <div className="results-container" ref={resultsContainerRef}>
-        {isResultsOpen && (
+        {isResultsOpen && search !== "" && ( // Add this condition
           <ResultsList results={results} clearSearch={clearSearch} />
         )}
       </div>

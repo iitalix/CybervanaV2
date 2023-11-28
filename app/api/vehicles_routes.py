@@ -22,7 +22,7 @@ def all():
 @vehicles_routes.route('/current')
 @login_required
 def current():
-    """GET all vehicles owned by current user for the purposes of selling"""
+    """GET all vehicles owned by current user"""
 
     all_vehicles = Vehicle.query.all()
 
@@ -60,8 +60,7 @@ def new_vehicle():
 
         db.session.add(vehicle)
         db.session.commit()
-        # this is a vehicle dictionary.
-        # this needs to be validated on the front end once its built out.
+
         return {"resPost": vehicle.to_dict()}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
@@ -88,8 +87,7 @@ def update_vehicle(id):
         vehicle_to_update.description=vehicle_description
 
         db.session.commit()
-        # this is a vehicle dictionary.
-        # this needs to be validated on the front end once its built out.
+
         return {"updated": "updated"}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
@@ -163,8 +161,7 @@ def update_comment():
 
         db.session.add(create_review)
         db.session.commit()
-        # this is a vehicle dictionary.
-        # this needs to be validated on the front end once its built out.
+
         return create_review.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
