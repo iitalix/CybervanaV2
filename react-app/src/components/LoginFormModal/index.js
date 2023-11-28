@@ -3,6 +3,7 @@ import {useHistory} from "react-router-dom";
 import {login} from "../../store/session";
 import {useDispatch} from "react-redux";
 import {useModal} from "../../context/Modal";
+import googlelogin from "../../images/googlelogin.png";
 import "../LoginFormModal/LoginForm.css";
 
 function LoginFormModal() {
@@ -41,7 +42,7 @@ function LoginFormModal() {
 
       {/* Google Auth */}
       <a href={"/api/auth/oauth_login"}>
-        <button id="google">Log in with Google</button>
+        <img src={googlelogin} id="google-button" alt="google login button" />
       </a>
 
       <div id="login-errors-container">
