@@ -1,148 +1,168 @@
-# Flask React Project
+# Cybervana
 
-This is the starter for the Flask React project.
+Cybervana is a Carvana-inspired website themed off one of my favorite video games: "Cyberpunk 2077." Visitors may browse vehicles, read user reviews, and create their own vehicle posts and reviews. More
+features to come!
 
-## Getting started
-1. Clone this repository (only this branch)
+Try it [here:](https://cybervana.onrender.com/)
 
-2. Install dependencies
+ Click on the Menu icon in the upper-right and select `Login`
+ - To start quickly from scratch (no user data), click the `Sign in with Google` button.
+ - For access to a pre-configured account with personalized data, click `Demo User`. Your vehicle posts
+   and review posts are provided, giving you the ability to manage your posts without having to create them.
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+### Technology Used
+* Python
+* Flask
+* React.js
+* Redux
+* Docker
+* Amazon Web Services (AWS)
+* Google OAuth 2.0
+* Google Fonts
+* Render
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+## Screenshots
+### Landing Page
+<img width="1061" alt="LandingPage" src="https://github.com/iitalix/Cybervana/assets/115580381/98c734f7-0e07-4738-895b-9502633a5f21">
 
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+### Browse Vehicles
+<img width="1052" alt="AllVehiclesPage" src="https://github.com/iitalix/Cybervana/assets/115580381/1df4bb85-a103-423b-8ce8-69fbe435bdc9">
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
+### Vehicle Details and User Reviews
+![Edit Review](https://github.com/iitalix/Cybervana/assets/115580381/6642cb7f-ed08-43d8-863e-00d404442f07)
 
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+## Technical Details
 
-   ```bash
-   pipenv shell
-   ```
+Cybervana allows users to create vehicle posts, leave reviews/comments on vehicle posts, and manage their vehicle and review posts.
 
-   ```bash
-   flask db upgrade
-   ```
+Each user is connected to their vehicle and review posts through the `my_vehicle_id` and `my_review_id` keys on the User model, which establish database relationships to those corresponding tables.
+<img width="822" alt="userclass" src="https://github.com/iitalix/Cybervana/assets/115580381/d1182c44-890b-4c98-b525-a9bc09b4d62c">
 
-   ```bash
-   flask seed all
-   ```
+Posts are filtered on the `Python` backend... 
+ <img width="428" alt="ownervehicles_route" src="https://github.com/iitalix/Cybervana/assets/115580381/7dc11915-0b31-41a6-adb6-5d793cbbbd34">
 
-   ```bash
-   flask run
-   ```
+...and sent to the `Redux Reducer` where the database query results are flattened, making the access of vehicles and reviews an O(1) time operation. 
+ <img width="456" alt="owner_reducer" src="https://github.com/iitalix/Cybervana/assets/115580381/0e643d7a-14a2-4bf2-9fd5-f59133231264">
 
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+With `React State` and `JSX`, the `Update`, `Delete`, and `Add To Cart` buttons on each card are conditionally rendered depending on whether or not the vehicle belongs to the signed-in user.
+<img width="510" alt="cardbutton_cond" src="https://github.com/iitalix/Cybervana/assets/115580381/ba2fe1b0-fc30-41f0-89b3-bc18ee393b4f">
+![condexample](https://github.com/iitalix/Cybervana/assets/115580381/21cb1c10-8a3c-4b16-a7a5-4d8dd48b12e3)
 
+Additionally, I leveraged my background in design by incorporating Orbitron and Roboto Slab from Google Fonts as well as a custom logo I created from Canva. The typography brings the site together and highlights the theme.
 
-## Deployment through Render.com
+### Features
+* Create / read / update / delete Vehicle Posts
+* Create / read / update / delete User Reviews
+* Google OAuth 2.0
+* AWS File uploads
+* Search Bar
 
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
+### Future Features
+* Dynamic Search using Fuse.js
+* Shopping Cart
+* Improvements to Create Post form
 
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
+### Components
+* BrandCards
+* Footer
+* LandingPage
+* LoginFormModal
+* Navigation
+  * NavigationPage
+  * ProfileButton
+* OpenModalButton
+* Reviews
+  * DeleteReviewModal
+  * ReviewFormModal
+  * ReviewsComponent
+  * UpdateReviewModal
+  * UserStarDisplay
+* Search
+* ShoppingCart
+* SignupFormModal
+* StarInputRatings
+* Vehicles
+  * AllVehicles
+  * CreateVehicleModal
+  * DeleteVehicleModal
+  * ShopBrandPage
+  * UpdateVehicleModal
+  * VehicleCard
+  * VehicleDetailsPage
+  * YourVehiclesPage
 
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
-
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
-
-### Part A: Configure the Start and Build Commands
-
-Start by giving your application a name.
-
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
-
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
-
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
-
-For your Flask project, enter the following command into the Build field, all in
-one line:
-
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
+### Installation
+1. Download the [repo](https://github.com/iitalix/Cybervana)
+2. Install the dependencies
+```
+pipenv install -r requirements.txt
+```
+3. Create a .env with proper settings for your development environment. Make sure to include settings for your AWS Bucket, Key, and Secret Key!
+4. Open a terminal, migrate/seed your database, and run your Flask app
+```
+pipenv shell
+flask db upgrade
 flask seed all
+flask run
 ```
+5. See the README file in the `react-app` directory to run the React App in development
 
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
+# API Endpoints
+## HTML API
 
-Now, add your start command in the Start field:
+### Root
+ * `GET /`
 
-```shell
-# start script
-gunicorn app:app
-```
+### Session
+ * `POST /login`
+ * `POST /signup`
 
-_If you are using websockets, use the following start command instead for increased performance:_
+### Vehicle Posts
+ * `GET /vehicles/current`
+ * `GET /vehicles/:id`
+ * `GET /vehicles/all`
+ * `GET /vehicles/brand/:id`
 
-`gunicorn --worker-class eventlet -w 1 app:app`
+## Flask Blueprint
 
-### Part B: Add the Environment Variables
+### Users
+ * `GET /api/users/`
+ * `GET /api/users/<int:id>`
 
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
+### Vehicle Posts
+ * `GET /api/vehicles/all`
+ * `GET /api/vehicles/current`
+ * `GET /api/vehicles/new`
+ * `POST /api/vehicles/new`
+ * `GET /api/vehicles/<int:id>`
+ * `PUT /api/vehicles/update/<int:id>`
+ * `DELETE /api/vehicles/delete/<int:id>`
+ * `POST /api/vehicles/<int:id>/reviews`
+ * `PUT /api/vehicles/<int:id>/reviews`
 
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
+### Reviews
+ * `GET /api/reviews/all`
+ * `GET /api/reviews`
+ * `POST /api/reviews/new/vehicles/<int:id>`
+ * `PUT /api/reviews/<int:id>/update/vehicles`
+ * `DELETE /api/reviews/<int:id>`
 
-Add the following keys and values in the Render GUI form:
+# Redux Stores
 
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
+### Session
+ * Actions:
+   * `SET_USER`
+   * `REMOVE_USER`
+  
+ ### Posts
+  * Actions:
+    * `GET_ALL_VEHICLES`
+    * `GET_VEHICLE_DETAILS`
+    * `GET_OWNER_VEHICLES`
+    * `DELETE_VEHICLE`
 
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
-
-Add the following keys and values:
-
-- DATABASE_URL (copy value from Internal Database URL field)
-
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
-
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
-
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
-
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
-
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+  ### Reviews
+   * Actions:
+     * `READ_REVIEWS`
+     * `ADD_REVIEW`
+     * `DELETE_REVIEW`
