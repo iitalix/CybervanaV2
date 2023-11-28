@@ -50,11 +50,6 @@ export default function VehicleCard({vehicle}) {
         {sessionUser?.id !== vehicle.ownerId && (
           <div className="update-delete-container">
             <div id="add-remove-buttons">
-              {/* <OpenModalButton
-                buttonText="Review"
-                modalComponent={<ReviewFormModal vehicleId={vehicle.id} />}
-              /> */}
-
               <OpenModalButton
                 buttonText="Add To Cart"
                 modalComponent={<ComingSoonModal />}

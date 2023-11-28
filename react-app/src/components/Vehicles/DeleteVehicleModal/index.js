@@ -13,19 +13,10 @@ export default function DeleteVehicleModal({ vehicleId }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // setErrors({});
-
         await dispatch(deleteVehicleThunk(vehicleId));
 
         return dispatch(getOwnerVehicles())
         .then(closeModal)
-        // .catch(async (res) => {
-        //     const data = await res.json();
-
-        //     if (data.errors) {
-        //         setErrors(data.errors);
-        //     }
-        // })
         .then(push('/vehicles/current'))
     };
 

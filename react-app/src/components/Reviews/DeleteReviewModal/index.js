@@ -13,19 +13,10 @@ export default function DeleteReviewModal({ reviewId, vehicleId }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // setErrors({});
-
         await dispatch(deleteReviewThunk(reviewId));
 
         return dispatch(getEveryReviewThunk())
         .then(closeModal)
-        // .catch(async (res) => {
-        //     const data = await res.json();
-
-        //     if (data.errors) {
-        //         setErrors(data.errors);
-        //     }
-        // })
         .then(push(`/vehicles/${vehicleId}`))
     };
 
