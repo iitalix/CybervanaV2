@@ -11,7 +11,7 @@ export default function ComingSoonModal() {
 
     return (
         <div id="coming-soon">
-            <p>Feature Coming Soon!</p>
+            <p>The Shopping Cart feature is coming soon!</p>
             <div>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=77uVIvinmdMAUg_g&amp;start=43&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>

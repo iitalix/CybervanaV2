@@ -487,16 +487,11 @@ textarea {
 
 #post-image-input {
   visibility: hidden;
-  /* Here we make the default file input button invisible on the page.
-     As the label for this input is connected to it using the htmlFor property, we can style the label as a button instead, and have it behave the same as the <input type="file" />
+  /* Hides default file button. As the label for this input is connected to it using the htmlFor property, we can style the label as a button instead, and have it behave the same as the <input type="file" />
      This extra step is necessary as the default <input type="file" /> CANNOT be styled with CSS!!
   */
 }
 
-/*
-  Important note here is that the element is positioned "absolute".
-  You will need to adjust the top and left properties to get the label to appear where you want it on your page.
- */
 
 .file-inputs-filename {
   position: absolute;
@@ -510,21 +505,11 @@ textarea {
   padding-bottom: 2px;
 }
 
-/*
-  Here we set fixed dimensions for the thumbnail. Size it to your liking!
-  Positioning for this element has been done inline, in the hopes of making this class more re-usable.
-  Feel free to position it in the CSS file if it suits your aims.
-*/
-
 .thumbnails {
   width: 50px;
   height: 50px;
   outline: none;
 }
-
-/*
-  The 2 directives below style our label like a button and give it a nice on hover effect.
-*/
 
 .file-input-labels {
   display: block;
@@ -581,4 +566,17 @@ textarea {
   background-color: #38b6ff;
   color: black;
   text-decoration: underline;
+}
+
+/* Coming Soon */
+
+#coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:black;
+  color: yellow;
+  font-size: 20px;
+  padding-top: 1px;
+  border-radius: 8px;
 }
