@@ -84,6 +84,19 @@ button {
   font-size: 20px;
 }
 
+#avg-review-parent-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 14px;
+  padding-bottom: 10px;
+}
+
+#avg-review-parent-container p {
+  margin: 0;
+  padding-left: 10px;
+}
+
 #update-delete-buttons {
   display: flex;
   flex-direction: row;
@@ -211,6 +224,14 @@ button {
 
 #detail-section-container p {
   font-size: 26px;
+  margin-bottom: 0;
+}
+
+#detail-avg {
+  font-size: 20px;
+  padding-left: 18px;
+  position: relative;
+  bottom: 16px;
 }
 
 #detail-description {
