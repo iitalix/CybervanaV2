@@ -1,8 +1,9 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory, useParams} from "react-router-dom";
-import ReviewsComponent from "../../Reviews/ReviewsComponent";
 import {getAllVehicles} from "../../../store/vehicles";
+import ReviewsComponent from "../../Reviews/ReviewsComponent";
+import AvgReview from "../../Reviews/AvgReview";
 
 export default function VehicleDetailsPage() {
   const {push} = useHistory();
@@ -42,6 +43,11 @@ export default function VehicleDetailsPage() {
             </p>
             <p>${vehicle.price}</p>
           </div>
+
+          <p id="detail-avg">
+            <AvgReview reviews={vehicle.reviews} />
+          </p>
+
           <div id="detail-description">{vehicle.description}</div>
           <p id="posted-by">
             Posted by {vehicle.users.firstName} {vehicle.users.lastName}
