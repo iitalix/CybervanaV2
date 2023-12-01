@@ -4,6 +4,7 @@ import {useHistory, useParams} from "react-router-dom";
 import {getAllVehicles} from "../../../store/vehicles";
 import ReviewsComponent from "../../Reviews/ReviewsComponent";
 import AvgReview from "../../Reviews/AvgReview";
+import { getEveryReviewThunk } from "../../../store/reviews";
 
 export default function VehicleDetailsPage() {
   const {push} = useHistory();
@@ -14,6 +15,7 @@ export default function VehicleDetailsPage() {
 
   useEffect(() => {
     dispatch(getAllVehicles());
+    dispatch(getEveryReviewThunk());
   }, [dispatch]);
 
   const goToAllVehicles = () => {

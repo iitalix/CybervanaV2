@@ -2,6 +2,7 @@ import {useEffect} from "react";
 import {useSelector} from "react-redux";
 
 export default function AvgReview({reviews}) {
+
   const avgReviews = () => {
     let total = 0;
 

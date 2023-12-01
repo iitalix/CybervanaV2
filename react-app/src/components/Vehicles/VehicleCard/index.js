@@ -1,19 +1,26 @@
-import React from "react";
-import {useSelector} from "react-redux";
+import React, {useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import OpenModalButton from "../../OpenModalButton";
 import UpdateVehicleModal from "../UpdateVehicleModal";
 import DeleteVehicleModal from "../DeleteVehicleModal";
 import ComingSoonModal from "../../ShoppingCart/ComingSoonModal";
 import AvgReview from "../../Reviews/AvgReview";
+import { getVehicleReviewsThunk } from "../../../store/reviews"
 
 export default function VehicleCard({vehicle}) {
   const {push} = useHistory();
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+
 
   const goToVehicleDetails = () => {
     return push(`/vehicles/${vehicle.id}`);
   };
+
+  useEffect(() => {
+    dispatch(getVehicleReviewsThunk(vehicle.id));
+  }, [dispatch]);
 
   return (
     <div className="card-container">
