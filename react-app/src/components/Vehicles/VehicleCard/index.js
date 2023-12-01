@@ -5,6 +5,7 @@ import OpenModalButton from "../../OpenModalButton";
 import UpdateVehicleModal from "../UpdateVehicleModal";
 import DeleteVehicleModal from "../DeleteVehicleModal";
 import ComingSoonModal from "../../ShoppingCart/ComingSoonModal";
+import AvgReview from "../../Reviews/AvgReview";
 
 export default function VehicleCard({vehicle}) {
   const {push} = useHistory();
@@ -29,6 +30,10 @@ export default function VehicleCard({vehicle}) {
             {vehicle.make} {vehicle.model}
           </div>
           <div className="card-make-model">{`$${vehicle.price}`}</div>
+        </div>
+
+        <div>
+          <AvgReview reviews={vehicle.reviews} />
         </div>
 
         {sessionUser?.id === vehicle.ownerId && (
