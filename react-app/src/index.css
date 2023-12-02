@@ -224,14 +224,11 @@ button {
 
 #detail-section-container p {
   font-size: 26px;
-  margin-bottom: 0;
 }
 
 #detail-avg {
-  font-size: 20px;
-  padding-left: 18px;
-  position: relative;
-  bottom: 16px;
+  font-size: 35px;
+  padding-right: 30px;
 }
 
 #detail-description {

@@ -30,7 +30,7 @@ export const getEveryReviewThunk = () => async (dispatch) => {
    }
 };
 
-//Get All Vehicle Reviews
+//Get Vehicle Reviews
 export const getVehicleReviewsThunk = (vehicleId) => async (dispatch) => {
    const res = await fetch(`/api/reviews/vehicle/${vehicleId}`);
 
@@ -109,8 +109,9 @@ export default function reviewsReducer(state = initialState, action) {
             ...state,
             allReviews: { ...state.allReviews },
          };
+
          newState.allReviews[action.review.id] = action.review;
-         console.log("newSTATE::", newState)
+
          return newState;
 
       case DELETE_REVIEW:
@@ -119,7 +120,7 @@ export default function reviewsReducer(state = initialState, action) {
          return newState;
 
       case GET_VEHICLE_REVIEWS:
-         newState = { ...state, allReviews: {}, vehicleReviews: {} };
+         newState = { ...state, vehicleReviews: {} };
          action.review.forEach((review) => (newState.vehicleReviews[review.id] = review));
          return newState;
 
