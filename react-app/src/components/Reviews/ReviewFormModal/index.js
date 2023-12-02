@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 import {useModal} from "../../../context/Modal";
 import StarInputRatings from "../../StarInputRatings";
-import {createReviewThunk, getEveryReviewThunk} from "../../../store/reviews";
+import {createReviewThunk, getEveryReviewThunk, getVehicleReviewsThunk} from "../../../store/reviews";
 
 export default function ReviewFormModal({vehicleId}) {
   const dispatch = useDispatch();
@@ -25,6 +25,7 @@ export default function ReviewFormModal({vehicleId}) {
       setRevText("");
       setRating(0);
       dispatch(getEveryReviewThunk());
+
       return closeModal();
     } else {
       setErrors(revData.errors);

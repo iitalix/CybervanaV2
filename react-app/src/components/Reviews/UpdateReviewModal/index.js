@@ -4,7 +4,7 @@ import {useModal} from "../../../context/Modal";
 import StarInputRatings from "../../StarInputRatings";
 import {updateReviewThunk, getEveryReviewThunk} from "../../../store/reviews";
 
-export default function UpdateReviewModal({reviewId}) {
+export default function UpdateReviewModal({reviewId, vehicleId}) {
   const dispatch = useDispatch();
   const {closeModal} = useModal();
   const [errors, setErrors] = useState({});
@@ -31,6 +31,7 @@ export default function UpdateReviewModal({reviewId}) {
       setRevText("");
       setRating(0);
       dispatch(getEveryReviewThunk());
+
       return closeModal();
     } else {
       setErrors(newRevData.errors);

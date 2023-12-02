@@ -1,7 +1,7 @@
-import {useEffect} from "react";
-import {useSelector} from "react-redux";
+import React, {useEffect} from "react";
 
 export default function AvgReview({reviews}) {
+
   const avgReviews = () => {
     let total = 0;
 
