@@ -40,6 +40,7 @@ export default function ReviewsComponent({vehicleId}) {
     <div className="vehicle-reviews-container">
       <div className="header-container">
         <h2>User Reviews</h2>
+
         <div id="detail-avg">
           <AvgReview reviews={vehicleReviews} />
         </div>
