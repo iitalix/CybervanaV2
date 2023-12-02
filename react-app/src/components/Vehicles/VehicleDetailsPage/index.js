@@ -4,6 +4,7 @@ import {useHistory, useParams} from "react-router-dom";
 import {getAllVehicles} from "../../../store/vehicles";
 import ReviewsComponent from "../../Reviews/ReviewsComponent";
 import AvgReview from "../../Reviews/AvgReview";
+import { getEveryReviewThunk, getVehicleReviewsThunk } from "../../../store/reviews";
 
 export default function VehicleDetailsPage() {
   const {push} = useHistory();
@@ -11,9 +12,13 @@ export default function VehicleDetailsPage() {
   const {id} = useParams();
   const vehicles = useSelector((state) => state.vehicles.allVehicles);
   const vehicle = vehicles[id];
+  const reviews = useSelector((state) => state.reviews.vehicleReviews);
+  const reviewsArr = Object.values(reviews);
 
   useEffect(() => {
     dispatch(getAllVehicles());
+    dispatch(getEveryReviewThunk());
+    dispatch(getVehicleReviewsThunk(id));
   }, [dispatch]);
 
   const goToAllVehicles = () => {
@@ -43,10 +48,6 @@ export default function VehicleDetailsPage() {
             </p>
             <p>${vehicle.price}</p>
           </div>
-
-          <p id="detail-avg">
-            <AvgReview reviews={vehicle.reviews} />
-          </p>
 
           <div id="detail-description">{vehicle.description}</div>
           <p id="posted-by">

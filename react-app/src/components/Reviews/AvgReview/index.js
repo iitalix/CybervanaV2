@@ -1,13 +1,13 @@
-import {useEffect} from "react";
-import {useSelector} from "react-redux";
+import React, {useEffect} from "react";
 
 export default function AvgReview({reviews}) {
+
   const avgReviews = () => {
     let total = 0;
 
-    reviews?.forEach((review) => (total += review.stars));
+    reviews.forEach((review) => (total += review.stars));
 
-    const average = total / reviews?.length;
+    const average = total / reviews.length;
 
     return average.toFixed(1);
   };

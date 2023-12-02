@@ -6,6 +6,7 @@ import OpenModalButton from "../../OpenModalButton";
 import ReviewFormModal from "../ReviewFormModal";
 import UpdateReviewModal from "../UpdateReviewModal";
 import DeleteReviewModal from "../DeleteReviewModal";
+import AvgReview from "../AvgReview";
 
 export default function ReviewsComponent({vehicleId}) {
   const dispatch = useDispatch();
@@ -39,6 +40,9 @@ export default function ReviewsComponent({vehicleId}) {
     <div className="vehicle-reviews-container">
       <div className="header-container">
         <h2>User Reviews</h2>
+        <div id="detail-avg">
+          <AvgReview reviews={vehicleReviews} />
+        </div>
         {sessionUser &&
           !currUserReview &&
           sessionUser?.id !== vehicle?.ownerId && (
@@ -78,7 +82,7 @@ export default function ReviewsComponent({vehicleId}) {
                     <OpenModalButton
                       buttonText="Edit Review"
                       modalComponent={
-                        <UpdateReviewModal reviewId={review.id} />
+                        <UpdateReviewModal reviewId={review.id} vehicleId={vehicleId} />
                       }
                     />
                     <OpenModalButton
