@@ -58,18 +58,13 @@ def get_all_reviews():
 @reviews_routes.route('/')
 
 #get all reviews for one vehicle
-@reviews_routes.route('/vehicles/<int:id>/')
+@reviews_routes.route('/vehicle/<int:id>')
 def get_all_vehicle_reviews(id):
     all_reviews = Review.query.all()
+    all_vehicle_reviews = [review.to_dict() for review in all_reviews if review.vehicle_id == id]
 
-    def filter_vehicle_id(review):
-        return review.vehicle_id == id
+    return all_vehicle_reviews
 
-    all_vehicle_reviews = filter(filter_vehicle_id, all_reviews)
-
-    print("ALL VEHICLE REVIEWS::", all_vehicle_reviews)
-
-    return [review.to_dict() for review in all_vehicle_reviews]
 
 
 #delete a review

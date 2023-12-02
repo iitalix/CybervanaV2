@@ -78,7 +78,7 @@ export default function ReviewsComponent({vehicleId}) {
                     <OpenModalButton
                       buttonText="Edit Review"
                       modalComponent={
-                        <UpdateReviewModal reviewId={review.id} />
+                        <UpdateReviewModal reviewId={review.id} vehicleId={vehicleId} />
                       }
                     />
                     <OpenModalButton
