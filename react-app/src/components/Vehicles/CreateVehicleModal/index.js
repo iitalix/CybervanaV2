@@ -59,7 +59,6 @@ export default function CreateVehicleModal() {
     } else {
       setImageLoading(false);
       setErrors(postData.errors);
-      // setKey(Date.now());
     }
   };
 

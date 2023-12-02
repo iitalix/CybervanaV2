@@ -14,9 +14,9 @@ export default function LandingPage() {
     <div className="landingpage-parent-container">
       <div className="landing-banner-section">
         <img
-          src="https://cybervana.s3.us-west-1.amazonaws.com/cybervana-banner.png"
+          src="https://cybervana.s3.us-west-1.amazonaws.com/LandingPage02.png"
           id="landing-image"
-          alt="vehicle fight"
+          alt="motorbike in the city"
         />
         <div id="banner-overlay-header" onClick={goToAllVehicles}>
           <p>DEALS ON WHEELS</p>
