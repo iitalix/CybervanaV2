@@ -38,10 +38,13 @@ Cybervana allows users to create vehicle posts, leave reviews/comments on vehicl
 Each user is connected to their vehicle and review posts through the `my_vehicle_id` and `my_review_id` keys on the User model, which establish database relationships to those corresponding tables.
 <img width="822" alt="userclass" src="https://github.com/iitalix/Cybervana/assets/115580381/d1182c44-890b-4c98-b525-a9bc09b4d62c">
 
-Posts are filtered on the `Python` backend... 
- <img width="428" alt="ownervehicles_route" src="https://github.com/iitalix/Cybervana/assets/115580381/7dc11915-0b31-41a6-adb6-5d793cbbbd34">
+Posts are filtered on the `Python` backend using `SQLAlchemy` ... 
 
-...and sent to the `Redux Reducer` where the database query results are flattened, making the access of vehicles and reviews an O(1) time operation. 
+![image](https://github.com/iitalix/Cybervana/assets/115580381/6e544360-e68e-4738-b0ca-a8eba3f56880)
+
+
+...and sent to the `Redux Reducer` where the database query results are flattened, making the access of vehicles and reviews an O(1) time operation.
+
  <img width="456" alt="owner_reducer" src="https://github.com/iitalix/Cybervana/assets/115580381/0e643d7a-14a2-4bf2-9fd5-f59133231264">
 
 With `React State` and `JSX`, the `Update`, `Delete`, and `Add To Cart` buttons on each card are conditionally rendered depending on whether or not the vehicle belongs to the signed-in user.
