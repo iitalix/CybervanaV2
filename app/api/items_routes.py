@@ -1,16 +1,16 @@
 from flask import Blueprint, request
-from ..models import CartItem, db
+from ..models import Item, db
 from flask_login import login_required, current_user
 from datetime import date
 from .auth_routes import validation_errors_to_error_messages
 
-cartitems_routes = Blueprint('cartitems', __name__)
+items_routes = Blueprint('items', __name__)
 
-@cartitems_routes.route('/<int:id>', methods=['POST'])
+@items_routes.route('/<int:id>', methods=['POST'])
 @login_required
-def create_cartitem(id):
+def create_item(id):
 
-    new_form = CartItem(
+    new_form = Item(
         user_id = current_user.id,
         vehicle_id = id,
         created_at = date.today()
@@ -20,22 +20,22 @@ def create_cartitem(id):
     db.session.commit()
     return new_form.to_dict()
 
-@cartitems_routes.route('/delete/<int:id>', methods=['DELETE'])
+@items_routes.route('/delete/<int:id>', methods=['DELETE'])
 @login_required
 def delete_cartitem(id):
-    cartitem_to_delete = CartItem.query.get(id)
+    item_to_delete = Item.query.get(id)
 
-    if (cartitem_to_delete):
+    if (item_to_delete):
 
-        db.session.delete(cartitem_to_delete)
+        db.session.delete(item_to_delete)
         db.session.commit()
         return {"message": "Cart Item Deleted!"}
     else:
         return {'errors': "No cart item to delete"}
 
 
-@cartitems_routes.route('/')
-def get_all_cartitems():
-    cartitems = CartItem.query.all()
+@items_routes.route('/')
+def get_all_items():
+    items = Item.query.all()
 
-    return [cartitem.to_dict() for cartitem in cartitems]
+    return [item.to_dict() for item in items]

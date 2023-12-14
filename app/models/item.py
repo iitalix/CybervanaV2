@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
-class CartItem(db.Model):
-    __tablename__ = 'cartItems'
+class Item(db.Model):
+    __tablename__ = 'items'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
@@ -11,8 +11,8 @@ class CartItem(db.Model):
     vehicle_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('vehicles.id')),  nullable = False)
     created_at = db.Column(db.Date, nullable = False)
 
-    my_cart_user_id = db.relationship("User", back_populates = "my_cart_id")
-    my_cart_vehicle_id = db.relationship("Vehicle", back_populates = "my_vehicle_cart_id")
+    my_item_user_id = db.relationship("User", back_populates = "my_item_id")
+    my_item_vehicle_id = db.relationship("Vehicle", back_populates = "my_vehicle_item_id")
 
 
     def to_dict(self):
