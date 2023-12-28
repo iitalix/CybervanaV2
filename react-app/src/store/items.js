@@ -24,7 +24,7 @@ export const thunkCreateItem = (itemId) => async (dispatch) => {
 
    if (res.ok) {
       const data = await res.json();
-      dispatch(actionGetAllItems(data));
+      dispatch(actionGetOneItem(data));
       return data;
    } else {
       const errors = await res.json();

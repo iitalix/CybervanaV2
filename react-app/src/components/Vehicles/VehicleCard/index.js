@@ -22,7 +22,7 @@ export default function VehicleCard({vehicle}) {
     await dispatch(thunkCreateItem(vehicle.id));
     await dispatch(thunkGetAllItems());
 
-    push(`/items/${vehicle.id}`);
+    push("/items/current");
   }
 
   useEffect(() => {
