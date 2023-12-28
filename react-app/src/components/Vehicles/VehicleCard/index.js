@@ -4,9 +4,10 @@ import {useHistory} from "react-router-dom";
 import OpenModalButton from "../../OpenModalButton";
 import UpdateVehicleModal from "../UpdateVehicleModal";
 import DeleteVehicleModal from "../DeleteVehicleModal";
-import ComingSoonModal from "../../ShoppingCart/ComingSoonModal";
 import AvgReview from "../../Reviews/AvgReview";
 import { getVehicleReviewsThunk } from "../../../store/reviews";
+import { thunkCreateItem, thunkGetAllItems } from "../../../store/items";
+
 
 export default function VehicleCard({vehicle}) {
   const {push} = useHistory();
@@ -16,6 +17,13 @@ export default function VehicleCard({vehicle}) {
   const goToVehicleDetails = () => {
     return push(`/vehicles/${vehicle.id}`);
   };
+
+  const purchaseVehicle = async () => {
+    await dispatch(thunkCreateItem(vehicle.id));
+    await dispatch(thunkGetAllItems());
+
+    push(`/items/${vehicle.id}`);
+  }
 
   useEffect(() => {
     if (vehicle && vehicle.id) {
@@ -64,10 +72,7 @@ export default function VehicleCard({vehicle}) {
         {sessionUser?.id !== vehicle.ownerId && (
           <div className="update-delete-container">
             <div id="add-remove-buttons">
-              <OpenModalButton
-                buttonText="Add To Cart"
-                modalComponent={<ComingSoonModal />}
-              />
+              <button onClick={purchaseVehicle}>Purchase Vehicle</button>
             </div>
           </div>
         )}

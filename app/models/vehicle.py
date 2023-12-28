@@ -19,6 +19,7 @@ class Vehicle(db.Model):
     my_vehicle_user_id = db.relationship("User", back_populates="my_vehicle_id")
     my_vehicle_review_id = db.relationship(
         "Review", back_populates="my_review_vehicle_id", cascade="all, delete-orphan")
+    my_vehicle_item_id = db.relationship("Item", back_populates = "my_item_vehicle_id", cascade="all, delete-orphan")
 
     def to_dict(self):
         return_dict = {

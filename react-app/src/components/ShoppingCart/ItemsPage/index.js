@@ -1,20 +1,19 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
-import {getOwnerVehicles} from "../../../store/vehicles";
-import VehicleCard from "../VehicleCard";
+// import VehicleCard from "../VehicleCard";
 import BrandCard from "../../BrandCards";
+import { thunkGetAllItems } from "../../../store/items";
 
-export default function YourVehiclesPage() {
+export default function ItemsPage() {
   const {push} = useHistory();
   const user = useSelector((state) => state.session.user);
+  const allItems = useSelector((state) => state.items.allItems);
+  const items = Object.values(allItems);
   const dispatch = useDispatch();
-  const ownerVehicles = useSelector((state) => state.vehicles.ownerVehicles);
-  const arrOwnerVehicles = Object.values(ownerVehicles);
-  const vehicles = [...arrOwnerVehicles];
 
   useEffect(() => {
-    dispatch(getOwnerVehicles());
+    dispatch(thunkGetAllItems());
   }, [dispatch]);
 
   const goToAllVehicles = () => {
@@ -24,16 +23,16 @@ export default function YourVehiclesPage() {
   return (
     <div className="vehicle-details-page-container">
       <div className="header-container">
-        <h1>Manage Your Vehicle Posts</h1>
+        <h1>Purchase Vehicles</h1>
         <button onClick={goToAllVehicles} className="header-buttons">
           Explore All Vehicles
         </button>
       </div>
 
       <div>
-        {!arrOwnerVehicles.length && (
+        {!items.length && (
           <div className="no-posts">
-            <p>You currently have no vehicle posts.</p>
+            <p>You currently have no vehicles for purchase.</p>
             <div>
               <BrandCard />
             </div>
@@ -42,9 +41,9 @@ export default function YourVehiclesPage() {
       </div>
 
       <div className="vehicles-parent-container">
-        {vehicles.map((vehicle) => (
+        {items.map((vehicle) => (
           <div key={vehicle.id} className="vehicle-card">
-            <VehicleCard vehicle={vehicle} user={user} />
+
           </div>
         ))}
       </div>

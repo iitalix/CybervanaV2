@@ -15,16 +15,16 @@ const actionDeleteItem = (itemId) => ({ type: DELETE_ITEM, itemId });
 
 // thunks
 
-export const thunkCreateItem = (vehicleId) => async (dispatch) => {
-   const res = await fetch(`/api/items/${vehicleId}`, {
+export const thunkCreateItem = (itemId) => async (dispatch) => {
+   const res = await fetch(`/api/items/${itemId}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(vehicleId),
+      body: JSON.stringify(itemId),
    });
 
    if (res.ok) {
       const data = await res.json();
-      dispatch(actionGetOneItem(data));
+      dispatch(actionGetAllItems(data));
       return data;
    } else {
       const errors = await res.json();

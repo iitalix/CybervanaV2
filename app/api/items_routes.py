@@ -22,7 +22,7 @@ def create_item(id):
 
 @items_routes.route('/delete/<int:id>', methods=['DELETE'])
 @login_required
-def delete_cartitem(id):
+def delete_item(id):
     item_to_delete = Item.query.get(id)
 
     if (item_to_delete):

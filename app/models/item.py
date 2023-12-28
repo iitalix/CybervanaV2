@@ -21,5 +21,5 @@ class Item(db.Model):
             "userId": self.user_id,
             "vehicleId": self.vehicle_id,
             "createdAt": self.created_at,
-            'vehicle': self.my_cart_vehicle_id.to_dict()
+            "vehicle": self.my_item_vehicle_id.to_dict()
         }
