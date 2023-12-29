@@ -8,7 +8,6 @@ import AvgReview from "../../Reviews/AvgReview";
 import { getVehicleReviewsThunk } from "../../../store/reviews";
 import { thunkCreateItem, thunkGetAllItems } from "../../../store/items";
 
-
 export default function VehicleCard({vehicle}) {
   const {push} = useHistory();
   const dispatch = useDispatch();

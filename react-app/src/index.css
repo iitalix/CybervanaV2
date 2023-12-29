@@ -498,6 +498,45 @@ textarea {
   box-shadow: none;
 }
 
+/* Purchase Section, Items */
+#purchase-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.item-parent-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #38B6FF;
+}
+
+#item-photo-container {
+  padding-right: 25px;
+}
+
+.item-photo {
+  width: 375px;
+  border-radius: 10px;
+}
+
+#order-summary {
+  margin-right: 20px;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+#order-summary h3 {
+  padding-bottom: 4px;
+  border-bottom: 1px solid black;
+}
+
+#calculation-table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
 /* AWS File Uploader */
 .file-inputs-container {
   position: relative; /* This allows the elements within it to be positioned without taking this element out of the document flow. As it's parent is NOT positioned, it only effects the children. */
