@@ -72,8 +72,8 @@ export default function ItemsPage() {
                   <p>
                     {item.vehicle.make} {item.vehicle.model}
                   </p>
-                  <p>{item.vehicle.description}</p>
-                  <p>${item.vehicle.price}</p>
+                  <p>Price: ${item.vehicle.price}</p>
+
                   <button onClick={() => removeFromCart(item.id)}>
                     Remove From Cart
                   </button>
@@ -93,6 +93,7 @@ export default function ItemsPage() {
                 <td className="item">Tax (7.5%):</td>
                 <td className="amount">${tax.toFixed(2)}</td>
               </tr>
+              <div className="tax"></div>
               <tr>
                 <td className="item">Total (Including Tax):</td>
                 <td className="amount">${(totalPrice + tax).toFixed(2)}</td>

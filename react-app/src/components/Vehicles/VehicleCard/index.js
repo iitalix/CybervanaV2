@@ -5,8 +5,8 @@ import OpenModalButton from "../../OpenModalButton";
 import UpdateVehicleModal from "../UpdateVehicleModal";
 import DeleteVehicleModal from "../DeleteVehicleModal";
 import AvgReview from "../../Reviews/AvgReview";
-import { getVehicleReviewsThunk } from "../../../store/reviews";
-import { thunkCreateItem, thunkGetAllItems } from "../../../store/items";
+import ItemTracker from "../../ShoppingCart/AddRemoveButtons";
+import {getVehicleReviewsThunk} from "../../../store/reviews";
 
 export default function VehicleCard({vehicle}) {
   const {push} = useHistory();
@@ -17,19 +17,11 @@ export default function VehicleCard({vehicle}) {
     return push(`/vehicles/${vehicle.id}`);
   };
 
-  const purchaseVehicle = async () => {
-    await dispatch(thunkCreateItem(vehicle.id));
-    await dispatch(thunkGetAllItems());
-
-    push("/items/current");
-  }
-
   useEffect(() => {
     if (vehicle && vehicle.id) {
       dispatch(getVehicleReviewsThunk(vehicle.id));
     }
   }, [dispatch, vehicle]);
-
 
   return (
     <div className="card-container">
@@ -49,7 +41,7 @@ export default function VehicleCard({vehicle}) {
         </div>
 
         <div>
-          <AvgReview reviews={vehicle.reviews}/>
+          <AvgReview reviews={vehicle.reviews} />
         </div>
 
         {sessionUser?.id === vehicle.ownerId && (
@@ -70,9 +62,7 @@ export default function VehicleCard({vehicle}) {
 
         {sessionUser?.id !== vehicle.ownerId && (
           <div className="update-delete-container">
-            <div id="add-remove-buttons">
-              <button onClick={purchaseVehicle}>Purchase Vehicle</button>
-            </div>
+            <ItemTracker vehicleId={vehicle.id} userId={sessionUser.id} />
           </div>
         )}
       </div>
