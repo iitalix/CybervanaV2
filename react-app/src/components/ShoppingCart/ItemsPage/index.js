@@ -38,7 +38,7 @@ export default function ItemsPage() {
   return (
     <div className="vehicle-details-page-container">
       <div className="header-container">
-        <h1>Purchase Vehicle</h1>
+        <h1>Purchase Vehicles</h1>
         <button onClick={goToAllVehicles} className="header-buttons">
           Explore All Vehicles
         </button>
@@ -55,7 +55,7 @@ export default function ItemsPage() {
         )}
       </div>
 
-      {ownerItems.length && (
+      {ownerItems.length > 0 && (
         <div id="purchase-section">
           <div className="item-section">
             {ownerItems.map((item) => (
