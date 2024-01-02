@@ -32,7 +32,7 @@ export default function YourVehiclesPage() {
 
       <div>
         {!arrOwnerVehicles.length && (
-          <div id="no-posts">
+          <div className="no-posts">
             <p>You currently have no vehicle posts.</p>
             <div>
               <BrandCard />

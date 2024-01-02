@@ -24,13 +24,7 @@ def all():
 def current():
     """GET all vehicles owned by current user"""
 
-    all_vehicles = Vehicle.query.all()
-
-    def filter_user_id(vehicle):
-
-        return vehicle.owner_id == current_user.id
-
-    all_user_vehicles = filter(filter_user_id, all_vehicles)
+    all_user_vehicles = Vehicle.query.filter_by(owner_id=current_user.id).all()
 
     return [vehicle.to_dict() for vehicle in all_user_vehicles]
 
@@ -97,11 +91,12 @@ def update_vehicle(id):
 @login_required
 def delete_vehicles(id):
     vehicle_to_delete = Vehicle.query.get(id)
-    if id < 101:
+    if id < 31:
         db.session.delete(vehicle_to_delete)
         db.session.commit()
         return 'Success, your vehicle was deleted.'
-    elif id > 100:
+
+    elif id > 30:
 
         file_delete = remove_file_from_s3(vehicle_to_delete.photo_url)
 

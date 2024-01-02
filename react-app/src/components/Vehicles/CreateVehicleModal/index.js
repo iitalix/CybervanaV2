@@ -18,9 +18,25 @@ export default function CreateVehicleModal() {
   // const [key, setKey] = useState(Date.now());
 
   let [filename, setFilename] = useState("");
-  const [imageURL, setImageURL] = useState("https://cybervana.s3.us-west-1.amazonaws.com/plus.png");
+  const [imageURL, setImageURL] = useState(
+    "https://cybervana.s3.us-west-1.amazonaws.com/plus.png"
+  );
   const maxFileError = "Selected image exceeds the maximum file size of 5Mb";
 
+  const makes = [
+    "Arch",
+    "Archer",
+    "Brennan",
+    "Chevillon",
+    "Herrera",
+    "Makigai",
+    "Mizutani",
+    "Quadra",
+    "Rayfield",
+    "Thornton",
+    "Villefort",
+    "Yaiba",
+  ];
 
   const fileWrap = (e) => {
     e.stopPropagation();
@@ -81,6 +97,26 @@ export default function CreateVehicleModal() {
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
+        {/* for use with drop-down menu
+         <div className="label-input-container">
+          <label>Make</label>
+          <select
+            name="make"
+            value={make}
+            onChange={(e) => setMake(e.target.value)}
+            required
+          >
+            <option value="" disabled>
+              Select a make
+            </option>
+            {makes.map((makeOption, index) => (
+              <option key={index} value={makeOption}>
+                {makeOption}
+              </option>
+            ))}
+          </select>
+        </div> */}
+
         <div className="label-input-container">
           <label>Make</label>
           <input
@@ -109,14 +145,14 @@ export default function CreateVehicleModal() {
         <div className="label-input-container">
           <label>Price (without decimal)</label>
         </div>
-          <input
-            type="text"
-            name="price"
-            placeholder="Integer greater than 0"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            required
-          />
+        <input
+          type="text"
+          name="price"
+          placeholder="Integer greater than 0"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          required
+        />
 
         <div className="description-input-container">
           <label className="description-label">Description</label>
@@ -144,18 +180,15 @@ export default function CreateVehicleModal() {
             {filename}
           </div>
           <label htmlFor="post-image-input" className="file-input-labels">
-          <div style={{position: "absolute", top: "14px", left: "100px"}}>
-            <img src={imageURL} className="thumbnails" alt="thumbnail"></img>
-          </div>
+            <div style={{position: "absolute", top: "14px", left: "100px"}}>
+              <img src={imageURL} className="thumbnails" alt="thumbnail"></img>
+            </div>
             Choose File
           </label>
         </div>
 
         <div className="submit-container">
-          <button
-            className="submit-button"
-            type="submit"
-          >
+          <button className="submit-button" type="submit">
             Submit
           </button>
         </div>

@@ -16,8 +16,10 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(50), nullable = False, unique = True)
     email = db.Column(db.String(50), nullable = False, unique = True)
     hashed_password = db.Column(db.String, nullable = False)
+
     my_vehicle_id = db.relationship("Vehicle", back_populates = "my_vehicle_user_id", cascade = "all, delete-orphan")
     my_review_id = db.relationship("Review", back_populates = "my_review_user_id", cascade = "all, delete-orphan")
+    my_item_id = db.relationship("Item", back_populates = "my_item_user_id", cascade="all, delete-orphan")
 
     @property
     def password(self):

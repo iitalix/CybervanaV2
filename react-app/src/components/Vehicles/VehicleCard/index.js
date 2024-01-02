@@ -4,9 +4,9 @@ import {useHistory} from "react-router-dom";
 import OpenModalButton from "../../OpenModalButton";
 import UpdateVehicleModal from "../UpdateVehicleModal";
 import DeleteVehicleModal from "../DeleteVehicleModal";
-import ComingSoonModal from "../../ShoppingCart/ComingSoonModal";
 import AvgReview from "../../Reviews/AvgReview";
-import { getVehicleReviewsThunk } from "../../../store/reviews";
+import ItemTracker from "../../ShoppingCart/AddRemoveButtons";
+import {getVehicleReviewsThunk} from "../../../store/reviews";
 
 export default function VehicleCard({vehicle}) {
   const {push} = useHistory();
@@ -22,7 +22,6 @@ export default function VehicleCard({vehicle}) {
       dispatch(getVehicleReviewsThunk(vehicle.id));
     }
   }, [dispatch, vehicle]);
-
 
   return (
     <div className="card-container">
@@ -42,7 +41,7 @@ export default function VehicleCard({vehicle}) {
         </div>
 
         <div>
-          <AvgReview reviews={vehicle.reviews}/>
+          <AvgReview reviews={vehicle.reviews} />
         </div>
 
         {sessionUser?.id === vehicle.ownerId && (
@@ -63,12 +62,7 @@ export default function VehicleCard({vehicle}) {
 
         {sessionUser?.id !== vehicle.ownerId && (
           <div className="update-delete-container">
-            <div id="add-remove-buttons">
-              <OpenModalButton
-                buttonText="Add To Cart"
-                modalComponent={<ComingSoonModal />}
-              />
-            </div>
+            <ItemTracker vehicleId={vehicle.id} userId={sessionUser.id} />
           </div>
         )}
       </div>
