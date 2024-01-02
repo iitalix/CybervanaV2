@@ -33,7 +33,7 @@ Try it [here:](https://cybervana.onrender.com/)
 
 ## Technical Details
 
-Cybervana allows users to create vehicle posts, leave reviews/comments on vehicle posts, and manage their vehicle and review posts.
+Cybervana allows users to create vehicle posts, leave reviews/comments on vehicle posts, manage their vehicle and review posts, and complete a purchase transaction.
 
 Each user is connected to their vehicle and review posts through the `my_vehicle_id` and `my_review_id` keys on the User model, which establish database relationships to those corresponding tables.
 <img width="822" alt="userclass" src="https://github.com/iitalix/Cybervana/assets/115580381/d1182c44-890b-4c98-b525-a9bc09b4d62c">
