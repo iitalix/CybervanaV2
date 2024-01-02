@@ -33,6 +33,19 @@ def delete_item(id):
     else:
         return {'errors': "No cart item to delete"}
 
+@items_routes.route('/user/<int:id>/delete', methods=['DELETE'])
+@login_required
+def delete_user_items(id):
+
+    items_to_delete = Item.query.filter_by(user_id=id).all()
+
+    for item in items_to_delete:
+        db.session.delete(item)
+
+    db.session.commit()
+
+    return {"message": "Cart Item Deleted!"}, 200
+
 
 @items_routes.route('/')
 def get_all_items():

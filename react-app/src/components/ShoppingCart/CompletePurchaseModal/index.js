@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal"
-import { deleteVehicleThunk, getOwnerVehicles } from "../../../store/vehicles";
+import { thunkDeleteUserItems, thunkGetAllItems } from "../../../store/items";
 import { useHistory } from "react-router-dom";
 
-export default function DeleteVehicleModal({ vehicleId }) {
+export default function CompletePurchaseModal({ userId }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     const { push } = useHistory();
@@ -12,25 +12,29 @@ export default function DeleteVehicleModal({ vehicleId }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await dispatch(deleteVehicleThunk(vehicleId));
+        await dispatch(thunkDeleteUserItems(userId));
 
-        return dispatch(getOwnerVehicles())
+        return dispatch(thunkGetAllItems())
         .then(closeModal)
-        .then(push('/vehicles/current'))
+        .then(push('/items/current'))
     };
 
     return (
         <div id="delete-vehicle-modal-container">
-        <h1>Delete Post</h1>
+        <h1>Complete Transaction</h1>
         <p className="delete-confirm">
-           Remove this vehicle?
+           Purchase Vehicles?
         </p>
+        <p>Vehicles will be cleared from your Cart but will remain on the marketplace
+            <br/> pending funds transfer verification from Vehicle Owners.
+        </p>
+        <p>Thank you for shopping Cybervana!</p>
         <div className="confirm-buttons">
             <button className="delete-button" onClick={handleSubmit}>
-            Yes (Delete Vehicle)
+            Yes (Complete Purchase)
             </button>
             <button className="cancel-button" onClick={closeModal}>
-            No (Keep Vehicle)
+            No (Cancel Purchase)
             </button>
         </div>
      </div>

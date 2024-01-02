@@ -2,7 +2,9 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
 import BrandCard from "../../BrandCards";
+import OpenModalButton from "../../OpenModalButton";
 import {thunkGetAllItems, thunkDeleteItem} from "../../../store/items";
+import CompletePurchaseModal from "../CompletePurchaseModal";
 
 export default function ItemsPage() {
   const {push} = useHistory();
@@ -84,21 +86,29 @@ export default function ItemsPage() {
 
           <div id="order-summary">
             <h3>Order Summary</h3>
-            <table id="calculation-table">
-              <tr>
-                <td className="item">Subtotal:</td>
-                <td className="amount">${totalPrice.toFixed(2)}</td>
-              </tr>
-              <tr>
-                <td className="item">Tax (7.5%):</td>
-                <td className="amount">${tax.toFixed(2)}</td>
-              </tr>
-              <div className="tax"></div>
-              <tr>
-                <td className="item">Total (Including Tax):</td>
-                <td className="amount">${(totalPrice + tax).toFixed(2)}</td>
-              </tr>
-            </table>
+            <div id="calculation-table" className="flex-container">
+              <div className="calculation-row">
+                <div className="item">Subtotal:</div>
+                <div className="amount">${totalPrice.toFixed(2)}</div>
+              </div>
+              <div className="calculation-row" id="tax">
+                <div className="item">Tax (7.5%):</div>
+                <div className="amount">${tax.toFixed(2)}</div>
+              </div>
+              <div className="calculation-row">
+                <div className="item">Total (Including Tax):</div>
+                <div className="amount">${(totalPrice + tax).toFixed(2)}</div>
+              </div>
+            </div>
+
+            <div id="purchase-btn">
+              <OpenModalButton
+                buttonText="Complete Purchase"
+                modalComponent={
+                  <CompletePurchaseModal userId={user.id}/>
+                }
+              />
+            </div>
           </div>
         </div>
       )}

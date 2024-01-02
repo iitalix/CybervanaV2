@@ -1,17 +1,23 @@
 const GET_ONE_ITEM = "/get-one-item";
 const GET_ALL_ITEMS = "/get-all-items";
 const DELETE_ITEM = "/delete-item";
+const DELETE_USER_ITEMS = "/delete-user_items"
 
 // action creators
 const actionGetOneItem = (item) => ({
    type: GET_ONE_ITEM,
    item,
 });
+
 const actionGetAllItems = (items) => ({
    type: GET_ALL_ITEMS,
    items,
 });
+
 const actionDeleteItem = (itemId) => ({ type: DELETE_ITEM, itemId });
+
+const actionDeleteUserItems = (userId) => ({type: DELETE_USER_ITEMS, userId})
+
 
 // thunks
 
@@ -73,6 +79,21 @@ export const thunkDeleteItem = (itemId) => async (dispatch) => {
    }
 };
 
+export const thunkDeleteUserItems = (userId) => async (dispatch) => {
+   const res = await fetch(`/api/items/user/${userId}/delete`, {
+      method: "DELETE",
+   });
+
+   if (res.ok) {
+      const data = await res.json();
+      dispatch(actionDeleteUserItems(userId));
+      return data;
+   } else {
+      const errors = await res.json();
+      return errors;
+   }
+};
+
 // reducer
 
 const initialState = { allItems: {} };
@@ -97,6 +118,9 @@ export default function itemsReducer(state = initialState, action) {
          newState = { ...state, allItems: { ...state.allItems } };
          delete newState.allItems[action.itemId];
          return newState;
+
+      case DELETE_USER_ITEMS:
+         return {...state, allItems: {}}
 
       default:
          return state;
