@@ -56,14 +56,15 @@ Additionally, I leveraged my background in design by incorporating Orbitron and 
 ### Features
 * Create / read / update / delete Vehicle Posts
 * Create / read / update / delete User Reviews
+* Add / remove / complete Purchase Transaction
 * Google OAuth 2.0
 * AWS File uploads
 * Search Bar
 
 ### Future Features
 * Dynamic Search using Fuse.js
-* Shopping Cart
-* Improvements to Create Post form
+* Transaction/Purchase History
+* Improvements to forms
 
 ### Components
 * BrandCards
@@ -82,6 +83,9 @@ Additionally, I leveraged my background in design by incorporating Orbitron and 
   * UserStarDisplay
 * Search
 * ShoppingCart
+  * AddRemoveButtons
+  * CompletePurchaseModal
+  * ItemsPage
 * SignupFormModal
 * StarInputRatings
 * Vehicles
@@ -157,15 +161,22 @@ flask run
    * `SET_USER`
    * `REMOVE_USER`
   
- ### Posts
-  * Actions:
-    * `GET_ALL_VEHICLES`
-    * `GET_VEHICLE_DETAILS`
-    * `GET_OWNER_VEHICLES`
-    * `DELETE_VEHICLE`
+### Posts
+ * Actions:
+   * `GET_ALL_VEHICLES`
+   * `GET_VEHICLE_DETAILS`
+   * `GET_OWNER_VEHICLES`
+   * `DELETE_VEHICLE`
 
-  ### Reviews
-   * Actions:
-     * `READ_REVIEWS`
-     * `ADD_REVIEW`
-     * `DELETE_REVIEW`
+### Reviews
+ * Actions:
+   * `READ_REVIEWS`
+   * `ADD_REVIEW`
+   * `DELETE_REVIEW`
+
+### Items
+ * Actions:
+   * `GET_ONE_ITEM`
+   * `GET_ALL_ITEMS`
+   * `DELETE_ITEM`
+   * `DELETE_USER_ITEMS`
