@@ -11,7 +11,7 @@ import YourVehiclesPage from "./components/Vehicles/YourVehiclesPage";
 import LandingPage from "./components/LandingPage";
 import VehicleDetailsPage from "./components/Vehicles/VehicleDetailsPage";
 import ShopBrandPage from "./components/Vehicles/ShopBrandPage";
-
+import ItemsPage from "./components/ShoppingCart/ItemsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +26,9 @@ function App() {
       {isLoaded && (
         <>
           <Switch>
+            <Route path="/items/:id">
+              <ItemsPage />
+            </Route>
             <Route path="/login">
               <LoginFormPage />
             </Route>

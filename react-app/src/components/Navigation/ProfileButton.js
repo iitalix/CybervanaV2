@@ -36,6 +36,10 @@ function ProfileButton({user}) {
     return push("/vehicles/current");
   };
 
+  const goToYourCart = () => {
+    return push("/items/current");
+  };
+
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
@@ -62,6 +66,7 @@ function ProfileButton({user}) {
             <div id="email">{user.email}</div>
             <div id="user-links">
               <div onClick={goToYourVehicles}>Your Vehicles</div>
+              <div onClick={goToYourCart}>Your Cart</div>
               <div onClick={handleLogout}>Log Out</div>
             </div>
           </div>
