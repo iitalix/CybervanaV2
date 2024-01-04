@@ -13,11 +13,11 @@ export default function ItemTracker({vehicleId, userId}) {
   const [item, setItem] = useState(null);
 
   const ownerItems = Object.values(getAllItems).filter(
-    (item) => item.userId == userId
+    (item) => item.userId === userId
   );
 
   const thisPostItems = ownerItems.filter(
-    (item) => item.vehicleId == vehicleId
+    (item) => item.vehicleId === vehicleId
   );
 
   let itemId;

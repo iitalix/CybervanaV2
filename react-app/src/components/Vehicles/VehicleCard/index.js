@@ -60,9 +60,9 @@ export default function VehicleCard({vehicle}) {
           </div>
         )}
 
-        {sessionUser?.id !== vehicle.ownerId && (
+        {sessionUser && sessionUser?.id !== vehicle.ownerId && (
           <div className="update-delete-container">
-            <ItemTracker vehicleId={vehicle.id} userId={sessionUser.id} />
+            <ItemTracker vehicleId={vehicle.id} userId={sessionUser?.id} />
           </div>
         )}
       </div>

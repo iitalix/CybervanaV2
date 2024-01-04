@@ -6,7 +6,6 @@ import OpenModalButton from "../OpenModalButton";
 import ProfileButton from "./ProfileButton";
 import CreateVehicleModal from "../Vehicles/CreateVehicleModal";
 import SearchBar from "../../components/Search/Searchbar";
-import ResultsList from "../../components/Search/ResultsList";
 import logo from "../../images/logo.png";
 import "./Navigation.css";
 

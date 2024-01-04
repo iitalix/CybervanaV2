@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {useHistory, useParams} from "react-router-dom";
 import {getAllVehicles} from "../../../store/vehicles";
 import ReviewsComponent from "../../Reviews/ReviewsComponent";
-import AvgReview from "../../Reviews/AvgReview";
 import { getEveryReviewThunk, getVehicleReviewsThunk } from "../../../store/reviews";
 
 export default function VehicleDetailsPage() {
@@ -12,14 +11,12 @@ export default function VehicleDetailsPage() {
   const {id} = useParams();
   const vehicles = useSelector((state) => state.vehicles.allVehicles);
   const vehicle = vehicles[id];
-  const reviews = useSelector((state) => state.reviews.vehicleReviews);
-  const reviewsArr = Object.values(reviews);
 
   useEffect(() => {
     dispatch(getAllVehicles());
     dispatch(getEveryReviewThunk());
     dispatch(getVehicleReviewsThunk(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   const goToAllVehicles = () => {
     return push("/vehicles/all");

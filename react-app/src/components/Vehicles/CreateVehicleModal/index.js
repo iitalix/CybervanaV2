@@ -23,20 +23,20 @@ export default function CreateVehicleModal() {
   );
   const maxFileError = "Selected image exceeds the maximum file size of 5Mb";
 
-  const makes = [
-    "Arch",
-    "Archer",
-    "Brennan",
-    "Chevillon",
-    "Herrera",
-    "Makigai",
-    "Mizutani",
-    "Quadra",
-    "Rayfield",
-    "Thornton",
-    "Villefort",
-    "Yaiba",
-  ];
+  // const makes = [
+  //   "Arch",
+  //   "Archer",
+  //   "Brennan",
+  //   "Chevillon",
+  //   "Herrera",
+  //   "Makigai",
+  //   "Mizutani",
+  //   "Quadra",
+  //   "Rayfield",
+  //   "Thornton",
+  //   "Villefort",
+  //   "Yaiba",
+  // ];
 
   const fileWrap = (e) => {
     e.stopPropagation();
