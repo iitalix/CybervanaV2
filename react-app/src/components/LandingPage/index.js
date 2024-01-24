@@ -1,7 +1,6 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
 import BrandCard from "../BrandCards";
-import "../LandingPage/LandingPage.css";
 
 export default function LandingPage() {
   const {push} = useHistory();

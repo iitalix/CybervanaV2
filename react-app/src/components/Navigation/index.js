@@ -7,7 +7,6 @@ import ProfileButton from "./ProfileButton";
 import CreateVehicleModal from "../Vehicles/CreateVehicleModal";
 import SearchBar from "../../components/Search/Searchbar";
 import logo from "../../images/logo.png";
-import "./Navigation.css";
 
 function Navigation({isLoaded}) {
   const sessionUser = useSelector((state) => state.session.user);

@@ -4,7 +4,6 @@ import {login} from "../../store/session";
 import {useDispatch} from "react-redux";
 import {useModal} from "../../context/Modal";
 import googlelogin from "../../images/googlelogin.png";
-import "../LoginFormModal/LoginForm.css";
 
 function LoginFormModal() {
   const {push} = useHistory();

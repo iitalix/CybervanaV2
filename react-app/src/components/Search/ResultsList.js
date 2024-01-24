@@ -1,6 +1,5 @@
 import React from "react";
 import SearchResult from "./SearchResult";
-import "../Search/SearchBar.css"
 
 const ResultsList = ({ results, clearSearch }) => {
   return (
