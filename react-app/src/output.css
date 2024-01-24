@@ -603,7 +603,6 @@ button {
   color: #FCEE09;
   padding: 10px 20px;
   font-family: 'Orbitron', sans-serif;
-  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
   font-size: 32px;
   text-align: center;
   text-shadow: 2px 2px 2px black;
@@ -622,6 +621,28 @@ button {
   text-shadow: 2px 2px 2px black;
   cursor: pointer;
   margin: 0;
+}
+
+/* Media Queries for Responsive Design */
+
+@media only screen and (max-width: 768px) {
+  #banner-overlay-header {
+    font-size: 24px;
+  }
+
+  #subheading {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #banner-overlay-header {
+    font-size: 20px;
+  }
+
+  #subheading {
+    font-size: 16px;
+  }
 }
 
 #landing-button-menu {

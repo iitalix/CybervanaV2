@@ -45,42 +45,40 @@ function Navigation({isLoaded}) {
 
   return (
     <div className="nav-container">
-      <nav className="header">
+      <nav className="header flex justify-between items-center p-4 md:p-8">
         <div className="logo-container">
           <div onClick={handleClick}>
             <img src={logo} alt="logo" id="logo" />
           </div>
         </div>
 
-        <div>
-          <div className="profile-corner-container">
-            <div>
-              <SearchBar
-                setResults={setResults}
-                setIsResultsOpen={setIsResultsOpen}
-                results={results}
-                isResultsOpen={isResultsOpen}
-                clearSearch={clearSearch}
-              />
-            </div>
-            {isLoaded && sessionUser && (
-              <div className="nav-links">
-                <div id="post-vehicle-button">
-                  <OpenModalButton
-                    buttonText="Post Your Vehicle"
-                    modalComponent={<CreateVehicleModal />}
-                  />
-                </div>
-              </div>
-            )}
-            {isLoaded && (
-              <div className="profile-menu-container">
-                <div>
-                  <ProfileButton user={sessionUser} />
-                </div>
-              </div>
-            )}
+        <div className="profile-corner-container flex items-center">
+          <div>
+            <SearchBar
+              setResults={setResults}
+              setIsResultsOpen={setIsResultsOpen}
+              results={results}
+              isResultsOpen={isResultsOpen}
+              clearSearch={clearSearch}
+            />
           </div>
+          {isLoaded && sessionUser && (
+            <div className="nav-links ml-4 md:ml-8">
+              <div id="post-vehicle-button">
+                <OpenModalButton
+                  buttonText="Post Your Vehicle"
+                  modalComponent={<CreateVehicleModal />}
+                />
+              </div>
+            </div>
+          )}
+          {isLoaded && (
+            <div className="profile-menu-container ml-4 md:ml-8">
+              <div>
+                <ProfileButton user={sessionUser} />
+              </div>
+            </div>
+          )}
         </div>
       </nav>
     </div>
