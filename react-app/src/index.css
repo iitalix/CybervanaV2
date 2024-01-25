@@ -214,7 +214,6 @@ textarea {
 .nav-container {
   padding: 20px;
   background-color: black;
-  /* background-color: #38b6ff; */
   font-family: 'Roboto Slab', serif;
 }
 
@@ -322,7 +321,7 @@ textarea {
   cursor: pointer;
   margin: 0 10px;
 
-  font-size: 18px;
+  font-size: 1.5rem;
 }
 
 #post-vehicle-button > button:hover {
@@ -331,6 +330,7 @@ textarea {
 
 nav {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #FCEE09;
@@ -345,6 +345,34 @@ nav {
 .nav-links > div{
   cursor: pointer;
 }
+
+/* Media queries for responsiveness */
+@media (min-width: 768px) {
+  nav {
+    flex-direction: row;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    margin-top: 0;
+  }
+
+  .nav-links > div {
+    margin-bottom: 0;
+    margin-left: 20px; /* Adjust spacing between links on larger screens */
+  }
+
+  #post-vehicle-button > button {
+    font-size: 1.2rem; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  #post-vehicle-button > button {
+    font-size: 1rem; /* Further adjust font size for even smaller screens */
+  }
+}
+
 
 /* Searchbar */
 .input-wrapper {
@@ -889,7 +917,8 @@ textarea {
 }
 
 .brandcard-container > img {
-  width: 220px;
+  width: 100%;
+  max-width: 100%;
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
 
@@ -902,6 +931,8 @@ textarea {
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(63, 63, 63, 0.8), 0 0px 12px rgba(63, 63, 63, 0.8);
   font-size: 20px;
+  margin-bottom: 20px;
+  max-width: calc(50% - 20px);
 }
 
 .brandcard-container:hover {
@@ -909,6 +940,25 @@ textarea {
   background-color: #38B6FF;
   text-decoration: underline;
   box-shadow: none;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+  #brandcard-parent-container {
+    justify-content: center;
+    padding: 15px;
+  }
+
+  .brandcard-container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .brandcard-container {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 /* Purchase Section, Items */
