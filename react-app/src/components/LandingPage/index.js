@@ -18,7 +18,7 @@ export default function LandingPage() {
           alt="motorbike in the city"
           className="w-full h-auto"
         />
-        <div id="banner-overlay-header" onClick={goToAllVehicles} className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+        <div id="banner-overlay-header" onClick={goToAllVehicles} className="absolute inset-0 flex flex-col items-center justify-center text-center">
           <p>DEALS ON WHEELS</p>
           <p id="subheading">Browse Night City's Best Used Vehicles</p>
         </div>
