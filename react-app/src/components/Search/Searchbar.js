@@ -1,7 +1,6 @@
 import React, {useState, useRef, useEffect} from "react";
 import {FaSearch} from "react-icons/fa";
 import ResultsList from "../../components/Search/ResultsList";
-import "../Search/SearchBar.css";
 
 const SearchBar = ({setResults, setIsResultsOpen, results, isResultsOpen}) => {
   const [search, setSearch] = useState("");
