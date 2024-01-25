@@ -5,7 +5,6 @@ import {useModal} from "../../context/Modal";
 import {signUp} from "../../store/session";
 import {login} from "../../store/session";
 import googlesignup from "../../images/googlesignup.png"
-import "../SignupFormModal/SignupForm.css";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
