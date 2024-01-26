@@ -90,8 +90,6 @@ button {
   margin: 0;
 }
 
-/* Media Queries for Responsive Design */
-
 @media only screen and (max-width: 768px) {
   #banner-overlay-header {
     font-size: 24px;
@@ -180,7 +178,6 @@ textarea {
   min-height: 35px;
 }
 
-
 /* Create Vehicle Form */
 .listerrors-container {
   display: flex;
@@ -214,7 +211,6 @@ textarea {
 .nav-container {
   padding: 20px;
   background-color: black;
-  /* background-color: #38b6ff; */
   font-family: 'Roboto Slab', serif;
 }
 
@@ -322,7 +318,7 @@ textarea {
   cursor: pointer;
   margin: 0 10px;
 
-  font-size: 18px;
+  font-size: 1.5rem;
 }
 
 #post-vehicle-button > button:hover {
@@ -331,6 +327,7 @@ textarea {
 
 nav {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #FCEE09;
@@ -345,6 +342,33 @@ nav {
 .nav-links > div{
   cursor: pointer;
 }
+
+@media (min-width: 768px) {
+  nav {
+    flex-direction: row;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    margin-top: 0;
+  }
+
+  .nav-links > div {
+    margin-bottom: 0;
+    margin-left: 20px; /* Adjust spacing between links on larger screens */
+  }
+
+  #post-vehicle-button > button {
+    font-size: 1.2rem; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  #post-vehicle-button > button {
+    font-size: 1rem; /* Further adjust font size for even smaller screens */
+  }
+}
+
 
 /* Searchbar */
 .input-wrapper {
@@ -368,7 +392,6 @@ nav {
   width: 100%;
   margin-left: 5px;
   font-family: 'Roboto Slab', sans-serif;
-  /* font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif; */
 }
 
 input:focus {
@@ -475,14 +498,10 @@ input:focus {
   background-color: rgb(90, 90, 90);
   color: white;
   box-shadow: 0 0 12px rgba(63, 63, 63, 0.8), 0 0px 12px rgba(63, 63, 63, 0.8);
-  /* transition: border .5s ease-in-out;
-  opacity: .9; */
 }
 
 .card-container:hover {
-  /* box-shadow: 0 0 12px rgb(255, 255, 0), 0 0px 12px rgb(255, 255, 0); */
   border: 4px solid #38B6FF;
-  /* opacity: 1; */
 }
 
 .card-details {
@@ -588,7 +607,6 @@ input:focus {
 
 #review-link-button > button:hover,
 .header-buttons:hover {
-  /* background-color: #FCEE09; */
   background-color: #38B6FF;
   color: black;
   text-decoration: underline;
@@ -625,7 +643,6 @@ input:focus {
   margin-bottom: 12px;
   background-color: rgb(90, 90, 90);
   color: white;
-  /* background-color: #87d3ff; */
 }
 
 #detail-section-container {
@@ -837,7 +854,6 @@ textarea {
   color: black;
 }
 
-
 /* Delete Form Modal */
 #delete-vehicle-modal-container {
   display: flex;
@@ -889,7 +905,8 @@ textarea {
 }
 
 .brandcard-container > img {
-  width: 220px;
+  width: 100%;
+  max-width: 100%;
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
 
@@ -902,6 +919,8 @@ textarea {
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(63, 63, 63, 0.8), 0 0px 12px rgba(63, 63, 63, 0.8);
   font-size: 20px;
+  margin-bottom: 20px;
+  max-width: calc(50% - 20px);
 }
 
 .brandcard-container:hover {
@@ -909,6 +928,24 @@ textarea {
   background-color: #38B6FF;
   text-decoration: underline;
   box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  #brandcard-parent-container {
+    justify-content: center;
+    padding: 15px;
+  }
+
+  .brandcard-container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .brandcard-container {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 /* Purchase Section, Items */
@@ -1086,6 +1123,7 @@ textarea {
 #footer-links {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   background-color: black;
 }
 
@@ -1100,6 +1138,7 @@ textarea {
   padding: 20px;
   text-decoration: none;
   width: 33.3%;
+  box-sizing: border-box;
 }
 
 .footer-link-container i {
@@ -1111,6 +1150,18 @@ textarea {
   background-color: #38b6ff;
   color: black;
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .footer-link-container {
+    width: 50%; /* Two items per row on smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-link-container {
+    width: 100%; /* One item per row on even smaller screens */
+  }
 }
 
 /* Coming Soon */
