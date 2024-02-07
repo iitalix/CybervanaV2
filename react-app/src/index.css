@@ -866,6 +866,21 @@ textarea {
   color: black;
 }
 
+@media screen and (max-width: 600px) {
+  .create-vehicle-parent-container {
+    padding: 20px;
+  }
+
+  .label-input-container,
+  .description-input-container {
+    padding: 5px;
+  }
+
+  .submit-button {
+    padding: 15px;
+  }
+}
+
 /* Delete Form Modal */
 #delete-vehicle-modal-container {
   display: flex;
