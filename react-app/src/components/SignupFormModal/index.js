@@ -4,7 +4,7 @@ import {useHistory} from "react-router-dom";
 import {useModal} from "../../context/Modal";
 import {signUp} from "../../store/session";
 import {login} from "../../store/session";
-import googlesignup from "../../images/googlesignup.png"
+import googlesignup from "../../images/googlesignup.png";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
@@ -67,20 +67,10 @@ function SignupFormModal() {
 
       {/* Google Auth */}
       <a href={"/api/auth/oauth_login"}>
-        <img src={googlesignup} id="google-button" alt="google login button"/>
+        <img src={googlesignup} id="google-button" alt="google login button" />
       </a>
 
       <form onSubmit={handleSubmit}>
-        {/* <div>
-          {errors &&
-            errors.length >= 1 &&
-            errors.map((error, idx) => (
-              <div className="list-errors" key={idx}>
-                {error}
-              </div>
-            ))}
-        </div> */}
-
         <div className="label-input-container">
           <label>First Name</label>
           <input

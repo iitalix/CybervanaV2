@@ -445,6 +445,8 @@ input:focus {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 400px;
+  margin: auto;
   padding: 45px 60px;
   background-color: rgb(180, 180, 180);
   border-radius: 8px;
@@ -474,6 +476,16 @@ input:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .sign-up-container {
+    padding: 30px 10px;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
 }
 
 
