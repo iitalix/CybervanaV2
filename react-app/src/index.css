@@ -355,17 +355,17 @@ nav {
 
   .nav-links > div {
     margin-bottom: 0;
-    margin-left: 20px; /* Adjust spacing between links on larger screens */
+    margin-left: 20px;
   }
 
   #post-vehicle-button > button {
-    font-size: 1.2rem; /* Adjust font size for smaller screens */
+    font-size: 1.2rem;
   }
 }
 
 @media (max-width: 576px) {
   #post-vehicle-button > button {
-    font-size: 1rem; /* Further adjust font size for even smaller screens */
+    font-size: 1rem;
   }
 }
 
@@ -593,6 +593,42 @@ input:focus {
 
 #coming-soon p {
   padding: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .card-container {
+    width: 100%;
+    margin: 12px 0;
+  }
+
+  .card-image {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .card-details {
+    flex-direction: column;
+    padding: 12px 0;
+  }
+
+  .card-make-model {
+    font-size: 18px;
+  }
+
+  #update-delete-buttons,
+  #add-remove-buttons {
+    flex-direction: column;
+    border-top: none;
+    margin-top: 0;
+    padding-top: 12px;
+  }
+
+  #update-delete-buttons button,
+  #add-remove-buttons button {
+    width: 100%;
+    padding: 16px;
+    font-size: 14px;
+  }
 }
 
 /* Page Header */
@@ -1181,13 +1217,13 @@ textarea {
 
 @media (max-width: 768px) {
   .footer-link-container {
-    width: 50%; /* Two items per row on smaller screens */
+    width: 50%;
   }
 }
 
 @media (max-width: 576px) {
   .footer-link-container {
-    width: 100%; /* One item per row on even smaller screens */
+    width: 100%;
   }
 }
 
