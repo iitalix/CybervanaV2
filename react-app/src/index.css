@@ -595,6 +595,42 @@ input:focus {
   padding: 20px;
 }
 
+@media screen and (max-width: 600px) {
+  .card-container {
+    width: 100%; /* Take full width */
+    margin: 12px 0; /* Adjust margin */
+  }
+
+  .card-image {
+    width: 100%; /* Take full width */
+    border-radius: 8px 8px 0 0; /* Adjust border radius */
+  }
+
+  .card-details {
+    flex-direction: column; /* Stack details vertically */
+    padding: 12px 0; /* Adjust padding */
+  }
+
+  .card-make-model {
+    font-size: 18px; /* Decrease font size */
+  }
+
+  #update-delete-buttons,
+  #add-remove-buttons {
+    flex-direction: column; /* Stack buttons vertically */
+    border-top: none; /* Remove border top */
+    margin-top: 0; /* Remove margin top */
+    padding-top: 12px; /* Add padding top */
+  }
+
+  #update-delete-buttons button,
+  #add-remove-buttons button {
+    width: 100%; /* Take full width */
+    padding: 16px; /* Adjust padding */
+    font-size: 14px; /* Decrease font size */
+  }
+}
+
 /* Page Header */
 
 #all-header {
