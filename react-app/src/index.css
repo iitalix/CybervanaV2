@@ -1230,7 +1230,6 @@ textarea {
 
 /* Sidebar */
 .sidebar {
-  width: 200px; /* Adjust width as needed */
   background-color: #f0f0f0;
   padding: 20px;
 }
@@ -1254,9 +1253,7 @@ textarea {
 
 /* Adjust based on sidebar width */
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
+
   .main-content {
     margin-left: 0;
   }
