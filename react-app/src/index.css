@@ -1251,6 +1251,7 @@ textarea {
   flex-grow: 1;
 }
 
+
 /* Adjust based on sidebar width */
 @media (max-width: 768px) {
 
