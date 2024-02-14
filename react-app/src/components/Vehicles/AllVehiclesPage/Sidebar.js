@@ -14,6 +14,7 @@ function Sidebar({allVehicles, selectedMakes, handleMakeChange}) {
         <div key={make}>
           <label>
             <input
+              className="filter-input"
               type="checkbox"
               value={make}
               checked={selectedMakes.includes(make)}
