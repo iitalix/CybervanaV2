@@ -1228,31 +1228,28 @@ textarea {
   }
 }
 
-/* Sidebar styles */
+/* Sidebar */
 .sidebar {
   width: 200px; /* Adjust width as needed */
   background-color: #f0f0f0;
   padding: 20px;
 }
 
-/* Main content styles */
 .main-content {
   margin-left: 25px; /* Adjust based on sidebar width */
   padding: 20px;
 }
 
-/* Container styles */
 .side-and-main-container {
   display: flex;
 }
 
-/* Ensure sidebar stays on the left */
 .side-and-main-container {
   display: flex;
 }
 
 .main-content {
-  flex-grow: 1; /* Allow main content to grow and fill remaining space */
+  flex-grow: 1;
 }
 
 /* Adjust based on sidebar width */
@@ -1265,13 +1262,13 @@ textarea {
   }
 }
 
-/* Align checkboxes with Make names */
 .sidebar label {
   display: flex;
   align-items: center;
   margin-right: 24px;
 }
-.sidebar input[type="checkbox"] {
+
+.filter-input {
   max-width: 24px;
 }
 
