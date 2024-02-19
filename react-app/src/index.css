@@ -1262,6 +1262,11 @@ textarea {
   .filter-input {
     max-width: 24px;
   }
+
+  .sidebar label {
+    display: flex;
+    margin-right: 24px;
+  }
 }
 
 .sidebar label {
