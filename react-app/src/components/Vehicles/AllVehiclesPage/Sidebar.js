@@ -11,17 +11,15 @@ function Sidebar({allVehicles, selectedMakes, handleMakeChange}) {
       <h2>Filter By:</h2>
       <p>Make:</p>
       {uniqueMakes.map((make) => (
-        <div key={make}>
-          <label>
-            <input
-              className="filter-input"
-              type="checkbox"
-              value={make}
-              checked={selectedMakes.includes(make)}
-              onChange={() => handleMakeChange(make)}
-            />
-            {make}
-          </label>
+        <div className="input-label-container" key={make}>
+          <input
+            className="filter-input"
+            type="checkbox"
+            value={make}
+            checked={selectedMakes.includes(make)}
+            onChange={() => handleMakeChange(make)}
+          />
+          <label>{make}</label>
         </div>
       ))}
     </div>
