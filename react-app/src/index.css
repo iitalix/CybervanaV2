@@ -1235,7 +1235,7 @@ textarea {
 }
 
 .main-content {
-  margin-left: 25px; /* Adjust based on sidebar width */
+  margin-left: 25px;
   padding: 20px;
 }
 
@@ -1251,8 +1251,13 @@ textarea {
   flex-grow: 1;
 }
 
-.sidebar label {
+.input-label-container {
+
   display: flex;
+}
+
+.sidebar label {
+  /* display: flex; */
   align-items: center;
   margin-right: 24px;
 }
@@ -1272,7 +1277,7 @@ textarea {
   }
 
   .sidebar label {
-    display: flex;
+    /* display: flex; */
     margin-right: 24px;
   }
 
@@ -1280,7 +1285,6 @@ textarea {
 
     max-width: 40%;
   }
-
 }
 
 
