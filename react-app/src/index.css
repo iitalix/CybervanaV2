@@ -157,14 +157,13 @@ button {
     text-decoration: underline;
 }
 
-input {
+.login-modal-input {
   margin-left: 10px;
   margin-right: 10px;
   padding: 8px;
   width: 172px;
   border-radius: 8px;
   border-color: deepskyblue;
-
 }
 
 textarea {
@@ -1237,18 +1236,11 @@ textarea {
 .main-content {
   margin-left: 25px;
   padding: 20px;
-}
-
-.side-and-main-container {
-  display: flex;
-}
-
-.side-and-main-container {
-  display: flex;
-}
-
-.main-content {
   flex-grow: 1;
+}
+
+.side-and-main-container {
+  display: flex;
 }
 
 .input-label-container {
