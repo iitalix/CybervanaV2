@@ -10,34 +10,46 @@ export default function AllVehiclesPage() {
   const allVehicles = useSelector((state) => state.vehicles.allVehicles);
   const [selectedMakes, setSelectedMakes] = useState([]);
   const [filteredVehicles, setFilteredVehicles] = useState([]);
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
 
   useEffect(() => {
     dispatch(getAllVehicles());
   }, [dispatch]);
 
   useEffect(() => {
-    // Filter vehicles based on selectedMakes
-    if (selectedMakes.length === 0) {
-      setFilteredVehicles(Object.values(allVehicles));
-    }
+    // Filter by Make
+    let filtered = Object.values(allVehicles);
 
-    else {
-      const filtered = Object.values(allVehicles).filter((vehicle) =>
+    if (selectedMakes.length > 0) {
+      filtered = filtered.filter((vehicle) =>
         selectedMakes.includes(vehicle.make)
       );
-      setFilteredVehicles(filtered);
     }
-  }, [selectedMakes, allVehicles]);
+
+    // Filter by Price Range
+    if (minPrice !== "" && maxPrice !== "") {
+      filtered = filtered.filter(
+        (vehicle) =>
+          vehicle.price >= parseInt(minPrice) && vehicle.price <= parseInt(maxPrice)
+      );
+    }
+
+    setFilteredVehicles(filtered);
+  }, [selectedMakes, allVehicles, minPrice, maxPrice]);
 
   const handleMakeChange = (make) => {
     // Toggle selectedMakes
     if (selectedMakes.includes(make)) {
       setSelectedMakes(selectedMakes.filter((m) => m !== make));
-    }
-
-    else {
+    } else {
       setSelectedMakes([...selectedMakes, make]);
     }
+  };
+
+  const handlePriceChange = (min, max) => {
+    setMinPrice(min);
+    setMaxPrice(max);
   };
 
   return (
@@ -46,6 +58,7 @@ export default function AllVehiclesPage() {
         allVehicles={allVehicles}
         selectedMakes={selectedMakes}
         handleMakeChange={handleMakeChange}
+        handlePriceChange={handlePriceChange}
       />
       <div className="main-content">
         <div className="header-container">
