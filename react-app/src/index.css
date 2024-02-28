@@ -983,7 +983,7 @@ textarea {
   box-shadow: 0 0 12px rgba(63, 63, 63, 0.8), 0 0px 12px rgba(63, 63, 63, 0.8);
   font-size: 20px;
   margin-bottom: 20px;
-  max-width: calc(50% - 20px);
+  max-width: calc(25% - 20px);
 }
 
 .brandcard-container:hover {
