@@ -1300,6 +1300,10 @@ textarea {
 
 @media (max-width: 600px) {
 
+  .input-label-container {
+    margin-bottom: 0;
+  }
+
   .main-content {
     margin-left: 160px;
   }
