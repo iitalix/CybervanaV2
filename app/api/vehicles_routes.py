@@ -168,3 +168,11 @@ def vehicle_by_id():
     vehicle_to_get = Vehicle.query.get(id)
 
     return vehicle_to_get.to_dict()
+
+## TODO: Still needs Redux implementation
+@vehicles_routes.route('/brand/<string:brand_name>')
+def get_vehicles_by_brand(brand_name):
+    """Get vehicles by brand name to show on brand page (when user clicks on a brand)"""
+    vehicles_by_brand = Vehicle.query.filter(Vehicle.make == brand_name).all()
+
+    return [vehicle.to_dict() for vehicle in vehicles_by_brand]
