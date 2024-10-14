@@ -1,13 +1,10 @@
-import React from "react";
+import React from 'react';
 
-export default function AvgReview({reviews}) {
+export default function AvgReview({ reviews }) {
   const avgReviews = () => {
-    if (typeof reviews === "object") {
+    if (typeof reviews === 'object') {
       reviews = Object.values(reviews);
-      console.log("🚀 ~ file: index.js:9 ~ avgReviews ~ reviews:", reviews);
     }
-
-    console.log("🚀 ~ file: index.js:9 ~ avgReviews ~ reviews:", reviews);
 
     let total = 0;
 
